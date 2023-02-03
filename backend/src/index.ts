@@ -3,6 +3,8 @@ config();
 
 import express, {NextFunction, Request, Response} from 'express';
 import mongoose from 'mongoose';
+import cors from "cors";
+
 import cardRoutes from './routes/card';
 
 mongoose.set('strictQuery', false);
@@ -13,6 +15,10 @@ const app = express();
 
 // MIDDLEWARES
 app.use(express.json());
+app.use(cors({
+    origin: "*",
+}));
+
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     console.log(req.method + ' ' + req.path )

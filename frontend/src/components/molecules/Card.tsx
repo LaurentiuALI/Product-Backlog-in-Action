@@ -61,28 +61,34 @@ const IOSSwitch = styled((props) => (
   },
 }));
 
-const Card = (props: { title: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
+interface Props {
+  component: any;
+  type?: string;
+}
+
+const Card = (props: any) => {
   return (
     <div className="bg-white flex flex-col h-80 w-80 border rounded-t-3xl">
       <div className="flex flex-col items-center">
-        <h1 className="font-semibold mt-4 mb-6 text-2xl">{props.title}</h1>
+        <h1 className="font-semibold mt-4 mb-6 text-2xl">
+          {props.component != null && props.component.title}
+        </h1>
 
-        <h2 className="font-semibold text-xl"> Items Gathered </h2>
+        <h2 className="font-semibold text-xl"> {props.component.name} </h2>
         <div className="w-28 h-px bg-primary-100 ml-4"></div>
       </div>
 
       <ThemeProvider theme={theme}>
-        <div className="flex justify-center items-center mt-4 ml-4">
-          <IOSSwitch />
-          <p>There is a list of things of value to build into the product</p>
-        </div>
-        <div className="flex justify-center items-center mt-4 ml-4">
-          <IOSSwitch  />
-          <p>There is a list of things of value to build into the product</p>
-        </div>
-        <div className="flex justify-center items-center mt-4 ml-4">
-          <IOSSwitch />
-          <p>There is a list of things of value to build into the product</p>
+        <div className="flex flex-col">
+          {props.component != null &&
+            props.component.checklist.map((item: any) => {
+              return (
+                <div className="flex mb-3 items-center">
+                  <IOSSwitch />
+                  <p className="ml-2">{item != null && item.name}</p>
+                </div>
+              );
+            })}
         </div>
       </ThemeProvider>
     </div>

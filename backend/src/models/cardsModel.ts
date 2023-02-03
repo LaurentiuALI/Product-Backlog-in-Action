@@ -22,6 +22,10 @@ const stateSchema = new Schema({
         type: String,
         required: true
     },
+    status:{
+        type: Number,
+        default: 0
+    },
     checklist:{
         type: [checklistItemSchema],
         default: []
