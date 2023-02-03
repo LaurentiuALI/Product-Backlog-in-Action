@@ -67,32 +67,64 @@ interface Props {
 }
 
 const Card = (props: any) => {
-  return (
-    <div className="bg-white flex flex-col h-80 w-80 border rounded-t-3xl">
-      <div className="flex flex-col items-center">
-        <h1 className="font-semibold mt-4 mb-6 text-2xl">
-          {props.component != null && props.component.title}
+  if (props.component != null && props.component.type === "component") {
+    return (
+      <div className="bg-white flex flex-col h-80 w-80 border rounded-t-3xl">
+        <div className="flex flex-col items-center">
+
+        <h1 className="font-bold mt-4 mb-6 text-2xl">
+          {props.component.title}
         </h1>
+        
+        <h2 className="text-center font-semibold text-l mb-10">
+          {props.component != null && props.component.description}
+        </h2>
 
-        <h2 className="font-semibold text-xl"> {props.component.name} </h2>
-        <div className="w-28 h-px bg-primary-100 ml-4"></div>
-      </div>
-
-      <ThemeProvider theme={theme}>
-        <div className="flex flex-col">
-          {props.component != null &&
-            props.component.checklist.map((item: any) => {
-              return (
-                <div className="flex mb-3 items-center">
-                  <IOSSwitch />
-                  <p className="ml-2">{item != null && item.name}</p>
-                </div>
-              );
-            })}
+        {props.component.states.map((item: any) => {
+          return (
+            <div className="mb-3">
+              <h2 className="font-semibold text-xl">{item.name}</h2>
+              <div className="h-px bg-primary-100 ml-4"  />
+            </div>
+          );
+        })}
         </div>
-      </ThemeProvider>
-    </div>
-  );
+      </div>
+    );
+  }
+
+  if (props.component != null && props.component.type === "state") {
+    return (
+      <div className="bg-white flex flex-col h-80 w-80 border rounded-t-3xl">
+        <div className="flex flex-col items-center">
+          <h1 className="font-semibold mt-4 mb-6 text-2xl">
+            {props.component != null && props.component.title}
+          </h1>
+
+          <h2 className="font-semibold text-xl">
+            {props.component != null && props.component.name}
+          </h2>
+          <div className="w-28 h-px bg-primary-100 ml-4"></div>
+        </div>
+
+        <ThemeProvider theme={theme}>
+          <div className="flex flex-col">
+            {props.component != null &&
+              props.component.checklist.map((item: any) => {
+                return (
+                  <div className="flex mb-3 items-center">
+                    <IOSSwitch />
+                    <p className="ml-2">{item != null && item.name}</p>
+                  </div>
+                );
+              })}
+          </div>
+        </ThemeProvider>
+      </div>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 export default Card;

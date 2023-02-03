@@ -35,11 +35,15 @@ const Sidebar = (props: any) => {
 
       <AddAlpha />
 
-  
       {cardsQuery.data.map((card: any) => (
         <>
           <div className="flex flex-col justify-center mt-14">
-            <ChecklistParent text={card.title} />
+            <ChecklistParent
+              text={card.title}
+              customClick={() =>
+                changeComponent({ ...card, type: "component" })
+              }
+            />
             {card.states.map((state: any) => (
               <>
                 <ChecklistItem
@@ -48,7 +52,11 @@ const Sidebar = (props: any) => {
                   status={state.status}
                   optional={state.optional}
                   customClick={() =>
-                    changeComponent({ ...state, title: card.title })
+                    changeComponent({
+                      ...state,
+                      title: card.title,
+                      type: "state",
+                    })
                   }
                 />
               </>
