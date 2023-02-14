@@ -1,6 +1,7 @@
 // import { useState } from "react";
 // import reactLogo from "./assets/react.svg";
 import { Routes, Route } from "react-router-dom";
+import AlphaItem from "./pages/AlphaItem";
 import Home from "./pages/Home";
 // import "./App.css";
 
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/:id" element={<AlphaItem />} />
       </Routes>
     </div>
   );

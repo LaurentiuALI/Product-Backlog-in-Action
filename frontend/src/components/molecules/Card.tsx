@@ -71,29 +71,26 @@ const Card = (props: any) => {
     return (
       <div className="bg-white flex flex-col h-80 w-80 border rounded-t-3xl">
         <div className="flex flex-col items-center">
+          <h1 className="font-bold mt-4 mb-6 text-2xl">
+            {props.component.title}
+          </h1>
 
-        <h1 className="font-bold mt-4 mb-6 text-2xl">
-          {props.component.title}
-        </h1>
-        
-        <h2 className="text-center font-semibold text-l mb-10">
-          {props.component != null && props.component.description}
-        </h2>
+          <h2 className="text-center font-semibold text-l mb-10">
+            {props.component != null && props.component.description}
+          </h2>
 
-        {props.component.states.map((item: any) => {
-          return (
-            <div className="mb-3">
-              <h2 className="font-semibold text-xl">{item.name}</h2>
-              <div className="h-px bg-primary-100 ml-4"  />
-            </div>
-          );
-        })}
+          {props.component.states.map((item: any) => {
+            return (
+              <div className="mb-3" key={item._id}>
+                <h2 className="font-semibold text-xl">{item.name}</h2>
+                <div className="h-px bg-primary-100 ml-4" />
+              </div>
+            );
+          })}
         </div>
       </div>
     );
-  }
-
-  if (props.component != null && props.component.type === "state") {
+  } else if (props.component != null && props.component.type === "state") {
     return (
       <div className="bg-white flex flex-col h-80 w-80 border rounded-t-3xl">
         <div className="flex flex-col items-center">
@@ -112,7 +109,7 @@ const Card = (props: any) => {
             {props.component != null &&
               props.component.checklist.map((item: any) => {
                 return (
-                  <div className="flex mb-3 items-center">
+                  <div className="flex mb-3 items-center" key={item._id}>
                     <IOSSwitch />
                     <p className="ml-2">{item != null && item.name}</p>
                   </div>
@@ -120,6 +117,25 @@ const Card = (props: any) => {
               })}
           </div>
         </ThemeProvider>
+      </div>
+    );
+  } else if (props.component != null && props.component.type === "pattern") {
+    let text = props.component.description.split("\\n");
+
+    return (
+      <div className="bg-white flex flex-col h-80 w-80 border rounded-t-3xl">
+        <div className="flex flex-col items-center">
+          <h1 className="font-semibold mt-4 mb-6 text-center text-2xl">
+            {props.component != null && props.component.title}
+          </h1>
+
+          <h2 className="font-medium text-xs">
+            {props.component != null &&
+              text.map((item: any) => {
+                return <p key={item}>{item}</p>;
+              })}
+          </h2>
+        </div>
       </div>
     );
   } else {

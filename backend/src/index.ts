@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import cors from "cors";
 
 import cardRoutes from './routes/card';
+import alphaItemRoutes from './routes/alphaItem';
 
 mongoose.set('strictQuery', false);
 
@@ -27,6 +28,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 // Require API routes
 app.use("/api/v1/cards", cardRoutes);
+app.use("/api/v1/alphaItems", alphaItemRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI!)
