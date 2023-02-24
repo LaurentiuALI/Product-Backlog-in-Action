@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 // Create a schema for checklist items
 
-const checklistItemSchema = new Schema({
+export const checklistItemSchema = new Schema({
     name: {
         type: String,
         required: true},
@@ -17,7 +17,7 @@ const checklistItemSchema = new Schema({
 
 // Create a schema for states
 
-const stateSchema = new Schema({
+export const stateSchema = new Schema({
     name:{
         type: String,
         required: true
@@ -38,7 +38,7 @@ const stateSchema = new Schema({
 
 // Create a schema for cards
 
-const cardSchema = new Schema({
+export const cardSchema = new Schema({
     type:{
         type: String,
         default: ''
@@ -62,6 +62,6 @@ const cardSchema = new Schema({
 
 }, {timestamps: true});
 
-const Card = mongoose.model('Card', cardSchema);
-
-export default Card
+export const Card = mongoose.model('Card', cardSchema);
+export const State = mongoose.model('State', stateSchema);
+export const ChecklistItem = mongoose.model('ChecklistItem', checklistItemSchema);

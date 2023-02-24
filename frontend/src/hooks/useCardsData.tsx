@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useQuery } from "react-query";
+import { useQuery, useMutation } from "react-query";
 import { useCardStore } from "../stores/CardStore";
 
 const getCards = async () => {
@@ -10,6 +10,13 @@ const getCards = async () => {
 
 const useCardsData = () => {
   return useQuery("cards", getCards);
+};
+
+const updateCard = async ({ card, _id }: any) => {
+  return await axios.patch(`http://localhost:4000/api/v1/cards/${_id}`, card);
+};
+const useUpdateCard = () => {
+  return useMutation(updateCard);
 };
 
 export const useCardData = () => {
@@ -34,13 +41,15 @@ export const useCardData = () => {
 
   const { isLoading, error, data } = useCardsData();
 
+  const { mutate } = useUpdateCard();
+
   useEffect(() => {
     if (data != null) {
       setProductBacklog(data);
       setSplittingProductBacklogItems(data);
       setRelativeEstimating(data);
     }
-  }, [data, productBacklog, relativeEstimating, splittingProductBacklogItems]);
+  }, [data]);
 
   return {
     isLoading,
@@ -49,5 +58,6 @@ export const useCardData = () => {
     productBacklog,
     splittingProductBacklogItems,
     relativeEstimating,
+    mutate,
   };
 };

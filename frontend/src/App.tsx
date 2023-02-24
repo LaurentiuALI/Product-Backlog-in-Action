@@ -1,7 +1,7 @@
 // import { useState } from "react";
 // import reactLogo from "./assets/react.svg";
 import { Routes, Route } from "react-router-dom";
-import AlphaItem from "./pages/AlphaItem";
+import AlphaItem from "./pages/AlphaItem/AlphaItem";
 import Home from "./pages/Home";
 // import "./App.css";
 

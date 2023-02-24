@@ -1,8 +1,12 @@
-import React from "react";
-
 import pattern from "../../icons/pattern.svg";
+import { useCardData } from "../../hooks/useCardsData";
+import { useComponentStore } from "../../stores/ComponentStore";
 
 const Topbar = (props: any) => {
+  const { relativeEstimating, splittingProductBacklogItems } = useCardData();
+  const setComponent = useComponentStore((state: any) => state.setComponent);
+  const component = useComponentStore((state: any) => state.component);
+
   return (
     <div className="bg-gradient-to-r from-primary-100 to-primary-200 w-full h-32 mt-8 rounded-3xl ">
       <div className="flex justify-around">
@@ -11,17 +15,17 @@ const Topbar = (props: any) => {
             src={pattern}
             alt="pattern"
             className="w-24 h-24"
-            onClick={() =>
-              props.changeComponent({ ...props.SPBI, type: "pattern" })
-            }
+            onClick={() => {
+              setComponent(splittingProductBacklogItems, "pattern");
+            }}
           />
           <p
             className="text-white font-semibold text-lg"
-            onClick={() =>
-              props.changeComponent({ ...props.SPBI, type: "pattern" })
-            }
+            onClick={() => {
+              setComponent(splittingProductBacklogItems, "pattern");
+            }}
           >
-            {props.SPBI.title}
+            {splittingProductBacklogItems.title}
           </p>
         </div>
         <div className="flex flex-col items-center">
@@ -29,17 +33,17 @@ const Topbar = (props: any) => {
             src={pattern}
             alt="pattern"
             className="w-24 h-24"
-            onClick={() =>
-              props.changeComponent({ ...props.RE, type: "pattern" })
-            }
+            onClick={() => {
+              setComponent(relativeEstimating, "pattern");
+            }}
           />
           <p
             className="text-white font-semibold text-lg"
-            onClick={() =>
-              props.changeComponent({ ...props.RE, type: "pattern" })
-            }
+            onClick={() => {
+              setComponent(relativeEstimating, "pattern");
+            }}
           >
-            {props.RE.title}
+            {relativeEstimating.title}
           </p>
         </div>
       </div>

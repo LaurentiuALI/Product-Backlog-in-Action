@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import Sidebar from "../components/molecules/Sidebar";
 import Topbar from "../components/molecules/Topbar";
@@ -16,15 +16,10 @@ const Home = () => {
     relativeEstimating,
   } = useCardData();
 
-  const [component, setcomponent] = useState(null);
   const [addActive, setaddActive] = useState(false);
 
   const toggleAdd = () => {
     setaddActive(!addActive);
-  };
-
-  const changeComponent = (title: any) => {
-    setcomponent(title);
   };
 
   if (isLoading) {
@@ -35,24 +30,10 @@ const Home = () => {
 
   return (
     <div className="bg-white-100 h-screen w-screen flex ">
-      {productBacklog != null && (
-        <Sidebar
-          changeComponent={changeComponent}
-          component={
-            component == null
-              ? { ...productBacklog, type: "component" }
-              : component
-          }
-          addActive={toggleAdd}
-        />
-      )}
+      {productBacklog != null && <Sidebar addActive={toggleAdd} />}
       {splittingProductBacklogItems != null && relativeEstimating != null && (
         <div className="w-9/12 flex flex-col">
-          <Topbar
-            SPBI={splittingProductBacklogItems}
-            RE={relativeEstimating}
-            changeComponent={changeComponent}
-          />
+          <Topbar />
           {!addActive && <ItemsList className="absolute" />}
           {addActive && <Add className="relative" />}
         </div>

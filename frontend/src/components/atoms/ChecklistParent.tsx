@@ -5,9 +5,6 @@ import { useCardData } from "../../hooks/useCardsData";
 const ChecklistItem = (props: any) => {
   const { productBacklog } = useCardData();
 
-  console.log(productBacklog);
-
-  const component = useComponentStore((state: any) => state.component);
   const setComponent = useComponentStore((state: any) => state.setComponent);
 
   return (
@@ -22,7 +19,7 @@ const ChecklistItem = (props: any) => {
         className="text-lg text-white opacity-80 font-semibold font-inter"
         onClick={() => setComponent(productBacklog, "component")}
       >
-        {props.text}
+        {productBacklog.title}
       </p>
     </div>
   );

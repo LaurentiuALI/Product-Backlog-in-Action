@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { cardSchema } from "./cardsModel";
 
 const Schema = mongoose.Schema;
 
@@ -24,6 +25,10 @@ const alphaItemSchema = new Schema({
     state:{
         type: String,
         default: "Identified"
+    },
+    cards:{
+        type: [cardSchema],
+        default: []
     }
 });
 

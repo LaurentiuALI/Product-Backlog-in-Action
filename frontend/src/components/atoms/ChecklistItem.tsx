@@ -1,64 +1,78 @@
-import React from "react";
 import stateAchieved from "../../icons/stateAchieved.svg";
 import stateUnachieved from "../../icons/stateUnachieved.svg";
 import stateUnachievedOpt from "../../icons/stateUnachievedOpt.svg";
 
+import { useCardData } from "../../hooks/useCardsData";
+import { useComponentStore } from "../../stores/ComponentStore";
+
 interface Props {
-  status: number;
-  optional: boolean;
-  title: string;
-  customClick?: () => void;
+  state: any;
 }
 
-const ChecklistItem = (props: Props) => {
-  if (props.status == 0 && props.optional == false) {
+const ChecklistItem = ({ state }: Props) => {
+  const { productBacklog } = useCardData();
+  const { setComponent } = useComponentStore((state: any) => state);
+
+  if (state.status == 0 && state.optional == false) {
     return (
       <div className="flex flex-row items-center ml-4 mb-6">
         <img
-          onClick={props.customClick}
+          onClick={() =>
+            setComponent({ ...state, _id: productBacklog._id , title: productBacklog.title }, "state")
+          }
           src={stateUnachieved}
           alt="add"
           className="ml-10 opacity-90 mr-5"
         />
         <p
           className="text-lg text-white opacity-80 font-semibold font-inter"
-          onClick={props.customClick}
+          onClick={() =>
+            setComponent({ ...state, _id: productBacklog._id , title: productBacklog.title }, "state")
+          }
         >
-          {props.title}
+          {state.name}
         </p>
       </div>
     );
-  } else if (props.status == 0 && props.optional == true) {
+  } else if (state.status == 0 && state.optional == true) {
     return (
       <div className="flex flex-row items-center ml-4 mb-6">
         <img
-          onClick={props.customClick}
+          onClick={() =>
+            setComponent({ ...state, _id: productBacklog._id , title: productBacklog.title }, "state")
+          }
           src={stateUnachievedOpt}
           alt="add"
           className="ml-10 opacity-90 mr-5"
         />
         <p
-          onClick={props.customClick}
+          onClick={() =>
+            setComponent({ ...state, _id: productBacklog._id , title: productBacklog.title }, "state")
+          }
           className="text-lg text-white opacity-80 font-semibold font-inter"
         >
-          {props.title}
+          {state.name}
         </p>
       </div>
     );
-  } else if (props.status == 1) {
+  } else if (state.status == 1) {
     return (
       <div className="flex flex-row items-center ml-4 mb-6">
         <img
-          onClick={props.customClick}
+          onClick={() =>
+            setComponent({ ...state, _id: productBacklog._id , title: productBacklog.title }, "state")
+          }
           src={stateAchieved}
           alt="add"
           className="ml-10 opacity-90 mr-5"
         />
         <p
-          onClick={props.customClick}
+          onClick={() =>
+            setComponent({ ...state, _id: productBacklog._id , title: productBacklog.title }, "state")
+          }
           className="text-lg text-white opacity-80 font-semibold font-inter"
         >
-          {props.title}
+          {state.name}
         </p>
       </div>
     );

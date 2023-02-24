@@ -7,3 +7,5 @@ export const useComponentStore = create((set) => ({
       component: { ..._component, type: _type },
     })),
 }));
+
+

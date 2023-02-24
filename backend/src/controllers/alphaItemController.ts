@@ -1,4 +1,7 @@
 import AlphaItem from '../models/alphaItemModel';
+import { Card, State } from '../models/cardsModel';
+
+import { productBacklogItem, INVEST, agreeDefinitionOfDone, definitionOfDone, prepareAProductBacklogItem, testCase } from './constants';
 
 import {Request, Response} from 'express';
 
@@ -88,8 +91,24 @@ export const createAlphaItem = async (req: Request, res: Response) => {
         try{
     
             // retrieve card from db
-    
-            const alphaItem = await AlphaItem.create(req.body);
+
+            const newStatesProductBacklogItem = await State.create(productBacklogItem.states);
+            const productBacklogItemCard = await Card.create( {...productBacklogItem, states: newStatesProductBacklogItem } );
+     
+            const INVESTCard = await Card.create( INVEST );
+     
+            const agreeDefinitionOfDoneCard = await Card.create( agreeDefinitionOfDone );
+
+            const newStatesDefinitionOfDone = await State.create(definitionOfDone.states);
+            const definitionOfDoneCard = await Card.create( {...definitionOfDone, states: newStatesDefinitionOfDone } );
+
+            const prepareAProductBacklogItemCard = await Card.create( prepareAProductBacklogItem );
+
+            const newStatesTestCase = await State.create(testCase.states);
+            const testCaseCard = await Card.create( {...testCase, states: newStatesTestCase } );
+
+            const alphaItem = await AlphaItem.create({...req.body, cards: [productBacklogItemCard, INVESTCard, agreeDefinitionOfDoneCard, definitionOfDoneCard, prepareAProductBacklogItemCard, testCaseCard] });
+            
     
             // send card as response
     

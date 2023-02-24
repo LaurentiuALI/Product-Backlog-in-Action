@@ -1,4 +1,4 @@
-import Card  from "../models/cardsModel";
+import { Card, State, ChecklistItem }  from "../models/cardsModel";
 
 import {Request, Response} from 'express';
 
@@ -92,6 +92,7 @@ export const createCard = async (req: Request, res: Response) => {
 
     // create new card
     try{
+        
         const newCard = await Card.create({
             type,
             title,
@@ -148,15 +149,15 @@ export const deleteCard = async (req: Request, res: Response) => {
 export const updateCard = async (req: Request, res: Response) => {
     try{
 
-        console.log(mongoose.Types.ObjectId.isValid(req.params.id))
-
+        
         // check if id is valid and send error message as response if not
-
+        
         if(!mongoose.Types.ObjectId.isValid(req.params.id)){
             return res.status(404).json({message: 'Card not found!'});
         }
-
+        
         // update card in db
+        console.log({...req.body})
         const card = await Card.findOneAndUpdate({_id: req.params.id}, {...req.body});
 
         // send error message as response if card is not found
