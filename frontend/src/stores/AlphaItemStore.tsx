@@ -62,4 +62,9 @@ export const useAlphaItemStore = create((set) => ({
       }));
     }
   },
+
+  alphaItem: null,
+  setAlphaItem: (alphaItem: any) => {
+    set(() => ({ alphaItem }));
+  },
 }));

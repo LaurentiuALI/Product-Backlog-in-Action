@@ -54,7 +54,7 @@ export const productBacklogItem = {
             status: 0,
             checklist: [
                 {
-                    name: "	The item has been included in the product",
+                    name: "The item has been included in the product",
                     checked: false
                 },
                 {
