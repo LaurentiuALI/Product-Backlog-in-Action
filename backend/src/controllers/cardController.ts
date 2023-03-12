@@ -1,4 +1,4 @@
-import { Card, State, ChecklistItem }  from "../models/cardsModel";
+import { Card }  from "../models/cardsModel";
 
 import {Request, Response} from 'express';
 

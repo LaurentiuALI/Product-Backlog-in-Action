@@ -1,5 +1,4 @@
 import AlphaItem from '../models/alphaItemModel';
-import { Card, ChecklistItem, State } from '../models/cardsModel';
 
 import { productBacklogItem, INVEST, agreeDefinitionOfDone, definitionOfDone, prepareAProductBacklogItem, testCase } from './constants';
 
@@ -92,18 +91,6 @@ export const createAlphaItem = async (req: Request, res: Response) => {
     
             // retrieve card from db
 
-            // const productBacklogItemCard = await createCard( productBacklogItem );
-
-            // const INVESTCard = await Card.create( INVEST );
-
-            // const agreeDefinitionOfDoneCard = await Card.create( agreeDefinitionOfDone );
-     
-            // const definitionOfDoneCard = await createCard( definitionOfDone );
-
-            // const prepareAProductBacklogItemCard = await Card.create( prepareAProductBacklogItem );
-
-            // const testCaseCard = await createCard( testCase );
-
             const alphaItem = await AlphaItem.create({...req.body, cards: [productBacklogItem, INVEST, agreeDefinitionOfDone, definitionOfDone, prepareAProductBacklogItem, testCase] });
             
     
@@ -127,19 +114,6 @@ export const createAlphaItem = async (req: Request, res: Response) => {
     
         }
     
-
-    // async function createCard(card: any) {
-    //     let newStatesProductBacklogItem: any[] = [];
-    //     for (let state of card.states) {
-    //         const newChecklistItems: any[] = [];
-    //         for (let checklistItem of state.checklist) {
-    //             newChecklistItems.push(await ChecklistItem.create(checklistItem));
-    //         }
-    //         newStatesProductBacklogItem.push(await State.create({ ...state, checklist: newChecklistItems }));
-    //     }
-    //     const productBacklogItemCard = await Card.create({ ...card, states: newStatesProductBacklogItem });
-    //     return productBacklogItemCard;
-    // }
     }
 
 // DELETE one alpha item
