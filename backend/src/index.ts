@@ -7,8 +7,6 @@ import cors from "cors";
 
 import cardRoutes from './routes/card';
 import alphaItemRoutes from './routes/alphaItem';
-import stateRoutes from './routes/state';
-import checklistItemsRoutes from './routes/checklistItem'
 
 mongoose.set('strictQuery', false);
 
@@ -31,8 +29,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // Require API routes
 app.use("/api/v1/cards", cardRoutes);
 app.use("/api/v1/alphaItems", alphaItemRoutes);
-app.use("/api/v1/states", stateRoutes);
-app.use("/api/v1/checklistItems", checklistItemsRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI!)

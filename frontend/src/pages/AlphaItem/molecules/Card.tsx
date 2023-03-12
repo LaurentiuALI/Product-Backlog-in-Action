@@ -74,7 +74,7 @@ const Card = (props: any) => {
       </div>
     );
   } else {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 };
 
