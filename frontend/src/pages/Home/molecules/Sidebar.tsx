@@ -2,13 +2,19 @@ import Logo from "../atoms/Logo";
 import ChecklistItem from "../atoms/ChecklistItem";
 import ChecklistParent from "../atoms/ChecklistParent";
 import AddAlpha from "../atoms/AddAlpha";
-import Card from "./Card";
+import Card from "./Card/Card";
 
 import { useCardData } from "../../../hooks/useCardsData";
 import { useComponentStore } from "../../../stores/ComponentStore";
+import { useEffect } from "react";
 
 const Sidebar = (props: any) => {
-  const { productBacklog, mutate: updateCard } = useCardData();
+  const { productBacklog } = useCardData();
+  const component = useComponentStore((state: any) => state.component);
+
+  useEffect(() => {
+    console.log(productBacklog);
+  }, [productBacklog]);
 
   return (
     <div className="bg-gradient-to-b from-primary-100 to-primary-200 w-100 h-220 rounded-3xl m-8 overflow-hidden relative">

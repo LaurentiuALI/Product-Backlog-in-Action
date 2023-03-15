@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useComponentStore } from "../../store/ComponentStore";
+import { useComponentStore } from "../../../../stores/ComponentStore";
 import { useItemData } from "../../../../hooks/useItemData";
 import { useParams } from "react-router-dom";
 import { TypeCard } from "./TypeCard";

@@ -1,5 +1,5 @@
 import Alpha from "../icons/alpha.svg";
-import { useComponentStore } from "../store/ComponentStore";
+import { useComponentStore } from "../../../stores/ComponentStore";
 
 const Activity = (props: any) => {
   const setComponent = useComponentStore((state: any) => state.setComponent);

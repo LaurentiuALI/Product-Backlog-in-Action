@@ -1,5 +1,3 @@
-import React from "react";
-
 export const TypeCard = ({ component }: any) => {
   return (
     <div className="border-2 border-white absolute bottom-0 right-0 w-100 h-3/6 flex flex-col items-center">

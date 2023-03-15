@@ -13,11 +13,11 @@ const ChecklistItem = (props: any) => {
         src={workproduct}
         alt="add"
         className="ml-10 opacity-90 mr-5"
-        onClick={() => setComponent(productBacklog, "component")}
+        onClick={() => setComponent(productBacklog)}
       />
       <p
         className="text-lg text-white opacity-80 font-semibold font-inter"
-        onClick={() => setComponent(productBacklog, "component")}
+        onClick={() => setComponent(productBacklog)}
       >
         {productBacklog.title}
       </p>

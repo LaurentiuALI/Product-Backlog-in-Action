@@ -41,7 +41,7 @@ export const useCardData = () => {
 
   const { isLoading, error, data } = useCardsData();
 
-  const { mutate } = useUpdateCard();
+  const { mutate: patchCard } = useUpdateCard();
 
   useEffect(() => {
     if (data != null) {
@@ -58,6 +58,7 @@ export const useCardData = () => {
     productBacklog,
     splittingProductBacklogItems,
     relativeEstimating,
-    mutate,
+    patchCard,
+    setProductBacklog,
   };
 };

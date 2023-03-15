@@ -1,6 +1,6 @@
 import pbIcon from "../../../icons/pbIcon.svg";
 import pattern from "../../../icons/pattern.svg";
-import { useComponentStore } from "../store/ComponentStore";
+import { useComponentStore } from "../../../stores/ComponentStore";
 
 const Topbar = (props: any) => {
   const setComponent = useComponentStore((state: any) => state.setComponent);

@@ -9,6 +9,10 @@ export const useCardStore = create((set) => ({
           (state: any) => state.title === "Product Backlog"
         )[0],
       }));
+    } else {
+      set(() => ({
+        productBacklog: state,
+      }));
     }
   },
 
