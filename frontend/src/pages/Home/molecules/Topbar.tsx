@@ -1,6 +1,6 @@
-import pattern from "../../icons/pattern.svg";
-import { useCardData } from "../../hooks/useCardsData";
-import { useComponentStore } from "../../stores/ComponentStore";
+import pattern from "../../../icons/pattern.svg";
+import { useCardData } from "../../../hooks/useCardsData";
+import { useComponentStore } from "../../../stores/ComponentStore";
 
 const Topbar = (props: any) => {
   const { relativeEstimating, splittingProductBacklogItems } = useCardData();

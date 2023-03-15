@@ -1,6 +1,6 @@
-import workproduct from "../../icons/workProduct.svg";
-import { useComponentStore } from "../../stores/ComponentStore";
-import { useCardData } from "../../hooks/useCardsData";
+import workproduct from "../../../icons/workProduct.svg";
+import { useComponentStore } from "../../../stores/ComponentStore";
+import { useCardData } from "../../../hooks/useCardsData";
 
 const ChecklistItem = (props: any) => {
   const { productBacklog } = useCardData();

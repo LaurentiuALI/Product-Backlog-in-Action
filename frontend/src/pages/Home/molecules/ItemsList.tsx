@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { getAlphaItems } from "../../api/AlphaItemApi";
+import { getAlphaItems } from "../../../api/AlphaItemApi";
 import ItemEntry from "../atoms/ItemEntry";
 
 const ItemsList: any = () => {

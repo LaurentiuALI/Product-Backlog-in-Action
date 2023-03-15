@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-import { useCardData } from "../../hooks/useCardsData";
-import { useComponentStore } from "../../stores/ComponentStore";
-
-interface Props {
-  component: any;
-  type?: string;
-}
+import { useCardData } from "../../../hooks/useCardsData";
+import { useComponentStore } from "../../../stores/ComponentStore";
 
 const Card = () => {
   const component = useComponentStore((state: any) => state.component);
@@ -14,6 +9,7 @@ const Card = () => {
 
   useEffect(() => {
     if (component != null) {
+      console.log(component);
       let newComponent = { ...component };
       delete newComponent.type;
       delete newComponent.id;

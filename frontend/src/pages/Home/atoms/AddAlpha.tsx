@@ -1,5 +1,5 @@
 import React from "react";
-import add from "../../icons/add.svg";
+import add from "../../../icons/add.svg";
 
 const AddAlpha = (props: any) => {
   return (

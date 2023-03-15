@@ -1,4 +1,4 @@
-import Card from "../molecules/Card";
+import Card from "../molecules/Card/Card";
 import DefinitionOfDoneCluster from "../molecules/DefinitionOfDoneCluster";
 import ProductBacklogItem from "../molecules/ProductBacklogItem";
 import TestCaseCluster from "../molecules/TestCaseCluster";

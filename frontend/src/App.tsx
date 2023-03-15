@@ -2,7 +2,7 @@
 // import reactLogo from "./assets/react.svg";
 import { Routes, Route } from "react-router-dom";
 import AlphaItem from "./pages/AlphaItem/AlphaItem";
-import Home from "./pages/Home";
+import { Home } from "./pages/Home/organisms";
 // import "./App.css";
 
 function App() {

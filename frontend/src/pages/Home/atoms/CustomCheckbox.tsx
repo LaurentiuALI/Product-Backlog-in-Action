@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import radio1 from "../../icons/radio-1.svg";
-import radio2 from "../../icons/radio-2.svg";
-import radio3 from "../../icons/radio-3.svg";
-import radio5 from "../../icons/radio-5.svg";
-import radio8 from "../../icons/radio-8.svg";
+import radio1 from "../../../icons/radio-1.svg";
+import radio2 from "../../../icons/radio-2.svg";
+import radio3 from "../../../icons/radio-3.svg";
+import radio5 from "../../../icons/radio-5.svg";
+import radio8 from "../../../icons/radio-8.svg";
 
 const CustomCheckbox = (props: any) => {
   const radio: any = {

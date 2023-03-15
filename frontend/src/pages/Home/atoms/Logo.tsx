@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../icons/pbIcon.svg";
+import logo from "../../../icons/pbIcon.svg";
 
 const Logo = () => {
   return (

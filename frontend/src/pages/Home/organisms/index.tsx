@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import Sidebar from "../components/molecules/Sidebar";
-import Topbar from "../components/molecules/Topbar";
-import Add from "../components/molecules/Add";
-import ItemsList from "../components/molecules/ItemsList";
+import Sidebar from "../molecules/Sidebar";
+import Topbar from "../molecules/Topbar";
+import Add from "../molecules/Add";
+import ItemsList from "../molecules/ItemsList";
 
-import { useCardData } from "../hooks/useCardsData";
+import { useCardData } from "../../../hooks/useCardsData";
 
 const Home = () => {
   const {
@@ -42,4 +42,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export { Home };

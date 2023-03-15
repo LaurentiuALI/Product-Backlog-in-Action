@@ -1,9 +1,9 @@
-import stateAchieved from "../../icons/stateAchieved.svg";
-import stateUnachieved from "../../icons/stateUnachieved.svg";
-import stateUnachievedOpt from "../../icons/stateUnachievedOpt.svg";
+import stateAchieved from "../../../icons/stateAchieved.svg";
+import stateUnachieved from "../../../icons/stateUnachieved.svg";
+import stateUnachievedOpt from "../../../icons/stateUnachievedOpt.svg";
 
-import { useCardData } from "../../hooks/useCardsData";
-import { useComponentStore } from "../../stores/ComponentStore";
+import { useCardData } from "../../../hooks/useCardsData";
+import { useComponentStore } from "../../../stores/ComponentStore";
 
 interface Props {
   state: any;

@@ -1,6 +1,6 @@
-import alpha from "../../icons/alpha.svg";
+import alpha from "../../../icons/alpha.svg";
 import CustomCheckbox from "../atoms/CustomCheckbox";
-import { addAlphaItem } from "../../api/AlphaItemApi";
+import { addAlphaItem } from "../../../api/AlphaItemApi";
 import { useMutation } from "react-query";
 import { useState } from "react";
 

@@ -2,10 +2,10 @@ import Logo from "../atoms/Logo";
 import ChecklistItem from "../atoms/ChecklistItem";
 import ChecklistParent from "../atoms/ChecklistParent";
 import AddAlpha from "../atoms/AddAlpha";
-import Card from "../molecules/Card";
+import Card from "./Card";
 
-import { useCardData } from "../../hooks/useCardsData";
-import { useComponentStore } from "../../stores/ComponentStore";
+import { useCardData } from "../../../hooks/useCardsData";
+import { useComponentStore } from "../../../stores/ComponentStore";
 
 const Sidebar = (props: any) => {
   const { productBacklog, mutate: updateCard } = useCardData();
