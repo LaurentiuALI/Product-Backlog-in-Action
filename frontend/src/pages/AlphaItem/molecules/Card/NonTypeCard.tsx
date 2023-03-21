@@ -1,5 +1,4 @@
 export const NonTypeCard = ({ component, flag, setFlag }: any) => {
-  console.log(component);
   return (
     <div className="border-2 border-white absolute bottom-0 right-0 w-100 h-3/6 flex flex-col items-center">
       <div className="flex flex-col items-center">

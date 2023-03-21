@@ -6,6 +6,7 @@ import Add from "../molecules/Add";
 import ItemsList from "../molecules/ItemsList";
 
 import { useCardData } from "../../../hooks/useCardsData";
+import { CustomSwitch } from "../atoms/CustomSwitch";
 
 const Home = () => {
   const {
@@ -36,6 +37,7 @@ const Home = () => {
           <Topbar />
           {!addActive && <ItemsList className="absolute" />}
           {addActive && <Add className="relative" />}
+          {/* <CustomSwitch /> */}
         </div>
       )}
     </div>

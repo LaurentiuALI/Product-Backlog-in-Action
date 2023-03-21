@@ -1,4 +1,4 @@
-import workproduct from "../../../icons/workProduct.svg";
+import workproduct from "../icons/workProduct.svg";
 import { useComponentStore } from "../../../stores/ComponentStore";
 import { useCardData } from "../../../hooks/useCardsData";
 

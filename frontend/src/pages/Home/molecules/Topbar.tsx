@@ -1,4 +1,4 @@
-import pattern from "../../../icons/pattern.svg";
+import pattern from "../icons/pattern.svg";
 import { useCardData } from "../../../hooks/useCardsData";
 import { useComponentStore } from "../../../stores/ComponentStore";
 

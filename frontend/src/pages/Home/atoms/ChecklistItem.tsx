@@ -1,6 +1,6 @@
-import stateAchieved from "../../../icons/stateAchieved.svg";
-import stateUnachieved from "../../../icons/stateUnachieved.svg";
-import stateUnachievedOpt from "../../../icons/stateUnachievedOpt.svg";
+import stateAchieved from "../icons/stateAchieved.svg";
+import stateUnachieved from "../icons/stateUnachieved.svg";
+import stateUnachievedOpt from "../icons/stateUnachievedOpt.svg";
 
 import { useComponentStore } from "../../../stores/ComponentStore";
 

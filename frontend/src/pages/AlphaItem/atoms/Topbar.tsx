@@ -1,5 +1,5 @@
-import pbIcon from "../../../icons/pbIcon.svg";
-import pattern from "../../../icons/pattern.svg";
+import pbIcon from "../icons/pbIcon.svg";
+import pattern from "../icons/pattern.svg";
 import { useComponentStore } from "../../../stores/ComponentStore";
 
 const Topbar = (props: any) => {

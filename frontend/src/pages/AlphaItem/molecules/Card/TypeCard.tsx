@@ -2,7 +2,7 @@ export const TypeCard = ({ component }: any) => {
   return (
     <div className="border-2 border-white absolute bottom-0 right-0 w-100 h-3/6 flex flex-col items-center">
       <h1 className="font-semibold mt-4 mb-6 text-center text-2xl">
-        {component.title}a
+        {component.title}
       </h1>
       <p className="text-center font-semibold text-l mb-10">
         {component.description}

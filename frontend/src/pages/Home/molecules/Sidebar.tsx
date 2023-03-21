@@ -12,10 +12,6 @@ const Sidebar = (props: any) => {
   const { productBacklog } = useCardData();
   const component = useComponentStore((state: any) => state.component);
 
-  useEffect(() => {
-    console.log(productBacklog);
-  }, [productBacklog]);
-
   return (
     <div className="bg-gradient-to-b from-primary-100 to-primary-200 w-100 h-220 rounded-3xl m-8 overflow-hidden relative">
       <Logo />
@@ -24,11 +20,12 @@ const Sidebar = (props: any) => {
 
       <div className="flex flex-col justify-center mt-14" key="unique">
         <ChecklistParent />
-        {productBacklog.states.map((state: any) => (
-          <div key={state.name}>
-            <ChecklistItem state={state} />
-          </div>
-        ))}
+        {productBacklog.states != null &&
+          productBacklog.states.map((state: any) => (
+            <div key={state.name}>
+              <ChecklistItem state={state} />
+            </div>
+          ))}
         <div className="flex justify-center mt-6 ">
           <div className="absolute bottom-0">
             <Card />
