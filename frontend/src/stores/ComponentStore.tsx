@@ -1,6 +1,11 @@
 import { create } from "zustand";
 
-export const useComponentStore = create((set) => ({
+type ComponentStore = {
+  component: any;
+  setComponent: (component: any) => void | undefined;
+};
+
+export const useComponentStore = create<ComponentStore>((set) => ({
   component: null,
   setComponent: (_component: any) =>
     set(() => ({

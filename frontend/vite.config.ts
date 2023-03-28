@@ -8,5 +8,22 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: './setupTests.js',
+    coverage: {
+      provider: "c8",
+      reporter: ['text', 'html'],
+      all: true,
+      exclude: [
+          'node_modules/**',
+          'src/utilities/**',
+          '.storybook/**',
+          'storybook-static/**',
+          '_helpers/**',
+          'dist/**',
+          'public/**',
+          'styleDictionary/**',
+          '*.config.*',
+          '*-utils.*',
+      ],
+  }
   }
 });
