@@ -1,3 +1,5 @@
+import { CustomSwitch } from "../../atoms/CustomSwitch";
+
 export const StateCard = ({ component, flag, setFlag }: any) => {
   return (
     <div className="bg-white flex flex-col h-80 w-80 border rounded-t-3xl">
@@ -17,19 +19,7 @@ export const StateCard = ({ component, flag, setFlag }: any) => {
           component.checklist.map((item: any) => {
             return (
               <div className="flex mb-3 items-center" key={item.name}>
-                <input
-                  type="checkbox"
-                  checked={item.checked}
-                  onChange={(e) => {
-                    if (e.target.checked == true) {
-                      component.status += 1;
-                    } else {
-                      component.status -= 1;
-                    }
-                    item.checked = e.target.checked;
-                    setFlag(!flag);
-                  }}
-                />
+                <CustomSwitch item={item} flag={flag} setFlag={setFlag} component={component}/>
                 <p className="ml-2">{item != null && item.name}</p>
               </div>
             );

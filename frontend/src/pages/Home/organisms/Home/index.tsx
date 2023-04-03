@@ -36,7 +36,6 @@ const Home = () => {
           <Topbar />
           {!addActive && <ItemsList className="absolute" />}
           {addActive && <Add className="relative" />}
-          {/* <CustomSwitch /> */}
         </div>
       )}
     </div>
