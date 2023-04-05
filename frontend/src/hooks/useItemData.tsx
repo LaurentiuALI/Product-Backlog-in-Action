@@ -15,6 +15,24 @@ export const useItemsData = (_id: string | undefined) => {
 };
 
 const updateAlphaItem = async ({ alphaItem, _id }: any) => {
+  const alpha = alphaItem.cards.filter((card: any) => card.type === "Alpha")[0];
+  let status_alpha = 0;
+  for (let state in alpha.states) {
+    if (alpha.states[state].status === alpha.states[state].checklist.length) {
+      status_alpha += 1;
+    }
+  }
+
+  alpha.status = status_alpha;
+  if (alpha.status === 0 || alpha.status === 1) {
+    alphaItem.state = "Identified";
+  } else if (alpha.status === 2) {
+    alphaItem.state = "Ready For Development";
+  } else {
+    alphaItem.state = "Done";
+  }
+  console.log(alphaItem);
+
   return await axios.patch(
     `http://localhost:4000/api/v1/alphaItems/${_id}`,
     alphaItem

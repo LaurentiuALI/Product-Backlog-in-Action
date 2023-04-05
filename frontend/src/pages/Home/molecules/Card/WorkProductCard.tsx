@@ -1,10 +1,10 @@
 export const WorkProductCard = ({ component }: any) => {
   return (
-    <div className="bg-white flex flex-col h-80 w-80 border rounded-t-3xl">
+    <div className="bg-white flex flex-col h-[23rem] w-[23rem] border rounded-t-3xl">
       <div className="flex flex-col items-center">
         <h1 className="font-bold mt-4 mb-6 text-2xl">{component.title}</h1>
 
-        <h2 className="text-center font-semibold text-l mb-10">
+        <h2 className="text-center font-semibold text-l mb-10 pl-4 pr-4">
           {component != null && component.description}
         </h2>
 

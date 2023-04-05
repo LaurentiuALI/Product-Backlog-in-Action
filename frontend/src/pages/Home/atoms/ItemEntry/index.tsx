@@ -6,7 +6,7 @@ const ItemEntry = (props: any) => {
 
   return (
     <div
-      className="flex items-center justify-evenly border-b-2 border-primary-100 h-20"
+      className="flex flex-grow flex-shrink basis-0 items-center justify-evenly border-b-2 border-primary-100 h-20"
       onClick={() => myNavigate(`/${props.item._id}`)}
     >
       <h1>{props.item.UID}</h1>

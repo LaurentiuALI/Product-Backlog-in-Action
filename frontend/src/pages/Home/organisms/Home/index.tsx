@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Sidebar from "../../molecules/Sidebar";
 import Topbar from "../../molecules/Topbar";
@@ -6,8 +6,10 @@ import Add from "../../molecules/Add";
 import ItemsList from "../../molecules/ItemsList";
 
 import { useCardData } from "../../../../hooks/useCardsData";
+import { useComponentStore } from "../../../../stores/ComponentStore";
 
 const Home = () => {
+  const { setComponent } = useComponentStore();
   const {
     isLoading,
     error,
@@ -15,6 +17,11 @@ const Home = () => {
     splittingProductBacklogItems,
     relativeEstimating,
   } = useCardData();
+
+  useEffect(() => {
+    setComponent(null);
+  }, [])
+  
 
   const [addActive, setaddActive] = useState(false);
 

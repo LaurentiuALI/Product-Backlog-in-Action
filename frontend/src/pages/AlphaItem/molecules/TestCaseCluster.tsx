@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Xarrow, { refType } from "react-xarrows";
+import Xarrow, { useXarrow  } from "react-xarrows";
 import { useItemData } from "../../../hooks/useItemData";
 import Activity from "../atoms/Activity";
 import State from "../atoms/State";
 import TestCase from "../atoms/TestCase";
-import { useComponentStore } from "../store/ComponentStore";
 
 const lines = [
   { from: "testCaseBox1", to: "testCaseBox2" },
@@ -30,7 +29,7 @@ const TestCaseCluster = () => {
   }, [prepareAProductBacklogItem, testCase, alphaItem]);
 
   return (
-    <div className="w-full h-3/6 aboslute flex items-center justify-center">
+    <div onLoad={useXarrow()} className="w-full h-3/6 aboslute flex items-center justify-center">
       {prepareAProductBacklogItem != null && (
         <Activity id="testCaseBox1" card={prepareAProductBacklogItem} />
       )}
@@ -55,7 +54,7 @@ const TestCaseCluster = () => {
         ))}
 
       {ready == true &&
-        lines.map((line: { from: refType; to: refType }) => (
+        lines.map((line) => (
           <Xarrow
             start={line.from}
             end={line.to}
