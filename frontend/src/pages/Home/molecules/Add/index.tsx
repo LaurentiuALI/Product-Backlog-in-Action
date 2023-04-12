@@ -8,15 +8,15 @@ const Add: any = () => {
   const { mutate } = useMutation(addAlphaItem);
 
   const [name, setname] = useState("");
-  const [UID, setUID] = useState("");
+  const [description, setDescription] = useState("");
   const [storyPoints, setstoryPoints] = useState(1);
 
   const onSubmit = (e: any) => {
     e.preventDefault();
     setname("");
-    setUID("");
+    setDescription("");
     setstoryPoints(1);
-    mutate({ name, UID, storyPoints });
+    mutate({ name, description: description, storyPoints });
   };
 
   return (
@@ -48,14 +48,17 @@ const Add: any = () => {
             </div>
 
             <div className="w-8/12 mb-6">
-              <label htmlFor="UID" className="font-medium text-2xl text-white ">
-                UID
+              <label
+                htmlFor="description"
+                className="font-medium text-2xl text-white "
+              >
+                Description
               </label>
               <input
-                id="UID"
-                name="UID"
-                value={UID}
-                onChange={(e) => setUID(e.target.value)}
+                id="description"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 className="rounded-md w-full h-12 mt-2"
               />
             </div>

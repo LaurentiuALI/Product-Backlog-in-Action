@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Xarrow, { useXarrow  } from "react-xarrows";
+import Xarrow, { useXarrow } from "react-xarrows";
 import { useItemData } from "../../../hooks/useItemData";
 import Activity from "../atoms/Activity";
 import State from "../atoms/State";
@@ -29,12 +29,16 @@ const TestCaseCluster = () => {
   }, [prepareAProductBacklogItem, testCase, alphaItem]);
 
   return (
-    <div onLoad={useXarrow()} className="w-full h-3/6 aboslute flex items-center justify-center">
+    <div
+      onLoad={useXarrow()}
+      className="w-full h-3/6 aboslute flex items-center justify-center"
+    >
       {prepareAProductBacklogItem != null && (
         <Activity id="testCaseBox1" card={prepareAProductBacklogItem} />
       )}
       {testCase != null && (
         <TestCase
+          key={testCase.title}
           id="testCaseBox2"
           name={testCase.title}
           style={{ marginLeft: 30 }}
@@ -45,6 +49,7 @@ const TestCaseCluster = () => {
       {testCase != null &&
         testCase.states.map((state: any, index: any) => (
           <State
+            key={state.name}
             id={`testCaseBox${index + 3}`}
             index={index}
             name={state.name}
@@ -56,6 +61,7 @@ const TestCaseCluster = () => {
       {ready == true &&
         lines.map((line) => (
           <Xarrow
+            key={line.from + line.to}
             start={line.from}
             end={line.to}
             color="white"

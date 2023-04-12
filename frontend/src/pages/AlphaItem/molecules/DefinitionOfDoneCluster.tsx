@@ -40,6 +40,7 @@ const DefinitionOfDoneCluster = () => {
         />
         {definitionOfDone.states.map((state: any, index: any) => (
           <State
+            key={index}
             index={index}
             id={`DefOfDoneBox${index + 3}`}
             name={state.name}
@@ -49,6 +50,7 @@ const DefinitionOfDoneCluster = () => {
         ))}
         {lines.map((line) => (
           <Xarrow
+            key={line.from + line.to}
             start={line.from}
             end={line.to}
             color="white"
