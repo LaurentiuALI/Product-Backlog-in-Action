@@ -15,6 +15,9 @@ export const useItemsData = (_id: string | undefined) => {
 };
 
 const updateAlphaItem = async ({ alphaItem, _id }: any) => {
+
+  //change alpha item states based on inner checklists
+
   const alpha = alphaItem.cards.filter((card: any) => card.type === "Alpha")[0];
   let status_alpha = 0;
   for (let state in alpha.states) {
@@ -31,8 +34,9 @@ const updateAlphaItem = async ({ alphaItem, _id }: any) => {
   } else {
     alphaItem.state = "Done";
   }
-  console.log(alphaItem);
 
+
+  // send patch request to backend with the new values to be changed
   return await axios.patch(
     `http://localhost:4000/api/v1/alphaItems/${_id}`,
     alphaItem
