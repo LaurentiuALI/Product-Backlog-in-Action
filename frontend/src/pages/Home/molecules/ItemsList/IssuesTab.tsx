@@ -1,10 +1,10 @@
-import ItemEntryReady from "../../atoms/ItemEntry/ItemEntryReady";
+import ItemEntry from "../../atoms/ItemEntry/ItemEntryReady";
 import ListHeader from "../../atoms/ListHeader";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Ready = ({ entries }: any) => {
+const IssuesTab = ({ entries, title }: any) => {
   const updateAlphaItem = async ({ alphaItem, _id }: any) => {
     //change alpha item states based on inner checklists
     return await axios.patch(
@@ -39,7 +39,7 @@ const Ready = ({ entries }: any) => {
     entries && (
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className="min-w-[35vw] max-w-[100vw]">
-          <ListHeader header="Ready For Development" />
+          <ListHeader header={title} />
 
           <Droppable droppableId="readyIssues">
             {(provided) => (
@@ -47,11 +47,7 @@ const Ready = ({ entries }: any) => {
                 {issues &&
                   issues.map((item: any, index: any) => {
                     return (
-                      <ItemEntryReady
-                        item={item}
-                        key={item._id}
-                        index={index}
-                      />
+                      <ItemEntry item={item} key={item._id} index={index} />
                     );
                   })}
                 {provided.placeholder}
@@ -64,4 +60,4 @@ const Ready = ({ entries }: any) => {
   );
 };
 
-export default Ready;
+export default IssuesTab;

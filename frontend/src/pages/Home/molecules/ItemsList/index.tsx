@@ -1,10 +1,6 @@
 import { useQuery } from "react-query";
 import { getAlphaItems } from "../../../../api/AlphaItemApi";
-import ItemEntry from "../../atoms/ItemEntry";
-import ListHeader from "../../atoms/ListHeader";
-import Identified from "./Identified";
-import Ready from "./Ready";
-import Done from "./Done";
+import IssuesTab from "./IssuesTab";
 
 const ItemsList: any = () => {
   const { data } = useQuery(["alphaItems"], getAlphaItems);
@@ -20,12 +16,12 @@ const ItemsList: any = () => {
       : null;
   return (
     <div className="overflow-auto h-100">
-      <Ready entries={readyEntry} />
+      <IssuesTab entries={readyEntry} title="Ready For Development" />
       <div className="flex">
         <div className="mr-6">
-          <Identified entries={identifiedEntry} />
+          <IssuesTab entries={identifiedEntry} title="Identified" />
         </div>
-        <Done entries={doneEntry} />
+        <IssuesTab entries={doneEntry} title="Done" />
       </div>
     </div>
   );
