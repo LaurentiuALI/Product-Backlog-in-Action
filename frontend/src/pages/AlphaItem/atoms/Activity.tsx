@@ -1,13 +1,25 @@
 import activityIcon from "../icons/activityIcon.svg";
+import type { IComponent} from "../../../stores/ComponentStore";
 import { useComponentStore } from "../../../stores/ComponentStore";
 
-const Activity = (props: any) => {
-  const setComponent = useComponentStore((state: any) => state.setComponent);
+interface IActivityProps {
+  id: string;
+  card: IComponent;
+  style?: React.CSSProperties;
+}
+
+const Activity: React.FC<IActivityProps> = (props) => {
+  const setComponent = useComponentStore((state) => state.setComponent);
+
   return (
     <div
       className="flex flex-col items-center h-fit w-fit relative"
       style={props.style}
-      onClick={() => setComponent(props.card)}
+      onClick={() => {
+        setComponent(props.card)
+      }
+    }
+
     >
       <img
         id={props.id}

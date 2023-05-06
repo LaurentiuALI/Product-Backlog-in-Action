@@ -1,17 +1,25 @@
 import alpha from "../../icons/alpha.svg";
 import CustomCheckbox from "../../atoms/CustomCheckbox";
 import { addAlphaItem } from "../../../../api/AlphaItemApi";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { useState } from "react";
 
-const Add: any = () => {
-  const { mutate } = useMutation(addAlphaItem);
+const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(addAlphaItem, {
+    onSettled: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["alphaItems"] });
+    },
+    onSuccess: () => {
+      toggleAdd();
+    },
+  });
 
   const [name, setname] = useState("");
   const [description, setDescription] = useState("");
   const [storyPoints, setstoryPoints] = useState(1);
 
-  const onSubmit = (e: any) => {
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     setname("");
     setDescription("");

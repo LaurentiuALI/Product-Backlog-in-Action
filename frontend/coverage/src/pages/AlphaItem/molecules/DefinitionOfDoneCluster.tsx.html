@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/67</span>
+                <span class='fraction'>0/74</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/67</span>
+                <span class='fraction'>0/74</span>
             </div>
         
             
@@ -130,7 +130,21 @@
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -211,8 +225,7 @@
 <span class="cstat-no" title="statement not covered" >  { from: "DefOfDoneBox3", to: "DefOfDoneBox4" },</span>
 <span class="cstat-no" title="statement not covered" >];</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const DefinitionOfDoneCluster = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const { id } = useParams&lt;{ id: string }&gt;();</span>
+<span class="cstat-no" title="statement not covered" >const InnerDefinitionOfDoneCluster: React.FC&lt;{ id: string }&gt; = ({ id }) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  const { definitionOfDone, agreeDefinitionOfDone } = useItemData(id);</span>
 <span class="cstat-no" title="statement not covered" >  const [ready, setready] = useState(false);</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -224,7 +237,7 @@
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >  }, [agreeDefinitionOfDone, definitionOfDone, ready]);</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  if (ready)</span>
+<span class="cstat-no" title="statement not covered" >  if (ready &amp;&amp; agreeDefinitionOfDone &amp;&amp; definitionOfDone)</span>
 <span class="cstat-no" title="statement not covered" >    return (</span>
 <span class="cstat-no" title="statement not covered" >      &lt;div className="w-full h-1/3 flex justify-center items-center"&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;Activity</span>
@@ -237,8 +250,9 @@
 <span class="cstat-no" title="statement not covered" >          name={definitionOfDone.title}</span>
 <span class="cstat-no" title="statement not covered" >          card={definitionOfDone}</span>
 <span class="cstat-no" title="statement not covered" >        /&gt;</span>
-<span class="cstat-no" title="statement not covered" >        {definitionOfDone.states.map((state: any, index: any) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >        {definitionOfDone.states.map((state, index) =&gt; (</span>
 <span class="cstat-no" title="statement not covered" >          &lt;State</span>
+<span class="cstat-no" title="statement not covered" >            key={index}</span>
 <span class="cstat-no" title="statement not covered" >            index={index}</span>
 <span class="cstat-no" title="statement not covered" >            id={`DefOfDoneBox${index + 3}`}</span>
 <span class="cstat-no" title="statement not covered" >            name={state.name}</span>
@@ -248,6 +262,7 @@
 <span class="cstat-no" title="statement not covered" >        ))}</span>
 <span class="cstat-no" title="statement not covered" >        {lines.map((line) =&gt; (</span>
 <span class="cstat-no" title="statement not covered" >          &lt;Xarrow</span>
+<span class="cstat-no" title="statement not covered" >            key={line.from + line.to}</span>
 <span class="cstat-no" title="statement not covered" >            start={line.from}</span>
 <span class="cstat-no" title="statement not covered" >            end={line.to}</span>
 <span class="cstat-no" title="statement not covered" >            color="white"</span>
@@ -263,6 +278,12 @@
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const DefinitionOfDoneCluster = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const { id } = useParams&lt;{ id: string }&gt;();</span>
+<span class="cstat-no" title="statement not covered" >  if (!id) return &lt;div&gt; Invalid ID &lt;/div&gt;;</span>
+<span class="cstat-no" title="statement not covered" >  return &lt;InnerDefinitionOfDoneCluster id={id} /&gt;;</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >export default DefinitionOfDoneCluster;</span>
 &nbsp;</pre></td></tr></table></pre>
 
@@ -271,7 +292,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-25T21:04:56.769Z
+                at 2023-05-06T21:01:05.919Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

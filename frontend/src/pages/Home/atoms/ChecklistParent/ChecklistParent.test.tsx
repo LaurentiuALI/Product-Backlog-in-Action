@@ -1,5 +1,5 @@
 import { render, screen, renderHook, act } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { QueryClientProvider, QueryClient } from "react-query";
 import ChecklistParent from ".";
@@ -8,7 +8,7 @@ import workproduct from "../../icons/workProduct.svg";
 
 const queryClient = new QueryClient();
 
-const MockChecklistParent = ({ children }: any) => {
+const MockChecklistParent = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ChecklistParent />

@@ -121,64 +121,64 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import pattern from "../../icons/pattern.svg";
 import { useCardData } from "../../../../hooks/useCardsData";
 import { useComponentStore } from "../../../../stores/ComponentStore";
 &nbsp;
-const Topbar = (props: any) =&gt; {
+const Topbar = () =&gt; {
   const { relativeEstimating, splittingProductBacklogItems } = useCardData();
-  const setComponent = useComponentStore((state: any) =&gt; state.setComponent);
+  const setComponent = useComponentStore((state) =&gt; state.setComponent);
 &nbsp;
   return (
-    &lt;div className="bg-gradient-to-r from-primary-100 to-primary-200 w-full h-32 mt-8 rounded-3xl "&gt;
+    &lt;div className="bg-gradient-to-r from-primary-100 to-primary-200 h-32 mt-8 rounded-3xl w-[calc(100vw-500px)]"&gt;
       &lt;div className="flex justify-around"&gt;
         &lt;div className="flex flex-col items-center"&gt;
           &lt;img
@@ -186,16 +186,16 @@ const Topbar = (props: any) =&gt; {
             alt="splittingProductBacklogItems"
             className="w-24 h-24"
             onClick={() =&gt; {
-              setComponent(splittingProductBacklogItems, "pattern");
+              setComponent(splittingProductBacklogItems);
             }}
           /&gt;
           &lt;p
             className="text-white font-semibold text-lg"
             onClick={() =&gt; {
-              setComponent(splittingProductBacklogItems, "pattern");
+              setComponent(splittingProductBacklogItems);
             }}
           &gt;
-            {splittingProductBacklogItems.title}
+            {splittingProductBacklogItems?.title}
           &lt;/p&gt;
         &lt;/div&gt;
         &lt;div className="flex flex-col items-center"&gt;
@@ -204,16 +204,16 @@ const Topbar = (props: any) =&gt; {
             alt="relativeEstimating"
             className="w-24 h-24"
             onClick={() =&gt; {
-              setComponent(relativeEstimating, "pattern");
+              setComponent(relativeEstimating);
             }}
           /&gt;
           &lt;p
             className="text-white font-semibold text-lg"
             onClick={() =&gt; {
-              setComponent(relativeEstimating, "pattern");
+              setComponent(relativeEstimating);
             }}
           &gt;
-            {relativeEstimating.title}
+            {relativeEstimating?.title}
           &lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -229,7 +229,7 @@ export default Topbar;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-25T21:04:56.769Z
+                at 2023-05-06T21:01:05.919Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

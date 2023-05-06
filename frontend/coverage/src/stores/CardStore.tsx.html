@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/40</span>
+                <span class='fraction'>48/52</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>36/40</span>
+                <span class='fraction'>48/52</span>
             </div>
         
             
@@ -103,7 +103,31 @@
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -144,40 +168,52 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { create } from "zustand";
+import { type IComponent } from "./ComponentStore";
 &nbsp;
-export const useCardStore = create((set) =&gt; ({
+interface ICardStore {
+  productBacklog: IComponent | null;
+  setProductBacklog: (cards: IComponent[] | null) =&gt; void | undefined;
+  splittingProductBacklogItems: IComponent | null;
+  setSplittingProductBacklogItems: (
+    cards: IComponent[] | null
+  ) =&gt; void | undefined;
+  relativeEstimating: IComponent | null;
+  setRelativeEstimating: (cards: IComponent[] | null) =&gt; void | undefined;
+}
+&nbsp;
+export const useCardStore = create&lt;ICardStore&gt;()((set) =&gt; ({
   productBacklog: null,
-  setProductBacklog: (state: any) =&gt; {
-    if (Array.isArray(state)) {
+  setProductBacklog: (cards) =&gt; {
+    if (Array.isArray(cards)) {
       set(() =&gt; ({
-        productBacklog: state.filter(
-          (state: any) =&gt; state.title === "Product Backlog"
+        productBacklog: cards.filter(
+          (state) =&gt; state.title === "Product Backlog"
         )[0],
       }));
 <span class="branch-0 cbranch-no" title="branch not covered" >    } else {</span>
 <span class="cstat-no" title="statement not covered" >      set(() =&gt; ({</span>
-<span class="cstat-no" title="statement not covered" >        productBacklog: state,</span>
+<span class="cstat-no" title="statement not covered" >        productBacklog: cards,</span>
 <span class="cstat-no" title="statement not covered" >      }));</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
   },
 &nbsp;
   splittingProductBacklogItems: null,
-  setSplittingProductBacklogItems: (cards: any) =&gt; {
+  setSplittingProductBacklogItems: (cards) =&gt; {
     if (Array.isArray(cards)) {
       set(() =&gt; ({
         splittingProductBacklogItems: cards.filter(
-          (card: any) =&gt; card.title === "Splitting Product Backlog Items"
+          (card) =&gt; card.title === "Splitting Product Backlog Items"
         )[0],
       }));
     }
   },
 &nbsp;
   relativeEstimating: null,
-  setRelativeEstimating: (cards: any) =&gt; {
+  setRelativeEstimating: (cards) =&gt; {
     if (Array.isArray(cards)) {
       set(() =&gt; ({
         relativeEstimating: cards.filter(
-          (card: any) =&gt; card.title === "Relative Estimating"
+          (card) =&gt; card.title === "Relative Estimating"
         )[0],
       }));
     }
@@ -190,7 +226,7 @@ export const useCardStore = create((set) =&gt; ({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-25T21:04:56.769Z
+                at 2023-05-06T21:01:05.919Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -20,8 +20,7 @@ const Home = () => {
 
   useEffect(() => {
     setComponent(null);
-  }, [])
-  
+  }, [setComponent]);
 
   const [addActive, setaddActive] = useState(false);
 
@@ -36,13 +35,13 @@ const Home = () => {
   }
 
   return (
-    <div className="bg-white-100 h-screen w-screen flex ">
+    <div className="bg-white-100 h-screen w-screen flex">
       {productBacklog != null && <Sidebar addActive={toggleAdd} />}
       {splittingProductBacklogItems != null && relativeEstimating != null && (
-        <div className="w-9/12 flex flex-col">
+        <div className="min-w-[30rem] h-screen flex flex-col mr-12">
           <Topbar />
-          {!addActive && <ItemsList className="absolute" />}
-          {addActive && <Add className="relative" />}
+          {!addActive && <ItemsList />}
+          {addActive && <Add toggleAdd={toggleAdd}/>}
         </div>
       )}
     </div>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">84.61% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>37/37</span>
+                <span class='fraction'>33/39</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">84.61% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>37/37</span>
+                <span class='fraction'>33/39</span>
             </div>
         
             
@@ -100,7 +100,9 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -108,36 +110,38 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useEffect, useState } from "react";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from "react";
 import { useCardData } from "../../../../hooks/useCardsData";
 import { useComponentStore } from "../../../../stores/ComponentStore";
 import { PatternCard } from "./PatternCard";
@@ -145,29 +149,31 @@ import { StateCard } from "./StateCard";
 import { WorkProductCard } from "./WorkProductCard";
 &nbsp;
 const Card = () =&gt; {
-  const component = useComponentStore((state: any) =&gt; state.component);
+  const component = useComponentStore((state) =&gt; state.component);
+  const stateComponent = useComponentStore((state) =&gt; state.componentState);
   const { productBacklog, patchCard, setProductBacklog } = useCardData();
   const [flag, setFlag] = useState(false);
 &nbsp;
-  useEffect(() =&gt; {
-    patchCard({ card: { ...productBacklog }, _id: productBacklog._id });
-    setProductBacklog({ ...productBacklog });
-  }, [flag]);
+  const onSwitchFlag = <span class="fstat-no" title="function not covered" >(flag: boolean) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    setFlag(flag);</span>
+<span class="cstat-no" title="statement not covered" >    if ((component != null || stateComponent != null) &amp;&amp; productBacklog) {</span>
+<span class="cstat-no" title="statement not covered" >      patchCard({ card: { ...productBacklog }, _id: productBacklog._id });</span>
+<span class="cstat-no" title="statement not covered" >      setProductBacklog([{ ...productBacklog }]);</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
 &nbsp;
-  if (
-    component != null &amp;&amp;
-    component.hasOwnProperty("type") &amp;&amp;
-    component.type === "Work Product"
-  ) {
+  if (component != null &amp;&amp; component.type === "Work Product") {
     return &lt;WorkProductCard component={component} /&gt;;
-  } else if (component != null &amp;&amp; !component.hasOwnProperty("type")) {
-    return &lt;StateCard component={component} flag={flag} setFlag={setFlag} /&gt;;
-  } else if (
-    component != null &amp;&amp;
-    component.hasOwnProperty("type") &amp;&amp;
-    component.type === "Pattern"
-  ) {
+  } else if (component != null &amp;&amp; component.type === "Pattern") {
     return &lt;PatternCard component={component} /&gt;;
+  } else if (stateComponent != null) {
+    return (
+      &lt;StateCard
+        component={stateComponent}
+        flag={flag}
+        setFlag={onSwitchFlag}
+      /&gt;
+    );
   } else {
     return &lt;&gt;&lt;/&gt;;
   }
@@ -181,7 +187,7 @@ export default Card;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-25T21:04:56.769Z
+                at 2023-05-06T21:01:05.919Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

@@ -10,7 +10,7 @@ describe("AddAlpha", () => {
   });
 
   it("should render", () => {
-    render(<AddAlpha />);
+    render(<AddAlpha addActive={vi.fn()} />);
 
     const textElement = screen.getByText(/Add Product Backlog Item/i);
     expect(textElement).toBeInTheDocument();

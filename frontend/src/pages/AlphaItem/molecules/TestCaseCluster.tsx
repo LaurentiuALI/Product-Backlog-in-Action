@@ -13,9 +13,7 @@ const lines = [
   { from: "testCaseBox4", to: "testCaseBox5" },
 ];
 
-const TestCaseCluster = () => {
-  const { id } = useParams<{ id: string }>();
-
+const InnerTestCaseCluster: React.FC<{ id: string }> = ({ id }) => {
   const [ready, setready] = useState(false);
 
   const { prepareAProductBacklogItem, testCase, alphaItem } = useItemData(id);
@@ -47,7 +45,7 @@ const TestCaseCluster = () => {
       )}
 
       {testCase != null &&
-        testCase.states.map((state: any, index: any) => (
+        testCase.states.map((state, index) => (
           <State
             key={state.name}
             id={`testCaseBox${index + 3}`}
@@ -72,6 +70,12 @@ const TestCaseCluster = () => {
         ))}
     </div>
   );
+};
+
+const TestCaseCluster = () => {
+  const { id } = useParams<{ id: string }>();
+  if (!id) return <div>Invalid ID</div>;
+  return <InnerTestCaseCluster id={id} />;
 };
 
 export default TestCaseCluster;

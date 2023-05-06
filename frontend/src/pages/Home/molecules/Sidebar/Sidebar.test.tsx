@@ -23,8 +23,8 @@ vi.mock("../../../../hooks/useCardsData", () => {
 });
 
 describe("Sidebar", () => {
-  it("renders", async () => {
-    render(<Sidebar />);
+  it("renders", () => {
+    render(<Sidebar addActive={vi.fn()} />);
     const titleElement = screen.getByText(/Add Product Backlog Item/i);
     expect(titleElement).toBeInTheDocument();
 
@@ -41,7 +41,7 @@ describe("Sidebar", () => {
     expect(CostBenefitQuantified).toBeInTheDocument();
   });
   it("renders card on click", async () => {
-    render(<Sidebar />);
+    render(<Sidebar addActive={vi.fn()} />);
     const productBacklog = screen.getByText(/^Product Backlog/i);
     const itemsGathered = screen.getByText(/^Items Gathered/i);
     const ItemsPrioritized = screen.getByText(/^Items Prioritized/i);
@@ -52,21 +52,21 @@ describe("Sidebar", () => {
     expect(descriptionElement).toBeInTheDocument();
 
     await userEvent.click(itemsGathered);
-    const checkboxesItemsGathered = screen.getAllByRole("checkbox");
+    const checkboxesItemsGathered = screen.getAllByRole("button");
     expect(checkboxesItemsGathered).toHaveLength(
       workProductComponent.states[0].checklist.length
     );
     expect(descriptionElement).not.toBeInTheDocument();
 
     await userEvent.click(ItemsPrioritized);
-    const checkboxesItemsPrioritized = screen.getAllByRole("checkbox");
+    const checkboxesItemsPrioritized = screen.getAllByRole("button");
     expect(checkboxesItemsPrioritized).toHaveLength(
       workProductComponent.states[1].checklist.length
     );
     expect(descriptionElement).not.toBeInTheDocument();
 
     await userEvent.click(CostBenefitQuantified);
-    const checkboxesCostBenefitQuantified = screen.getAllByRole("checkbox");
+    const checkboxesCostBenefitQuantified = screen.getAllByRole("button");
     expect(checkboxesCostBenefitQuantified).toHaveLength(
       workProductComponent.states[2].checklist.length
     );

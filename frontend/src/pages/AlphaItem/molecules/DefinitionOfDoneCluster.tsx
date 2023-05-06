@@ -12,8 +12,7 @@ const lines = [
   { from: "DefOfDoneBox3", to: "DefOfDoneBox4" },
 ];
 
-const DefinitionOfDoneCluster = () => {
-  const { id } = useParams<{ id: string }>();
+const InnerDefinitionOfDoneCluster: React.FC<{ id: string }> = ({ id }) => {
   const { definitionOfDone, agreeDefinitionOfDone } = useItemData(id);
   const [ready, setready] = useState(false);
 
@@ -25,7 +24,7 @@ const DefinitionOfDoneCluster = () => {
     }
   }, [agreeDefinitionOfDone, definitionOfDone, ready]);
 
-  if (ready)
+  if (ready && agreeDefinitionOfDone && definitionOfDone)
     return (
       <div className="w-full h-1/3 flex justify-center items-center">
         <Activity
@@ -38,7 +37,7 @@ const DefinitionOfDoneCluster = () => {
           name={definitionOfDone.title}
           card={definitionOfDone}
         />
-        {definitionOfDone.states.map((state: any, index: any) => (
+        {definitionOfDone.states.map((state, index) => (
           <State
             key={index}
             index={index}
@@ -64,6 +63,12 @@ const DefinitionOfDoneCluster = () => {
   else {
     return <div>Loading...</div>;
   }
+};
+
+const DefinitionOfDoneCluster = () => {
+  const { id } = useParams<{ id: string }>();
+  if (!id) return <div> Invalid ID </div>;
+  return <InnerDefinitionOfDoneCluster id={id} />;
 };
 
 export default DefinitionOfDoneCluster;

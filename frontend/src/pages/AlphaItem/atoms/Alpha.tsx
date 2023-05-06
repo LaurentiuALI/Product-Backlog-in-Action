@@ -1,8 +1,18 @@
-import Alpha from "../icons/alpha.svg";
-import { useComponentStore } from "../../../stores/ComponentStore";
+import AlphaIcon from "../icons/alpha.svg";
+import {
+  type IComponent,
+  useComponentStore,
+} from "../../../stores/ComponentStore";
 
-const Activity = (props: any) => {
-  const setComponent = useComponentStore((state: any) => state.setComponent);
+interface IAlphaProps {
+  id: string;
+  name: string;
+  card: IComponent;
+  style?: React.CSSProperties;
+}
+
+const Alpha: React.FC<IAlphaProps> = (props) => {
+  const setComponent = useComponentStore((state) => state.setComponent);
 
   return (
     <div
@@ -11,7 +21,7 @@ const Activity = (props: any) => {
       onClick={() => setComponent(props.card)}
     >
       <img
-        src={Alpha}
+        src={AlphaIcon}
         id={props.id}
         alt="activity"
         className="w-28 h-auto object-cover"
@@ -23,4 +33,4 @@ const Activity = (props: any) => {
   );
 };
 
-export default Activity;
+export default Alpha;

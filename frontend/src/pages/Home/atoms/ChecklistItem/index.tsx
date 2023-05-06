@@ -1,8 +1,9 @@
+import { type IComponentState } from "../../../../stores/ComponentStore";
 import { StateAchieved } from "./StateAchieved";
 import { StateUnachieved } from "./StateUnachieved";
 import { StateUnachievedOpt } from "./StateUnachievedOpt";
 
-const ChecklistItem = ({ state }: any) => {
+const ChecklistItem: React.FC<{ state: IComponentState }> = ({ state }) => {
   if (state.status == state.checklist.length) {
     return <StateAchieved state={state} />;
   } else if (state.optional == true) {

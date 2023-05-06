@@ -4,8 +4,11 @@ import radio3 from "../../icons/radio-3.svg";
 import radio5 from "../../icons/radio-5.svg";
 import radio8 from "../../icons/radio-8.svg";
 
-const CustomCheckbox = (props: any) => {
-  const radio: any = {
+const CustomCheckbox: React.FC<{
+  number: number;
+  onCustomClick: (number: number) => void;
+}> = (props) => {
+  const radio = {
     1: radio1,
     2: radio2,
     3: radio3,
@@ -21,7 +24,7 @@ const CustomCheckbox = (props: any) => {
       />
       <img
         className="cursor-pointer opacity-30 peer-checked:opacity-100"
-        src={radio[props.number]}
+        src={radio[props.number as 1 | 2 | 3 | 5 | 8]}
       />
     </label>
   );

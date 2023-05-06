@@ -23,7 +23,7 @@ vi.mock("../../../../hooks/useCardsData", () => {
 });
 
 describe("Topbar", () => {
-  it("renders", async () => {
+  it("renders", () => {
     render(<Topbar />);
     const titleElement = screen.getByText(/Splitting Product Backlog Items/i);
     expect(titleElement).toBeInTheDocument();

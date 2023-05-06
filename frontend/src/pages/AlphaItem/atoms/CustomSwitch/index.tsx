@@ -1,22 +1,44 @@
 import { useState } from "react";
 import SwitchOff from "../../icons/switchOff.svg";
 import SwitchOn from "../../icons/switchOn.svg";
+import {
+  type IComponentState,
+  type IStateChecklist,
+} from "../../../../stores/ComponentStore";
 
-export const CustomSwitch = ({item, flag, setFlag, component}: any) => {
-  const [active, setActive] = useState(item.checked);
+interface ICustomSwitchProps {
+  stateChecklist: IStateChecklist;
+  flag: boolean;
+  setFlag: (flag: boolean) => void;
+  componentState: IComponentState;
+}
+
+export const CustomSwitch: React.FC<ICustomSwitchProps> = ({
+  stateChecklist,
+  flag,
+  setFlag,
+  componentState,
+}) => {
+  
+  const [active, setActive] = useState(stateChecklist.checked);
   return (
-      <button onClick={ () => {
+    <button
+      onClick={() => {
         if (!active == true) {
-          component.status += 1;
+          componentState.status += 1;
         } else {
-          component.status -= 1;
+          componentState.status -= 1;
         }
-        item.checked = !active
+        stateChecklist.checked = !active;
         setActive(!active);
         setFlag(!flag);
-        }} >
-        { active ? <img src={SwitchOn} alt="switch on"  /> : <img src={SwitchOff} alt="switch off"  />}
-      </button>
-
+      }}
+    >
+      {active ? (
+        <img src={SwitchOn} alt="switch on" />
+      ) : (
+        <img src={SwitchOff} alt="switch off" />
+      )}
+    </button>
   );
 };

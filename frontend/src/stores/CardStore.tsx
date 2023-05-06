@@ -1,38 +1,50 @@
 import { create } from "zustand";
+import { type IComponent } from "./ComponentStore";
 
-export const useCardStore = create((set) => ({
+interface ICardStore {
+  productBacklog: IComponent | null;
+  setProductBacklog: (cards: IComponent[] | null) => void | undefined;
+  splittingProductBacklogItems: IComponent | null;
+  setSplittingProductBacklogItems: (
+    cards: IComponent[] | null
+  ) => void | undefined;
+  relativeEstimating: IComponent | null;
+  setRelativeEstimating: (cards: IComponent[] | null) => void | undefined;
+}
+
+export const useCardStore = create<ICardStore>()((set) => ({
   productBacklog: null,
-  setProductBacklog: (state: any) => {
-    if (Array.isArray(state)) {
+  setProductBacklog: (cards) => {
+    if (Array.isArray(cards)) {
       set(() => ({
-        productBacklog: state.filter(
-          (state: any) => state.title === "Product Backlog"
+        productBacklog: cards.filter(
+          (state) => state.title === "Product Backlog"
         )[0],
       }));
     } else {
       set(() => ({
-        productBacklog: state,
+        productBacklog: cards,
       }));
     }
   },
 
   splittingProductBacklogItems: null,
-  setSplittingProductBacklogItems: (cards: any) => {
+  setSplittingProductBacklogItems: (cards) => {
     if (Array.isArray(cards)) {
       set(() => ({
         splittingProductBacklogItems: cards.filter(
-          (card: any) => card.title === "Splitting Product Backlog Items"
+          (card) => card.title === "Splitting Product Backlog Items"
         )[0],
       }));
     }
   },
 
   relativeEstimating: null,
-  setRelativeEstimating: (cards: any) => {
+  setRelativeEstimating: (cards) => {
     if (Array.isArray(cards)) {
       set(() => ({
         relativeEstimating: cards.filter(
-          (card: any) => card.title === "Relative Estimating"
+          (card) => card.title === "Relative Estimating"
         )[0],
       }));
     }

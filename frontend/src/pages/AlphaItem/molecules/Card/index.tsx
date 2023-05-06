@@ -1,31 +1,43 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useComponentStore } from "../../../../stores/ComponentStore";
 import { useItemData } from "../../../../hooks/useItemData";
 import { useParams } from "react-router-dom";
 import { TypeCard } from "./TypeCard";
 import { NonTypeCard } from "./NonTypeCard";
 
-const Card = () => {
-  const { id } = useParams<{ id: string }>();
-
-  const component = useComponentStore((state: any) => state.component);
+const InnerCard: React.FC<{ id: string }> = ({ id }) => {
+  const component = useComponentStore((state) => state.component);
+  const stateComponent = useComponentStore((state) => state.componentState);
   const { alphaItem, patchAlphaItem, setAlphaItem } = useItemData(id);
   const [flag, setFlag] = useState(false);
 
-  useEffect(() => {
-    if (component != null) {
+  const onSwitchFlag = (flag: boolean) => {
+    setFlag(flag);
+    if ((component != null || stateComponent != null) && alphaItem) {
       patchAlphaItem({ alphaItem: { ...alphaItem }, _id: id });
       setAlphaItem({ ...alphaItem });
     }
-  }, [flag, component]);
+  };
 
-  if (component != null && component.hasOwnProperty("type")) {
+  if (component != null) {
     return <TypeCard component={component} />;
-  } else if (component != null && !component.hasOwnProperty("type")) {
-    return <NonTypeCard component={component} flag={flag} setFlag={setFlag} />;
+  } else if (stateComponent != null) {
+    return (
+      <NonTypeCard
+        stateComponent={stateComponent}
+        flag={flag}
+        setFlag={onSwitchFlag}
+      />
+    );
   } else {
     return <div></div>;
   }
+};
+
+const Card = () => {
+  const { id } = useParams<{ id: string }>();
+  if (!id) return <div> Invalid ID </div>;
+  return <InnerCard id={id} />;
 };
 
 export default Card;

@@ -30,7 +30,6 @@ describe("CustomCheckbox", () => {
   });
 
   it("selects only one radio button", async () => {
-    const radio = [radio1, radio2, radio3, radio5, radio8];
     const customClick = vi.fn();
 
     [1, 2, 3, 5, 8].forEach((number) => {

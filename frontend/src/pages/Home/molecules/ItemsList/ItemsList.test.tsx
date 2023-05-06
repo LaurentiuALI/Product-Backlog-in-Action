@@ -1,8 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, vi } from "vitest";
 
-import { useNavigate } from "react-router-dom";
-
 import ItemList from ".";
 
 vi.mock("react-router-dom", () => {
@@ -20,19 +18,19 @@ vi.mock("react-query", () => {
         {
           UID: "Test UID",
           name: "Test Name",
-          state: "Test State",
+          state: "Identified",
           storyPoints: 1,
         },
         {
           UID: "Test UID",
           name: "Test Name",
-          state: "Test State",
+          state: "Ready For Development",
           storyPoints: 2,
         },
         {
           UID: "Test UID",
           name: "Test Name",
-          state: "Test State",
+          state: "Done",
           storyPoints: 3,
         },
       ],
@@ -41,7 +39,7 @@ vi.mock("react-query", () => {
 });
 
 describe("ItemList", () => {
-  it("renders", async () => {
+  it("renders", () => {
     render(<ItemList />);
     const titleElements = screen.getAllByText(/Test Name/i);
     expect(titleElements.length).toBe(3);
@@ -53,10 +51,13 @@ describe("ItemList", () => {
     const storyPointElement3 = screen.getAllByText(/3/i);
     expect(storyPointElement3.length).toBe(1);
 
-    const stateElements = screen.getAllByText(/Test State/i);
-    expect(stateElements.length).toBe(3);
+    const identifiedElements = screen.getAllByText(/Identified/i);
+    expect(identifiedElements.length).toBe(2);
 
-    const uidElements = screen.getAllByText(/Test UID/i);
-    expect(uidElements.length).toBe(3);
+    const readyElements = screen.getAllByText(/Ready For Development/i);
+    expect(readyElements.length).toBe(2);
+
+    const doneElements = screen.getAllByText(/Done/i);
+    expect(doneElements.length).toBe(2);
   });
 });

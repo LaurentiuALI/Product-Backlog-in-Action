@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/72</span>
+                <span class='fraction'>0/81</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/72</span>
+                <span class='fraction'>0/81</span>
             </div>
         
             
@@ -135,7 +135,25 @@
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -209,12 +227,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { useEffect, useState } from "react";</span></span></span>
 <span class="cstat-no" title="statement not covered" >import { useParams } from "react-router-dom";</span>
-<span class="cstat-no" title="statement not covered" >import Xarrow, { refType } from "react-xarrows";</span>
+<span class="cstat-no" title="statement not covered" >import Xarrow, { useXarrow } from "react-xarrows";</span>
 <span class="cstat-no" title="statement not covered" >import { useItemData } from "../../../hooks/useItemData";</span>
 <span class="cstat-no" title="statement not covered" >import Activity from "../atoms/Activity";</span>
 <span class="cstat-no" title="statement not covered" >import State from "../atoms/State";</span>
 <span class="cstat-no" title="statement not covered" >import TestCase from "../atoms/TestCase";</span>
-<span class="cstat-no" title="statement not covered" >import { useComponentStore } from "../store/ComponentStore";</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >const lines = [</span>
 <span class="cstat-no" title="statement not covered" >  { from: "testCaseBox1", to: "testCaseBox2" },</span>
@@ -223,9 +240,7 @@
 <span class="cstat-no" title="statement not covered" >  { from: "testCaseBox4", to: "testCaseBox5" },</span>
 <span class="cstat-no" title="statement not covered" >];</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const TestCaseCluster = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const { id } = useParams&lt;{ id: string }&gt;();</span>
-<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const InnerTestCaseCluster: React.FC&lt;{ id: string }&gt; = ({ id }) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  const [ready, setready] = useState(false);</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  const { prepareAProductBacklogItem, testCase, alphaItem } = useItemData(id);</span>
@@ -239,12 +254,16 @@
 <span class="cstat-no" title="statement not covered" >  }, [prepareAProductBacklogItem, testCase, alphaItem]);</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div className="w-full h-3/6 aboslute flex items-center justify-center"&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;div</span>
+<span class="cstat-no" title="statement not covered" >      onLoad={useXarrow()}</span>
+<span class="cstat-no" title="statement not covered" >      className="w-full h-3/6 aboslute flex items-center justify-center"</span>
+<span class="cstat-no" title="statement not covered" >    &gt;</span>
 <span class="cstat-no" title="statement not covered" >      {prepareAProductBacklogItem != null &amp;&amp; (</span>
 <span class="cstat-no" title="statement not covered" >        &lt;Activity id="testCaseBox1" card={prepareAProductBacklogItem} /&gt;</span>
 <span class="cstat-no" title="statement not covered" >      )}</span>
 <span class="cstat-no" title="statement not covered" >      {testCase != null &amp;&amp; (</span>
 <span class="cstat-no" title="statement not covered" >        &lt;TestCase</span>
+<span class="cstat-no" title="statement not covered" >          key={testCase.title}</span>
 <span class="cstat-no" title="statement not covered" >          id="testCaseBox2"</span>
 <span class="cstat-no" title="statement not covered" >          name={testCase.title}</span>
 <span class="cstat-no" title="statement not covered" >          style={{ marginLeft: 30 }}</span>
@@ -253,8 +272,9 @@
 <span class="cstat-no" title="statement not covered" >      )}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >      {testCase != null &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >        testCase.states.map((state: any, index: any) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >        testCase.states.map((state, index) =&gt; (</span>
 <span class="cstat-no" title="statement not covered" >          &lt;State</span>
+<span class="cstat-no" title="statement not covered" >            key={state.name}</span>
 <span class="cstat-no" title="statement not covered" >            id={`testCaseBox${index + 3}`}</span>
 <span class="cstat-no" title="statement not covered" >            index={index}</span>
 <span class="cstat-no" title="statement not covered" >            name={state.name}</span>
@@ -264,8 +284,9 @@
 <span class="cstat-no" title="statement not covered" >        ))}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >      {ready == true &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >        lines.map((line: { from: refType; to: refType }) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >        lines.map((line) =&gt; (</span>
 <span class="cstat-no" title="statement not covered" >          &lt;Xarrow</span>
+<span class="cstat-no" title="statement not covered" >            key={line.from + line.to}</span>
 <span class="cstat-no" title="statement not covered" >            start={line.from}</span>
 <span class="cstat-no" title="statement not covered" >            end={line.to}</span>
 <span class="cstat-no" title="statement not covered" >            color="white"</span>
@@ -278,6 +299,12 @@
 <span class="cstat-no" title="statement not covered" >  );</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const TestCaseCluster = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const { id } = useParams&lt;{ id: string }&gt;();</span>
+<span class="cstat-no" title="statement not covered" >  if (!id) return &lt;div&gt;Invalid ID&lt;/div&gt;;</span>
+<span class="cstat-no" title="statement not covered" >  return &lt;InnerTestCaseCluster id={id} /&gt;;</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >export default TestCaseCluster;</span>
 &nbsp;</pre></td></tr></table></pre>
 
@@ -286,7 +313,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-25T21:04:56.769Z
+                at 2023-05-06T21:01:05.919Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

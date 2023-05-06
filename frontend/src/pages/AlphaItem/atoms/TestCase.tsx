@@ -1,8 +1,18 @@
 import workProduct from "../icons/workProduct.svg";
-import { useComponentStore } from "../../../stores/ComponentStore";
+import {
+  type IComponent,
+  useComponentStore,
+} from "../../../stores/ComponentStore";
 
-const Activity = (props: any) => {
-  const setComponent = useComponentStore((state: any) => state.setComponent);
+interface ITestCaseProps {
+  id: string;
+  name: string;
+  card: IComponent;
+  style?: React.CSSProperties;
+}
+
+const TestCase: React.FC<ITestCaseProps> = (props) => {
+  const setComponent = useComponentStore((state) => state.setComponent);
 
   return (
     <div
@@ -23,4 +33,4 @@ const Activity = (props: any) => {
   );
 };
 
-export default Activity;
+export default TestCase;

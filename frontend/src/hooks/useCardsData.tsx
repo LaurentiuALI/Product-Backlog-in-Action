@@ -2,17 +2,18 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useQuery, useMutation } from "react-query";
 import { useCardStore } from "../stores/CardStore";
+import { type IComponent } from "../stores/ComponentStore";
 
 const getCards = async () => {
   const response = await axios.get("http://localhost:4000/api/v1/cards/");
-  return response.data;
+  return response.data as IComponent[];
 };
 
 const useCardsData = () => {
   return useQuery("cards", getCards);
 };
 
-const updateCard = async ({ card, _id }: any) => {
+const updateCard = async ({ card, _id }: { card: IComponent; _id: string }) => {
   return await axios.patch(`http://localhost:4000/api/v1/cards/${_id}`, card);
 };
 const useUpdateCard = () => {
@@ -20,23 +21,20 @@ const useUpdateCard = () => {
 };
 
 export const useCardData = () => {
-  const productBacklog = useCardStore((state: any) => state.productBacklog);
-  const setProductBacklog = useCardStore(
-    (state: any) => state.setProductBacklog
-  );
+  const productBacklog = useCardStore((state) => state.productBacklog);
+
+  const setProductBacklog = useCardStore((state) => state.setProductBacklog);
 
   const splittingProductBacklogItems = useCardStore(
-    (state: any) => state.splittingProductBacklogItems
+    (state) => state.splittingProductBacklogItems
   );
   const setSplittingProductBacklogItems = useCardStore(
-    (state: any) => state.setSplittingProductBacklogItems
+    (state) => state.setSplittingProductBacklogItems
   );
 
-  const relativeEstimating = useCardStore(
-    (state: any) => state.relativeEstimating
-  );
+  const relativeEstimating = useCardStore((state) => state.relativeEstimating);
   const setRelativeEstimating = useCardStore(
-    (state: any) => state.setRelativeEstimating
+    (state) => state.setRelativeEstimating
   );
 
   const { isLoading, error, data } = useCardsData();
@@ -49,7 +47,12 @@ export const useCardData = () => {
       setSplittingProductBacklogItems(data);
       setRelativeEstimating(data);
     }
-  }, [data]);
+  }, [
+    data,
+    setProductBacklog,
+    setRelativeEstimating,
+    setSplittingProductBacklogItems,
+  ]);
 
   return {
     isLoading,

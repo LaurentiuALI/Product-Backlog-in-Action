@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/40</span>
+                <span class='fraction'>0/43</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/40</span>
+                <span class='fraction'>0/43</span>
             </div>
         
             
@@ -103,7 +103,10 @@
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -143,39 +146,45 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >export const NonTypeCard = ({ component, flag, setFlag }: any) =&gt; {</span></span></span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div className="border-2 border-white absolute bottom-0 right-0 w-100 h-3/6 flex flex-col items-center"&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;div className="flex flex-col items-center"&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;h1 className="font-semibold mt-4 mb-6 text-2xl"&gt;</span>
-<span class="cstat-no" title="statement not covered" >          {component != null &amp;&amp; component.title}</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/h1&gt;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { type IComponentState } from "../../../../stores/ComponentStore";</span></span></span>
+<span class="cstat-no" title="statement not covered" >import { CustomSwitch } from "../../atoms/CustomSwitch";</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        &lt;h2 className="font-semibold text-xl"&gt;</span>
-<span class="cstat-no" title="statement not covered" >          {component != null &amp;&amp; component.name}</span>
+<span class="cstat-no" title="statement not covered" >interface INonTypeCardProps {</span>
+<span class="cstat-no" title="statement not covered" >  stateComponent: IComponentState | null;</span>
+<span class="cstat-no" title="statement not covered" >  flag: boolean;</span>
+<span class="cstat-no" title="statement not covered" >  setFlag: (flag: boolean) =&gt; void;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >export const NonTypeCard: React.FC&lt;INonTypeCardProps&gt; = ({</span>
+<span class="cstat-no" title="statement not covered" >  stateComponent,</span>
+<span class="cstat-no" title="statement not covered" >  flag,</span>
+<span class="cstat-no" title="statement not covered" >  setFlag,</span>
+<span class="cstat-no" title="statement not covered" >}) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;div className="bg-white absolute bottom-0 right-0 w-[25rem] h-[30rem] rounded-t-xl mr-4 flex flex-col items-center"&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div className="flex flex-col items-center"&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;h2 className="font-semibold text-2xl mt-4 text-center underline decoration-2 decoration-primary-100 mb-6"&gt;</span>
+<span class="cstat-no" title="statement not covered" >          {stateComponent != null &amp;&amp; stateComponent.name}</span>
 <span class="cstat-no" title="statement not covered" >        &lt;/h2&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;div className="w-28 h-px bg-primary-100 ml-4"&gt;&lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >      &lt;div className="flex flex-col"&gt;</span>
-<span class="cstat-no" title="statement not covered" >        {component != null &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >          component.checklist.map((item: any) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div className="flex flex-col pl-4 pr-4"&gt;</span>
+<span class="cstat-no" title="statement not covered" >        {stateComponent != null &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >          stateComponent.checklist.map((item) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            return (</span>
-<span class="cstat-no" title="statement not covered" >              &lt;div className="flex mb-3 items-center" key={item.name}&gt;</span>
-<span class="cstat-no" title="statement not covered" >                &lt;input</span>
-<span class="cstat-no" title="statement not covered" >                  type="checkbox"</span>
-<span class="cstat-no" title="statement not covered" >                  checked={item.checked}</span>
-<span class="cstat-no" title="statement not covered" >                  onChange={(e) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                    if (e.target.checked == true) {</span>
-<span class="cstat-no" title="statement not covered" >                      component.status += 1;</span>
-<span class="cstat-no" title="statement not covered" >                    } else {</span>
-<span class="cstat-no" title="statement not covered" >                      component.status -= 1;</span>
-<span class="cstat-no" title="statement not covered" >                    }</span>
-<span class="cstat-no" title="statement not covered" >                    item.checked = e.target.checked;</span>
-<span class="cstat-no" title="statement not covered" >                    setFlag(!flag);</span>
-<span class="cstat-no" title="statement not covered" >                  }}</span>
-<span class="cstat-no" title="statement not covered" >                /&gt;</span>
-<span class="cstat-no" title="statement not covered" >                &lt;p className="ml-2"&gt;{item != null &amp;&amp; item.name}&lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;div className="flex mb-8" key={item.name}&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;div className="min-w-[3rem] min-h-[3rem] flex "&gt;</span>
+<span class="cstat-no" title="statement not covered" >                  &lt;CustomSwitch</span>
+<span class="cstat-no" title="statement not covered" >                    stateChecklist={item}</span>
+<span class="cstat-no" title="statement not covered" >                    flag={flag}</span>
+<span class="cstat-no" title="statement not covered" >                    setFlag={setFlag}</span>
+<span class="cstat-no" title="statement not covered" >                    componentState={stateComponent}</span>
+<span class="cstat-no" title="statement not covered" >                  /&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;div className="font-semibold"&gt;{item.name}&lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >              &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >            );</span>
 <span class="cstat-no" title="statement not covered" >          })}</span>
@@ -190,7 +199,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-25T21:04:56.769Z
+                at 2023-05-06T21:01:05.919Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

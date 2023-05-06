@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/64</span>
+                <span class='fraction'>0/69</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/64</span>
+                <span class='fraction'>0/69</span>
             </div>
         
             
@@ -127,7 +127,17 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -193,7 +203,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { useEffect, useState } from "react";</span></span></span>
 <span class="cstat-no" title="statement not covered" >import { useParams } from "react-router-dom";</span>
-<span class="cstat-no" title="statement not covered" >import Xarrow, { Xwrapper } from "react-xarrows";</span>
+<span class="cstat-no" title="statement not covered" >import Xarrow from "react-xarrows";</span>
 <span class="cstat-no" title="statement not covered" >import { useItemData } from "../../../hooks/useItemData";</span>
 <span class="cstat-no" title="statement not covered" >import Alpha from "../atoms/Alpha";</span>
 <span class="cstat-no" title="statement not covered" >import State from "../atoms/State";</span>
@@ -204,8 +214,7 @@
 <span class="cstat-no" title="statement not covered" >  { from: "ProductBacklogItemBox3", to: "ProductBacklogItemBox4" },</span>
 <span class="cstat-no" title="statement not covered" >];</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const ProductBacklogItem = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const { id } = useParams&lt;{ id: string }&gt;();</span>
+<span class="cstat-no" title="statement not covered" >const InnerProductBacklogItem: React.FC&lt;{ id: string }&gt; = ({ id }) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  const { productBacklogItem } = useItemData(id);</span>
 <span class="cstat-no" title="statement not covered" >  const [ready, setReady] = useState(false);</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -227,7 +236,7 @@
 <span class="cstat-no" title="statement not covered" >        card={productBacklogItem}</span>
 <span class="cstat-no" title="statement not covered" >      /&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >      {productBacklogItem.states.map((state: any, index: any) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >      {productBacklogItem.states.map((state, index) =&gt; (</span>
 <span class="cstat-no" title="statement not covered" >        &lt;State</span>
 <span class="cstat-no" title="statement not covered" >          key={`ProductBacklogItemBox${index + 2}`}</span>
 <span class="cstat-no" title="statement not covered" >          index={index}</span>
@@ -254,6 +263,12 @@
 <span class="cstat-no" title="statement not covered" >  );</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const ProductBacklogItem: React.FC = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const { id } = useParams&lt;{ id: string }&gt;();</span>
+<span class="cstat-no" title="statement not covered" >  if (!id) return &lt;div&gt;Invalid ID&lt;/div&gt;;</span>
+<span class="cstat-no" title="statement not covered" >  return &lt;InnerProductBacklogItem id={id} /&gt;;</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >export default ProductBacklogItem;</span>
 &nbsp;</pre></td></tr></table></pre>
 
@@ -262,7 +277,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-25T21:04:56.769Z
+                at 2023-05-06T21:01:05.919Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

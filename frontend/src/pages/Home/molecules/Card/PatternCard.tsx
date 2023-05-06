@@ -1,5 +1,9 @@
-export const PatternCard = ({ component }: any) => {
-  let text = component.description.split("\\n");
+import { type IComponent } from "../../../../stores/ComponentStore";
+
+export const PatternCard: React.FC<{ component: IComponent }> = ({
+  component,
+}) => {
+  const text = component.description.split("\\n");
 
   return (
     <div className="bg-white flex flex-col h-[23rem] w-[23rem] border rounded-t-3xl">
@@ -10,7 +14,7 @@ export const PatternCard = ({ component }: any) => {
 
         <h2 className="font-semibold text-sm pl-5 pr-5">
           {component != null &&
-            text.map((item: any) => {
+            text.map((item) => {
               return <p key={item}>{item}</p>;
             })}
         </h2>

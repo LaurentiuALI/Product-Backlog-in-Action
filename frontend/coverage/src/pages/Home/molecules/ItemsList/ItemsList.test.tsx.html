@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>62/62</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>62/62</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
@@ -125,7 +125,8 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -142,28 +143,29 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -190,8 +192,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { render, screen } from "@testing-library/react";
 import { describe, it, vi } from "vitest";
 &nbsp;
-import { useNavigate } from "react-router-dom";
-&nbsp;
 import ItemList from ".";
 &nbsp;
 vi.mock("react-router-dom", () =&gt; {
@@ -209,19 +209,19 @@ vi.mock("react-query", () =&gt; {
         {
           UID: "Test UID",
           name: "Test Name",
-          state: "Test State",
+          state: "Identified",
           storyPoints: 1,
         },
         {
           UID: "Test UID",
           name: "Test Name",
-          state: "Test State",
+          state: "Ready For Development",
           storyPoints: 2,
         },
         {
           UID: "Test UID",
           name: "Test Name",
-          state: "Test State",
+          state: "Done",
           storyPoints: 3,
         },
       ],
@@ -230,7 +230,7 @@ vi.mock("react-query", () =&gt; {
 });
 &nbsp;
 describe("ItemList", () =&gt; {
-  it("renders", async () =&gt; {
+  it("renders", () =&gt; {
     render(&lt;ItemList /&gt;);
     const titleElements = screen.getAllByText(/Test Name/i);
     expect(titleElements.length).toBe(3);
@@ -242,11 +242,14 @@ describe("ItemList", () =&gt; {
     const storyPointElement3 = screen.getAllByText(/3/i);
     expect(storyPointElement3.length).toBe(1);
 &nbsp;
-    const stateElements = screen.getAllByText(/Test State/i);
-    expect(stateElements.length).toBe(3);
+    const identifiedElements = screen.getAllByText(/Identified/i);
+    expect(identifiedElements.length).toBe(2);
 &nbsp;
-    const uidElements = screen.getAllByText(/Test UID/i);
-    expect(uidElements.length).toBe(3);
+    const readyElements = screen.getAllByText(/Ready For Development/i);
+    expect(readyElements.length).toBe(2);
+&nbsp;
+    const doneElements = screen.getAllByText(/Done/i);
+    expect(doneElements.length).toBe(2);
   });
 });
 &nbsp;</pre></td></tr></table></pre>
@@ -256,7 +259,7 @@ describe("ItemList", () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-25T21:04:56.769Z
+                at 2023-05-06T21:01:05.919Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

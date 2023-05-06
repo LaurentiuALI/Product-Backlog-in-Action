@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Xarrow, { Xwrapper } from "react-xarrows";
+import Xarrow from "react-xarrows";
 import { useItemData } from "../../../hooks/useItemData";
 import Alpha from "../atoms/Alpha";
 import State from "../atoms/State";
@@ -11,8 +11,7 @@ const lines = [
   { from: "ProductBacklogItemBox3", to: "ProductBacklogItemBox4" },
 ];
 
-const ProductBacklogItem = () => {
-  const { id } = useParams<{ id: string }>();
+const InnerProductBacklogItem: React.FC<{ id: string }> = ({ id }) => {
   const { productBacklogItem } = useItemData(id);
   const [ready, setReady] = useState(false);
 
@@ -34,7 +33,7 @@ const ProductBacklogItem = () => {
         card={productBacklogItem}
       />
 
-      {productBacklogItem.states.map((state: any, index: any) => (
+      {productBacklogItem.states.map((state, index) => (
         <State
           key={`ProductBacklogItemBox${index + 2}`}
           index={index}
@@ -59,6 +58,12 @@ const ProductBacklogItem = () => {
         ))}
     </div>
   );
+};
+
+const ProductBacklogItem: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  if (!id) return <div>Invalid ID</div>;
+  return <InnerProductBacklogItem id={id} />;
 };
 
 export default ProductBacklogItem;

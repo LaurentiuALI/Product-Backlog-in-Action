@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>0/37</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>0/37</span>
             </div>
         
             
@@ -81,7 +81,26 @@
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -99,19 +118,57 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >export const TypeCard = ({ component }: any) =&gt; {</span></span></span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { type IComponent } from "../../../../stores/ComponentStore";</span></span></span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >interface ITypeCardProps {</span>
+<span class="cstat-no" title="statement not covered" >  component: IComponent;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cstat-no" title="statement not covered" >export const TypeCard: React.FC&lt;ITypeCardProps&gt; = ({ component }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  console.log("🚀 ~ file: TypeCard.tsx:7 ~ component:", component);</span>
+<span class="cstat-no" title="statement not covered" >  const text = component.description.includes("\\n")</span>
+<span class="cstat-no" title="statement not covered" >    ? component.description.split("\\n")</span>
+<span class="cstat-no" title="statement not covered" >    : component.description;</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div className="border-2 border-white absolute bottom-0 right-0 w-100 h-3/6 flex flex-col items-center"&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;h1 className="font-semibold mt-4 mb-6 text-center text-2xl"&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;div className="bg-white absolute bottom-0 right-0 w-[25rem] h-[30rem] rounded-t-xl mr-4 flex flex-col items-center justify-around"&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;h1 className=" font-bold mt-14 text-center text-2xl"&gt;</span>
 <span class="cstat-no" title="statement not covered" >        {component.title}</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/h1&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;p className="text-center font-semibold text-l mb-10"&gt;</span>
-<span class="cstat-no" title="statement not covered" >        {component.description}</span>
+<span class="cstat-no" title="statement not covered" >      &lt;p className="text-center font-semibold text-lg mb-6 mt-10 pr-8 pl-8"&gt;</span>
+<span class="cstat-no" title="statement not covered" >        {typeof text == "object"</span>
+<span class="cstat-no" title="statement not covered" >          ? text.map((item) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >              return (</span>
+<span class="cstat-no" title="statement not covered" >                &lt;p className="text-[1rem]" key={item}&gt;</span>
+<span class="cstat-no" title="statement not covered" >                  {item}</span>
+<span class="cstat-no" title="statement not covered" >                &lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >              );</span>
+<span class="cstat-no" title="statement not covered" >            })</span>
+<span class="cstat-no" title="statement not covered" >          : component.description}</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >      {component.states.map((item: any) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >        &lt;div className="mb-3" key={item.name}&gt;</span>
-<span class="cstat-no" title="statement not covered" >          &lt;h2 className="font-semibold text-xl"&gt;{item.name}&lt;/h2&gt;</span>
-<span class="cstat-no" title="statement not covered" >          &lt;div className="h-px bg-primary-100 ml-4" /&gt;</span>
+<span class="cstat-no" title="statement not covered" >      {component.states.map((item) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >        &lt;div className="mb-3 mt-3" key={item.name}&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;h2 className="underline decoration-primary-100 decoration-2 font-semibold text-2xl text-center"&gt;</span>
+<span class="cstat-no" title="statement not covered" >            {item.name}</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/h2&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >      ))}</span>
 <span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
@@ -124,7 +181,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-25T21:04:56.769Z
+                at 2023-05-06T21:01:05.919Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

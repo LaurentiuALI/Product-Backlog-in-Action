@@ -4,11 +4,9 @@ import { useComponentStore } from "../../../stores/ComponentStore";
 import { useItemData } from "../../../hooks/useItemData";
 import { useParams } from "react-router-dom";
 
-const Topbar = (props: any) => {
-  const { id } = useParams<{ id: string }>();
-  const { alphaItem } = useItemData(id);
-  const setComponent = useComponentStore((state: any) => state.setComponent);
-
+const InnerTopbar: React.FC<{ id: string }> = ({ id }) => {
+  const { alphaItem, invest } = useItemData(id);
+  const setComponent = useComponentStore((state) => state.setComponent);
   return (
     <div className="border-b-2 border-b-white flex justify-around items-center">
       <img src={pbIcon} className="p-4" />
@@ -24,20 +22,26 @@ const Topbar = (props: any) => {
         <img
           src={pattern}
           className="p-4"
-          onClick={() => setComponent(props.card)}
+          onClick={() => setComponent(invest)}
         />
 
         <p
           className="text-white font-semibold text-2xl"
           onClick={() => {
-            setComponent(props.card);
+            setComponent(invest);
           }}
         >
-          {props.card !== null && props.card.title}
+          {invest !== null && invest.title}
         </p>
       </div>
     </div>
   );
+};
+
+const Topbar: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  if (!id) return <div> Invalid ID </div>;
+  return <InnerTopbar id={id} />;
 };
 
 export default Topbar;

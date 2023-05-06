@@ -1,4 +1,4 @@
-import { render, screen, renderHook, act } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, vi } from "vitest";
 
@@ -6,6 +6,7 @@ import Add from ".";
 
 vi.mock("react-query", () => {
   return {
+    useQueryClient: vi.fn(),
     useMutation: vi.fn(() => ({
       mutate: vi.fn(),
     })),
@@ -14,7 +15,7 @@ vi.mock("react-query", () => {
 
 describe("Add", () => {
   it("renders", async () => {
-    render(<Add />);
+    render(<Add toggleAdd={vi.fn()} />);
     const titleElement = screen.getByText(/Time for a new/i);
     expect(titleElement).toBeInTheDocument();
 
@@ -26,13 +27,13 @@ describe("Add", () => {
     });
     expect(nameInputElement).toBeInTheDocument();
 
-    const UIDElement = screen.getByLabelText(/UID/i);
-    expect(UIDElement).toBeInTheDocument();
+    const descriptionElement = screen.getByLabelText(/description/i);
+    expect(descriptionElement).toBeInTheDocument();
 
-    const UIDInputElement = screen.getByRole("textbox", {
-      name: /UID/i,
+    const descriptionInputElement = screen.getByRole("textbox", {
+      name: /description/i,
     });
-    expect(UIDInputElement).toBeInTheDocument();
+    expect(descriptionInputElement).toBeInTheDocument();
 
     const storyPointsElement = screen.getByText(/Story Points/i);
     expect(storyPointsElement).toBeInTheDocument();
@@ -41,20 +42,20 @@ describe("Add", () => {
     expect(radioElements.length).toEqual(5);
   });
   it("updates the inputs", async () => {
-    render(<Add />);
+    render(<Add toggleAdd={vi.fn()} />);
     const nameInputElement = screen.getByRole("textbox", {
       name: /Item Name/i,
     });
-    const UIDInputElement = screen.getByRole("textbox", {
-      name: /UID/i,
+    const descriptionInputElement = screen.getByRole("textbox", {
+      name: /description/i,
     });
     const radioElements = await screen.findAllByRole("radio");
 
     await userEvent.type(nameInputElement, "Test Name");
     expect(nameInputElement).toHaveValue("Test Name");
 
-    await userEvent.type(UIDInputElement, "Test UID");
-    expect(UIDInputElement).toHaveValue("Test UID");
+    await userEvent.type(descriptionInputElement, "Test description");
+    expect(descriptionInputElement).toHaveValue("Test description");
 
     await userEvent.click(radioElements[2]);
     expect(radioElements[0]).not.toBeChecked();

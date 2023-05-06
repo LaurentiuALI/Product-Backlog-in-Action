@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>193/193</span>
+                <span class='fraction'>167/167</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>26/26</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>193/193</span>
+                <span class='fraction'>167/167</span>
             </div>
         
             
@@ -230,59 +230,7 @@
 <a name='L165'></a><a href='#L165'>165</a>
 <a name='L166'></a><a href='#L166'>166</a>
 <a name='L167'></a><a href='#L167'>167</a>
-<a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a>
-<a name='L170'></a><a href='#L170'>170</a>
-<a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a>
-<a name='L174'></a><a href='#L174'>174</a>
-<a name='L175'></a><a href='#L175'>175</a>
-<a name='L176'></a><a href='#L176'>176</a>
-<a name='L177'></a><a href='#L177'>177</a>
-<a name='L178'></a><a href='#L178'>178</a>
-<a name='L179'></a><a href='#L179'>179</a>
-<a name='L180'></a><a href='#L180'>180</a>
-<a name='L181'></a><a href='#L181'>181</a>
-<a name='L182'></a><a href='#L182'>182</a>
-<a name='L183'></a><a href='#L183'>183</a>
-<a name='L184'></a><a href='#L184'>184</a>
-<a name='L185'></a><a href='#L185'>185</a>
-<a name='L186'></a><a href='#L186'>186</a>
-<a name='L187'></a><a href='#L187'>187</a>
-<a name='L188'></a><a href='#L188'>188</a>
-<a name='L189'></a><a href='#L189'>189</a>
-<a name='L190'></a><a href='#L190'>190</a>
-<a name='L191'></a><a href='#L191'>191</a>
-<a name='L192'></a><a href='#L192'>192</a>
-<a name='L193'></a><a href='#L193'>193</a>
-<a name='L194'></a><a href='#L194'>194</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L168'></a><a href='#L168'>168</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -450,14 +398,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { render, screen, renderHook, act } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
 &nbsp;
 import {
   MockStateAchieved,
   MockStateUnachieved,
   MockStateUnachievedOpt,
-  MockStateInvalid,
 } from "./constants";
 &nbsp;
 import { useComponentStore } from "../../../../stores/ComponentStore";
@@ -497,11 +444,11 @@ describe("ChecklistItem", () =&gt; {
       expect(pElement).toBeInTheDocument();
 &nbsp;
       await userEvent.click(pElement);
-      expect(result.current.component).toBe(MockStateAchieved);
-      act(() =&gt; result.current.setComponent(null));
+      expect(result.current.componentState).toBe(MockStateAchieved);
+      act(() =&gt; result.current.setComponentState(null));
 &nbsp;
       await userEvent.click(imgElement);
-      expect(result.current.component).toBe(MockStateAchieved);
+      expect(result.current.componentState).toBe(MockStateAchieved);
     });
   });
 &nbsp;
@@ -526,11 +473,11 @@ describe("ChecklistItem", () =&gt; {
       expect(pElement).toBeInTheDocument();
 &nbsp;
       await userEvent.click(pElement);
-      expect(result.current.component).toBe(MockStateUnachieved);
-      act(() =&gt; result.current.setComponent(null));
+      expect(result.current.componentState).toBe(MockStateUnachieved);
+      act(() =&gt; result.current.setComponentState(null));
 &nbsp;
       await userEvent.click(imgElement);
-      expect(result.current.component).toBe(MockStateUnachieved);
+      expect(result.current.componentState).toBe(MockStateUnachieved);
     });
   });
 &nbsp;
@@ -555,37 +502,12 @@ describe("ChecklistItem", () =&gt; {
       expect(pElement).toBeInTheDocument();
 &nbsp;
       await userEvent.click(pElement);
-      expect(result.current.component).toBe(MockStateUnachievedOpt);
-      act(() =&gt; result.current.setComponent(null));
+      expect(result.current.componentState).toBe(MockStateUnachievedOpt);
+      act(() =&gt; result.current.setComponentState(null));
 &nbsp;
       await userEvent.click(imgElement);
-      expect(result.current.component).toBe(MockStateUnachievedOpt);
+      expect(result.current.componentState).toBe(MockStateUnachievedOpt);
     });
-  });
-&nbsp;
-  it("shouldn't render anything if props.state is undefined", () =&gt; {
-    render(&lt;ChecklistItem state={MockStateInvalid} /&gt;);
-    const imgElement = screen.queryByRole("img", { name: "State Achieved" });
-    expect(imgElement).not.toBeInTheDocument();
-&nbsp;
-    const pElement = screen.queryByText(MockStateInvalid.name);
-    expect(pElement).not.toBeInTheDocument();
-&nbsp;
-    const imgElement2 = screen.queryByRole("img", {
-      name: "State Unachieved",
-    });
-    expect(imgElement2).not.toBeInTheDocument();
-&nbsp;
-    const pElement2 = screen.queryByText(MockStateInvalid.name);
-    expect(pElement2).not.toBeInTheDocument();
-&nbsp;
-    const imgElement3 = screen.queryByRole("img", {
-      name: "State Unachieved",
-    });
-    expect(imgElement3).not.toBeInTheDocument();
-&nbsp;
-    const pElement3 = screen.queryByText(MockStateInvalid.name);
-    expect(pElement3).not.toBeInTheDocument();
   });
 &nbsp;
   it("should render State Achieved", async () =&gt; {
@@ -599,11 +521,11 @@ describe("ChecklistItem", () =&gt; {
     expect(pElement).toBeInTheDocument();
 &nbsp;
     await userEvent.click(pElement);
-    expect(result.current.component).toBe(MockStateAchieved);
-    act(() =&gt; result.current.setComponent(null));
+    expect(result.current.componentState).toBe(MockStateAchieved);
+    act(() =&gt; result.current.setComponentState(null));
 &nbsp;
     await userEvent.click(imgElement);
-    expect(result.current.component).toBe(MockStateAchieved);
+    expect(result.current.componentState).toBe(MockStateAchieved);
   });
 &nbsp;
   it("should render State Unachieved", async () =&gt; {
@@ -617,11 +539,11 @@ describe("ChecklistItem", () =&gt; {
     expect(pElement).toBeInTheDocument();
 &nbsp;
     await userEvent.click(pElement);
-    expect(result.current.component).toBe(MockStateUnachieved);
-    act(() =&gt; result.current.setComponent(null));
+    expect(result.current.componentState).toBe(MockStateUnachieved);
+    act(() =&gt; result.current.setComponentState(null));
 &nbsp;
     await userEvent.click(imgElement);
-    expect(result.current.component).toBe(MockStateUnachieved);
+    expect(result.current.componentState).toBe(MockStateUnachieved);
   });
 &nbsp;
   it("should render State Unachieved Opt", async () =&gt; {
@@ -635,11 +557,11 @@ describe("ChecklistItem", () =&gt; {
     expect(pElement).toBeInTheDocument();
 &nbsp;
     await userEvent.click(pElement);
-    expect(result.current.component).toBe(MockStateUnachievedOpt);
-    act(() =&gt; result.current.setComponent(null));
+    expect(result.current.componentState).toBe(MockStateUnachievedOpt);
+    act(() =&gt; result.current.setComponentState(null));
 &nbsp;
     await userEvent.click(imgElement);
-    expect(result.current.component).toBe(MockStateUnachievedOpt);
+    expect(result.current.componentState).toBe(MockStateUnachievedOpt);
   });
 });
 &nbsp;</pre></td></tr></table></pre>
@@ -649,7 +571,7 @@ describe("ChecklistItem", () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-25T21:04:56.769Z
+                at 2023-05-06T21:01:05.919Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

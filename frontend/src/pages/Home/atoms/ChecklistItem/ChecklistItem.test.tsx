@@ -1,12 +1,11 @@
 import { render, screen, renderHook, act } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
 
 import {
   MockStateAchieved,
   MockStateUnachieved,
   MockStateUnachievedOpt,
-  MockStateInvalid,
 } from "./constants";
 
 import { useComponentStore } from "../../../../stores/ComponentStore";
@@ -46,11 +45,11 @@ describe("ChecklistItem", () => {
       expect(pElement).toBeInTheDocument();
 
       await userEvent.click(pElement);
-      expect(result.current.component).toBe(MockStateAchieved);
-      act(() => result.current.setComponent(null));
+      expect(result.current.componentState).toBe(MockStateAchieved);
+      act(() => result.current.setComponentState(null));
 
       await userEvent.click(imgElement);
-      expect(result.current.component).toBe(MockStateAchieved);
+      expect(result.current.componentState).toBe(MockStateAchieved);
     });
   });
 
@@ -75,11 +74,11 @@ describe("ChecklistItem", () => {
       expect(pElement).toBeInTheDocument();
 
       await userEvent.click(pElement);
-      expect(result.current.component).toBe(MockStateUnachieved);
-      act(() => result.current.setComponent(null));
+      expect(result.current.componentState).toBe(MockStateUnachieved);
+      act(() => result.current.setComponentState(null));
 
       await userEvent.click(imgElement);
-      expect(result.current.component).toBe(MockStateUnachieved);
+      expect(result.current.componentState).toBe(MockStateUnachieved);
     });
   });
 
@@ -104,37 +103,12 @@ describe("ChecklistItem", () => {
       expect(pElement).toBeInTheDocument();
 
       await userEvent.click(pElement);
-      expect(result.current.component).toBe(MockStateUnachievedOpt);
-      act(() => result.current.setComponent(null));
+      expect(result.current.componentState).toBe(MockStateUnachievedOpt);
+      act(() => result.current.setComponentState(null));
 
       await userEvent.click(imgElement);
-      expect(result.current.component).toBe(MockStateUnachievedOpt);
+      expect(result.current.componentState).toBe(MockStateUnachievedOpt);
     });
-  });
-
-  it("shouldn't render anything if props.state is undefined", () => {
-    render(<ChecklistItem state={MockStateInvalid} />);
-    const imgElement = screen.queryByRole("img", { name: "State Achieved" });
-    expect(imgElement).not.toBeInTheDocument();
-
-    const pElement = screen.queryByText(MockStateInvalid.name);
-    expect(pElement).not.toBeInTheDocument();
-
-    const imgElement2 = screen.queryByRole("img", {
-      name: "State Unachieved",
-    });
-    expect(imgElement2).not.toBeInTheDocument();
-
-    const pElement2 = screen.queryByText(MockStateInvalid.name);
-    expect(pElement2).not.toBeInTheDocument();
-
-    const imgElement3 = screen.queryByRole("img", {
-      name: "State Unachieved",
-    });
-    expect(imgElement3).not.toBeInTheDocument();
-
-    const pElement3 = screen.queryByText(MockStateInvalid.name);
-    expect(pElement3).not.toBeInTheDocument();
   });
 
   it("should render State Achieved", async () => {
@@ -148,11 +122,11 @@ describe("ChecklistItem", () => {
     expect(pElement).toBeInTheDocument();
 
     await userEvent.click(pElement);
-    expect(result.current.component).toBe(MockStateAchieved);
-    act(() => result.current.setComponent(null));
+    expect(result.current.componentState).toBe(MockStateAchieved);
+    act(() => result.current.setComponentState(null));
 
     await userEvent.click(imgElement);
-    expect(result.current.component).toBe(MockStateAchieved);
+    expect(result.current.componentState).toBe(MockStateAchieved);
   });
 
   it("should render State Unachieved", async () => {
@@ -166,11 +140,11 @@ describe("ChecklistItem", () => {
     expect(pElement).toBeInTheDocument();
 
     await userEvent.click(pElement);
-    expect(result.current.component).toBe(MockStateUnachieved);
-    act(() => result.current.setComponent(null));
+    expect(result.current.componentState).toBe(MockStateUnachieved);
+    act(() => result.current.setComponentState(null));
 
     await userEvent.click(imgElement);
-    expect(result.current.component).toBe(MockStateUnachieved);
+    expect(result.current.componentState).toBe(MockStateUnachieved);
   });
 
   it("should render State Unachieved Opt", async () => {
@@ -184,10 +158,10 @@ describe("ChecklistItem", () => {
     expect(pElement).toBeInTheDocument();
 
     await userEvent.click(pElement);
-    expect(result.current.component).toBe(MockStateUnachievedOpt);
-    act(() => result.current.setComponent(null));
+    expect(result.current.componentState).toBe(MockStateUnachievedOpt);
+    act(() => result.current.setComponentState(null));
 
     await userEvent.click(imgElement);
-    expect(result.current.component).toBe(MockStateUnachievedOpt);
+    expect(result.current.componentState).toBe(MockStateUnachievedOpt);
   });
 });

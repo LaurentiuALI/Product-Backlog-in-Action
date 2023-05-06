@@ -67,13 +67,15 @@ describe("Card", () => {
     const titleElement = screen.getByText(stateComponent.name);
     expect(titleElement).toBeInTheDocument();
 
-    const checkboxes = screen.getAllByRole("checkbox");
+    const checkboxes = screen.getAllByRole("button");
     expect(checkboxes.length).toBe(stateComponent.checklist.length);
   };
 
   describe("StateCard", () => {
     it("renders", () => {
-      render(<StateCard component={stateComponent} />);
+      render(
+        <StateCard component={stateComponent} flag={true} setFlag={vi.fn()} />
+      );
       testState();
     });
     it("updates checklist", async () => {
@@ -82,7 +84,7 @@ describe("Card", () => {
       render(
         <StateCard component={stateComponent} setFlag={setFlag} flag={flag} />
       );
-      const checkboxes = screen.getAllByRole("checkbox");
+      const checkboxes = screen.getAllByRole("button");
       expect(checkboxes.length).toBe(stateComponent.checklist.length);
 
       await userEvent.click(checkboxes[0]);
@@ -135,7 +137,8 @@ describe("Card", () => {
     act(() => result.current.setComponent(patternComponent));
     testPattern();
 
-    act(() => result.current.setComponent(stateComponent));
+    act(() => result.current.setComponent(null));
+    act(() => result.current.setComponentState(stateComponent));
     testState();
   });
 });

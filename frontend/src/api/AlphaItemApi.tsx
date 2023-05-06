@@ -1,13 +1,19 @@
 import axios from "axios";
+import { type IAlphaItem } from "../hooks/useItemData";
 
-export const getAlphaItems = () => {
-  return axios
-    .get("http://localhost:4000/api/v1/alphaItems/")
-    .then((response) => response.data);
+export const getAlphaItems = async () => {
+  const response = await axios.get<IAlphaItem[]>(
+    "http://localhost:4000/api/v1/alphaItems/"
+  );
+  return response.data;
 };
 
-export const addAlphaItem =(item: any) => {
-  return axios
-    .post("http://localhost:4000/api/v1/alphaItems/", item)
-    .then((response) => response.data);
-}
+export const addAlphaItem = async (
+  item: Omit<IAlphaItem, "_id" | "cards" | "priority" | "state">
+) => {
+  const response = await axios.post<IAlphaItem>(
+    "http://localhost:4000/api/v1/alphaItems/",
+    item
+  );
+  return response.data;
+};

@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { type To, useNavigate } from "react-router-dom";
+import { type IAlphaItem } from "../../../../hooks/useItemData";
 
-const ItemEntry = (props: any) => {
+const ItemEntry: React.FC<{ item: IAlphaItem }> = (props) => {
   const navigate = useNavigate();
-  const myNavigate = (url: any) => navigate(url);
+  const myNavigate = (url: To) => navigate(url);
 
   return (
     <div

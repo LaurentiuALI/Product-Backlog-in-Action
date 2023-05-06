@@ -1,14 +1,12 @@
-import { render, renderHook, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { SplittingPattern, ProductBacklog, RelativePattern } from "./constants";
 
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { Home } from ".";
-import * as ReactRouter from "react-router";
 import { BrowserRouter } from "react-router-dom";
 
-let queryClient = new QueryClient();
+const queryClient = new QueryClient();
 
 const MockedHome = () => {
   return (
@@ -19,7 +17,6 @@ const MockedHome = () => {
     </QueryClientProvider>
   );
 };
-const spy = vi.spyOn(ReactRouter, "useNavigate");
 vi.mock("../../../../hooks/useCardsData", () => {
   return {
     useCardData: vi.fn(() => ({
