@@ -1,5 +1,5 @@
 import Card from "../molecules/Card";
-import InnerDefinitionOfDoneCluster from "../molecules/DefinitionOfDoneCluster";
+import DefinitionOfDoneCluster from "../molecules/DefinitionOfDoneCluster";
 import ProductBacklogItem from "../molecules/ProductBacklogItem";
 import TestCaseCluster from "../molecules/TestCaseCluster";
 
@@ -8,9 +8,9 @@ const Group = () => {
     <div className="h-full w-full flex">
       <div className="h-full w-3/6">
         <TestCaseCluster />
-        <InnerDefinitionOfDoneCluster />
+        <DefinitionOfDoneCluster />
       </div>
-      <div className="w-1/2 h-full flex">
+      <div className="w-1/2 h-full flex 2k:pl-32">
         <ProductBacklogItem />
         <Card />
       </div>

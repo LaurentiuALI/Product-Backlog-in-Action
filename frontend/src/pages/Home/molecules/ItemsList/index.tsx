@@ -14,10 +14,10 @@ const ItemsList = () => {
     data != null ? data.filter((item) => item.state == "Identified") : null;
   return (
     <div className="overflow-auto h-[calc(100vh - 120px)] mt-2">
-      <IssuesTab entries={readyEntry} title="Ready For Development" />
-      <div className="flex 3xl:flex-row flex-col">
+      <IssuesTab entries={identifiedEntry} title="Identified" />
+      <div className="flex 3xl:flex-row flex-col 4k:flex-col">
         <div className="mr-6 basis-0 grow shrink">
-          <IssuesTab entries={identifiedEntry} title="Identified" />
+          <IssuesTab entries={readyEntry} title="Ready For Development" />
         </div>
         <div className="basis-0 grow shrink">
           <IssuesTab entries={doneEntry} title="Done" />

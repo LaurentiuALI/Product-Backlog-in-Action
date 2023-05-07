@@ -21,7 +21,7 @@ const State: React.FC<IStateProps> = (props) => {
 
   return (
     <div
-      className="flex flex-col items-center h-fit w-fit"
+      className="flex flex-col items-center h-fit w-fit 2k:mr-12"
       style={props.style}
       onClick={() => {
         setComponentState(props.card);
@@ -36,9 +36,9 @@ const State: React.FC<IStateProps> = (props) => {
             : stateUnachieved
         }
         alt="activity"
-        className="w-max h-auto object-cover"
+        className="w-max h-auto object-cover 2k:w-40 4k:w-60"
       />
-      <h1 className="text-lg text-white font-semibold font-inter text-center ml-2">
+      <h1 className="text-lg text-white font-semibold font-inter text-center ml-2 4k:text-3xl 4k:ml-4">
         {props.name}
       </h1>
     </div>

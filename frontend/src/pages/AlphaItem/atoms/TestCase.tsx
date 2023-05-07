@@ -16,17 +16,16 @@ const TestCase: React.FC<ITestCaseProps> = (props) => {
 
   return (
     <div
-      className="flex flex-col items-center h-fit w-fit relative "
-      style={props.style}
+      className="flex flex-col items-center h-fit w-fit relative mr-20"
       onClick={() => setComponent(props.card)}
     >
       <img
         id={props.id}
         src={workProduct}
         alt="activity"
-        className="w-max h-auto object-cover"
+        className="w-max h-auto object-cover 2k:w-28 4k:w-40"
       />
-      <h1 className="text-lg text-white font-semibold font-inter text-center">
+      <h1 className="text-lg text-white font-semibold font-inter text-center 4k:text-3xl">
         {props.name}
       </h1>
     </div>

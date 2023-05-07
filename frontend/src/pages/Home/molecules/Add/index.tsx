@@ -29,10 +29,10 @@ const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
 
   return (
     <div className="flex justify-center items-center flex-grow">
-      <div className="bg-gradient-to-b from-primary-100 to-primary-200 w-2/4 h-5/6 rounded-3xl">
+      <div className="bg-gradient-to-b from-primary-100 to-primary-200 w-[50rem] h-[40rem] 4k:w-[70rem] 4k:h-[60rem] rounded-3xl">
         <div className="flex flex-col items-center">
           <img src={alpha} className="h-16 m-10 opacity-90" />
-          <h1 className="font-medium text-3xl text-center text-white opacity-80 mb-12">
+          <h1 className="font-medium text-3xl text-center text-white opacity-80 mb-4 ">
             Time for a new
             <br />
             Product Backlog Item
@@ -42,7 +42,7 @@ const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
             className="w-full flex flex-col items-center"
             onSubmit={onSubmit}
           >
-            <div className="w-8/12 mb-3">
+            <div className="w-8/12 mb-3 4k:mt-12">
               <label htmlFor="name" className="font-medium text-2xl text-white">
                 Item Name
               </label>
@@ -55,7 +55,7 @@ const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
               />
             </div>
 
-            <div className="w-8/12 mb-6">
+            <div className="w-8/12 mb-6 4k:mt-12">
               <label
                 htmlFor="description"
                 className="font-medium text-2xl text-white "
@@ -70,11 +70,11 @@ const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
                 className="rounded-md w-full h-12 mt-2"
               />
             </div>
-            <div className="w-8/12">
+            <div className="w-8/12 4k:mt-12">
               <p className="font-medium text-2xl text-white flex ">
                 Story Points
               </p>
-              <div id="storyPoints" className="flex justify-evenly mt-2">
+              <div id="storyPoints" className="flex justify-evenly mt-2 ">
                 {[1, 2, 3, 5, 8].map((number) => (
                   <CustomCheckbox
                     key={number}
@@ -87,7 +87,7 @@ const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
             <input
               type="submit"
               value="Add"
-              className="border-2 pl-8 pr-8 pt-2 pb-2 rounded-md mt-6 text-white font-semibold text-xl"
+              className="border-2 pl-8 pr-8 pt-2 pb-2 rounded-md mt-6 text-white font-semibold text-xl 4k:mt-32 4k:text-4xl"
             ></input>
           </form>
         </div>

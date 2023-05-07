@@ -19,7 +19,6 @@ export const CustomSwitch: React.FC<ICustomSwitchProps> = ({
   setFlag,
   componentState,
 }) => {
-  
   const [active, setActive] = useState(stateChecklist.checked);
   return (
     <button
@@ -35,9 +34,17 @@ export const CustomSwitch: React.FC<ICustomSwitchProps> = ({
       }}
     >
       {active ? (
-        <img src={SwitchOn} alt="switch on" />
+        <img
+          src={SwitchOn}
+          className="w-fit h-auto object-cover 4k:w-20"
+          alt="switch on"
+        />
       ) : (
-        <img src={SwitchOff} alt="switch off" />
+        <img
+          src={SwitchOff}
+          className="w-fit h-auto object-cover 4k:w-20"
+          alt="switch off"
+        />
       )}
     </button>
   );

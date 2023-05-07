@@ -16,7 +16,7 @@ const Alpha: React.FC<IAlphaProps> = (props) => {
 
   return (
     <div
-      className="flex items-center h-fit w-fit"
+      className="flex items-center h-fit w-fit 2k:mt-14 4k:mt-48"
       style={props.style}
       onClick={() => setComponent(props.card)}
     >
@@ -24,9 +24,9 @@ const Alpha: React.FC<IAlphaProps> = (props) => {
         src={AlphaIcon}
         id={props.id}
         alt="activity"
-        className="w-28 h-auto object-cover"
+        className="w-28 h-auto object-cover 2k:w-40 4k:w-60"
       />
-      <h1 className="text-lg text-white font-semibold font-inter">
+      <h1 className="text-lg text-white font-semibold font-inter 4k:text-3xl">
         {props.name}
       </h1>
     </div>

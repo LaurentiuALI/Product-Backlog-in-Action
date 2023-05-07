@@ -9,7 +9,7 @@ import { useCardData } from "../../../../hooks/useCardsData";
 import { useComponentStore } from "../../../../stores/ComponentStore";
 
 const Home = () => {
-  const { setComponent } = useComponentStore();
+  const { setComponent, setComponentState } = useComponentStore();
   const {
     isLoading,
     error,
@@ -20,7 +20,8 @@ const Home = () => {
 
   useEffect(() => {
     setComponent(null);
-  }, [setComponent]);
+    setComponentState(null);
+  }, [setComponent, setComponentState]);
 
   const [addActive, setaddActive] = useState(false);
 
@@ -41,7 +42,7 @@ const Home = () => {
         <div className="min-w-[30rem] h-screen flex flex-col mr-12">
           <Topbar />
           {!addActive && <ItemsList />}
-          {addActive && <Add toggleAdd={toggleAdd}/>}
+          {addActive && <Add toggleAdd={toggleAdd} />}
         </div>
       )}
     </div>

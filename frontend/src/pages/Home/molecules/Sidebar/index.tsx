@@ -14,7 +14,7 @@ const Sidebar: React.FC<{ addActive: () => void }> = (props) => {
       <div className="flex flex-col items-center" key="unique">
         <Logo />
 
-        <div className="mb-12 2k:mb-[10rem] 4k:mb-[20rem]">
+        <div className="mb-12 2k:mb-[10rem] 4k:mb-[20rem] 4k:mt-16">
           <AddAlpha addActive={props.addActive} />
         </div>
 

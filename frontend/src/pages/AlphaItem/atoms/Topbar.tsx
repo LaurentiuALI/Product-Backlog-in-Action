@@ -8,20 +8,20 @@ const InnerTopbar: React.FC<{ id: string }> = ({ id }) => {
   const { alphaItem, invest } = useItemData(id);
   const setComponent = useComponentStore((state) => state.setComponent);
   return (
-    <div className="border-b-2 border-b-white flex justify-around items-center">
-      <img src={pbIcon} className="p-4" />
-      <div className="flex flex-col items-center max-w-[60rem] overflow-x-auto">
-        <p className="text-white font-semibold text-2xl mb-4 break-all text-center">
+    <div className="border-b-2 border-b-white flex justify-around items-center 4k:h-[20rem]">
+      <img src={pbIcon} className="p-4 w-max h-auto object-cover 4k:w-52" />
+      <div className="flex flex-col items-center max-w-[60rem] overflow-x-auto 4k:max-w-[90rem]">
+        <p className="text-white font-semibold text-2xl mb-4 break-all text-center 4k:text-6xl">
           {alphaItem != null && alphaItem.name}
         </p>
-        <p className="text-white font-semibold text-l text-center break-all">
+        <p className="text-white font-semibold text-l text-center break-all 4k:text-3xl">
           {alphaItem != null && alphaItem.description}
         </p>
       </div>
       <div className="flex flex-col items-center">
         <img
           src={pattern}
-          className="p-4"
+          className="p-4 w-max h-auto object-cover 4k:w-52"
           onClick={() => setComponent(invest)}
         />
 

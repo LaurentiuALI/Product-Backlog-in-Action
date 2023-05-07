@@ -6,9 +6,9 @@ export const PatternCard: React.FC<{ component: IComponent }> = ({
   const text = component.description.split("\\n");
 
   return (
-    <div className="bg-white flex flex-col h-[23rem] w-[23rem] border rounded-t-3xl">
+    <div className="bg-white flex flex-col h-[23rem] w-[23rem] border rounded-t-3xl 4k:h-[40rem]">
       <div className="flex flex-col items-center">
-        <h1 className="font-semibold mt-4 mb-6 text-center text-2xl underline decoration-primary-100 decoration-2">
+        <h1 className="font-semibold mt-4 mb-6 text-center text-2xl underline decoration-primary-100 decoration-2 4k:mt-14 4k:mb-20">
           {component != null && component.title}
         </h1>
 
