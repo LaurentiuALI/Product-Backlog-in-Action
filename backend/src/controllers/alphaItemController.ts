@@ -1,197 +1,157 @@
-import AlphaItem from '../models/alphaItemModel';
+import AlphaItem from "../models/alphaItemModel";
 
-import { productBacklogItem, INVEST, agreeDefinitionOfDone, definitionOfDone, prepareAProductBacklogItem, testCase } from './constants';
+import {
+  productBacklogItem,
+  INVEST,
+  agreeDefinitionOfDone,
+  definitionOfDone,
+  prepareAProductBacklogItem,
+  testCase,
+} from "./constants";
 
-import {Request, Response} from 'express';
+import { Request, Response } from "express";
 
 import mongoose from "mongoose";
 
 // GET all alpha items
 export const getAllAlphaItems = async (req: Request, res: Response) => {
+  try {
+    // retrieve all cards from db and sort by date created (newest first)
 
-    try{
+    const alphaItems = await AlphaItem.find({}).sort({ priority: -1 });
 
-        // retrieve all cards from db and sort by date created (newest first)
+    // send cards as response
 
-        const alphaItems = await AlphaItem.find({}).sort({priority: -1})
+    res.status(200).json(alphaItems);
+  } catch (err) {
+    // send error message as response if error occurs while retrieving cards from db
 
-        // send cards as response
-
-        res.status(200).json(alphaItems);
-
-    }catch(err: any){
-
-        // send error message as response if error occurs while retrieving cards from db
-
-        if(err instanceof Error){
-
-            return res.status(400).json({message: err.message});
-
-        }else{
-
-            return res.status(400).json({message: 'Something went wrong' + err});
-
-        }
-
+    if (err instanceof Error) {
+      return res.status(400).json({ message: err.message });
+    } else {
+      return res.status(400).json({ message: "Something went wrong" + err });
     }
-
-}
-
+  }
+};
 
 // GET one alpha item
 export const getOneAlphaItem = async (req: Request, res: Response) => {
+  try {
+    // check if id is valid and send error message as response if not
 
-    try{
-
-        // check if id is valid and send error message as response if not
-
-        if(!mongoose.Types.ObjectId.isValid(req.params.id)){
-
-            return res.status(404).json({message: 'Alpha Item not found!'});
-
-        }
-
-        // retrieve card from db
-
-        const alphaItem = await AlphaItem.findById(req.params.id);
-
-        // send error message as response if card is not found
-
-        if(alphaItem == null){
-
-            return res.status(404).json({message: 'Alpha Item not found'});
-
-        }
-
-        // send card as response
-
-        res.status(200).json(alphaItem);
-
-    }catch(err){
-
-        // send error message as response if error occurs while retrieving card from db
-
-        if(err instanceof Error){
-
-            return res.status(400).json({message: err.message});
-
-        }else{
-
-            return res.status(400).json({message: 'Something went wrong' + err});
-
-        }
-
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: "Alpha Item not found!" });
     }
 
-}
+    // retrieve card from db
+
+    const alphaItem = await AlphaItem.findById(req.params.id);
+
+    // send error message as response if card is not found
+
+    if (alphaItem == null) {
+      return res.status(404).json({ message: "Alpha Item not found" });
+    }
+
+    // send card as response
+
+    res.status(200).json(alphaItem);
+  } catch (err) {
+    // send error message as response if error occurs while retrieving card from db
+
+    if (err instanceof Error) {
+      return res.status(400).json({ message: err.message });
+    } else {
+      return res.status(400).json({ message: "Something went wrong" + err });
+    }
+  }
+};
 
 // POST one alpha item
 export const createAlphaItem = async (req: Request, res: Response) => {
-        try{
-    
-            // retrieve card from db
+  try {
+    // retrieve card from db
 
-            const alphaItem = await AlphaItem.create({...req.body, cards: [productBacklogItem, INVEST, agreeDefinitionOfDone, definitionOfDone, prepareAProductBacklogItem, testCase] });
-            
-    
-            // send card as response
-    
-            res.status(201).json(alphaItem);
-    
-        }catch(err){
-    
-            // send error message as response if error occurs while retrieving card from db
-    
-            if(err instanceof Error){
-    
-                return res.status(400).json({message: err.message});
-    
-            }else{
-    
-                return res.status(400).json({message: 'Something went wrong' + err});
-    
-            }
-    
-        }
-    
+    const alphaItem = await AlphaItem.create({
+      ...req.body,
+      cards: [
+        productBacklogItem,
+        INVEST,
+        agreeDefinitionOfDone,
+        definitionOfDone,
+        prepareAProductBacklogItem,
+        testCase,
+      ],
+    });
+
+    // send card as response
+
+    res.status(201).json(alphaItem);
+  } catch (err) {
+    // send error message as response if error occurs while retrieving card from db
+
+    if (err instanceof Error) {
+      return res.status(400).json({ message: err.message });
+    } else {
+      return res.status(400).json({ message: "Something went wrong" + err });
     }
+  }
+};
 
 // DELETE one alpha item
 export const deleteAlphaItem = async (req: Request, res: Response) => {
-    
-        try{
-    
-            // check if id is valid and send error message as response if not
-    
-            if(!mongoose.Types.ObjectId.isValid(req.params.id)){
-    
-                return res.status(404).json({message: 'Alpha Item not found!'});
-    
-            }
-    
-            // delete card from db
-    
-            await AlphaItem.findByIdAndRemove(req.params.id);
-    
-            // send success message as response
-    
-            res.status(200).json({message: 'Alpha Item deleted successfully'});
-    
-        }catch(err){
-    
-            // send error message as response if error occurs while retrieving card from db
-    
-            if(err instanceof Error){
-    
-                return res.status(400).json({message: err.message});
-    
-            }else{
-    
-                return res.status(400).json({message: 'Something went wrong' + err});
-    
-            }
-    
-        }
-    
+  try {
+    // check if id is valid and send error message as response if not
+
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: "Alpha Item not found!" });
     }
+
+    // delete card from db
+
+    await AlphaItem.findByIdAndRemove(req.params.id);
+
+    // send success message as response
+
+    res.status(200).json({ message: "Alpha Item deleted successfully" });
+  } catch (err) {
+    // send error message as response if error occurs while retrieving card from db
+
+    if (err instanceof Error) {
+      return res.status(400).json({ message: err.message });
+    } else {
+      return res.status(400).json({ message: "Something went wrong" + err });
+    }
+  }
+};
 
 // PATCH one alpha item
 export const updateAlphaItem = async (req: Request, res: Response) => {
-
-    try{
-        
-        if(!mongoose.Types.ObjectId.isValid(req.params.id)){
-
-            return res.status(404).json({message: 'Alpha Item not found!'});
-
-        }
-
-        // update alpha item in db
-        const alphaItem = await AlphaItem.findOneAndUpdate({_id: req.params.id}, {...req.body});
-
-        if(alphaItem == null){
-
-                return res.status(404).json({message: 'Alpha Item not found'});
-    
-        }
-
-        // send alpha item as response
-
-        res.status(200).json(alphaItem);
-
-    }catch(err){
-
-        // send error message as response if error occurs while retrieving card from db
-
-        if(err instanceof Error){
-
-            return res.status(400).json({message: err.message});
-
-        }else{
-
-            return res.status(400).json({message: 'Something went wrong' + err});
-
-        }
-
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: "Alpha Item not found!" });
     }
-}
+
+    // update alpha item in db
+    const alphaItem = await AlphaItem.findOneAndUpdate(
+      { _id: req.params.id },
+      { ...req.body }
+    );
+
+    if (alphaItem == null) {
+      return res.status(404).json({ message: "Alpha Item not found" });
+    }
+
+    // send alpha item as response
+
+    res.status(200).json(alphaItem);
+  } catch (err) {
+    // send error message as response if error occurs while retrieving card from db
+
+    if (err instanceof Error) {
+      return res.status(400).json({ message: err.message });
+    } else {
+      return res.status(400).json({ message: "Something went wrong" + err });
+    }
+  }
+};

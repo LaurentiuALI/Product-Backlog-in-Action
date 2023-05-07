@@ -11,7 +11,7 @@ export const getAllCards = async (req: Request, res: Response) => {
 
     // send cards as response
     res.status(200).json(cards);
-  } catch (err: any) {
+  } catch (err) {
     // send error message as response if error occurs while retrieving cards from db
     if (err instanceof Error) {
       return res.status(400).json({ message: err.message });
