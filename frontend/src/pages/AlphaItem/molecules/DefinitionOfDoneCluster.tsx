@@ -26,16 +26,17 @@ const InnerDefinitionOfDoneCluster: React.FC<{ id: string }> = ({ id }) => {
 
   if (ready && agreeDefinitionOfDone && definitionOfDone)
     return (
-      <div className="w-full h-1/3 flex justify-center items-center">
+      <div className="flex justify-center items-center mt-16">
         <Activity
           id="DefOfDoneBox1"
           card={agreeDefinitionOfDone}
-          style={{ marginRight: 100 }}
+          style={{ marginRight: 80 }}
         />
         <TestCase
           id="DefOfDoneBox2"
           name={definitionOfDone.title}
           card={definitionOfDone}
+          style={{ marginLeft: 50, marginRight: 0 }}
         />
         {definitionOfDone.states.map((state, index) => (
           <State
@@ -44,7 +45,7 @@ const InnerDefinitionOfDoneCluster: React.FC<{ id: string }> = ({ id }) => {
             id={`DefOfDoneBox${index + 3}`}
             name={state.name}
             card={state}
-            style={{ marginLeft: 30 }}
+            style={{ marginRight: 50, marginTop: 30 }}
           />
         ))}
         {lines.map((line) => (
@@ -52,7 +53,7 @@ const InnerDefinitionOfDoneCluster: React.FC<{ id: string }> = ({ id }) => {
             key={line.from + line.to}
             start={line.from}
             end={line.to}
-            color="white"
+            color="#FB760D"
             strokeWidth={5}
             path="smooth"
             showHead={false}

@@ -1,11 +1,17 @@
-import Topbar from "./atoms/Topbar";
+import Sidebar from "./atoms/Sidebar";
+import Topbar from "./molecules/Topbar";
 import Group from "./organisms/Group";
 
 const AlphaItem = () => {
   return (
-    <div className="bg-gradient-to-b from-primary-100 to-primary-200 h-screen overflow-hidden cursor-default">
-      <Topbar />
-      <Group />
+    <div className="flex items-center h-screen overflow-hidden">
+      <Sidebar />
+      <div>
+        <Topbar />
+        <div className="h-[calc(100vh-190px)]">
+          <Group />
+        </div>
+      </div>
     </div>
   );
 };

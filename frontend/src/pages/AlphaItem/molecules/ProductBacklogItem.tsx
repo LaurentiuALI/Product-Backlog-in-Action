@@ -25,11 +25,11 @@ const InnerProductBacklogItem: React.FC<{ id: string }> = ({ id }) => {
 
   if (!productBacklogItem) return <div>Loading...</div>;
   return (
-    <div className="flex flex-col items-center mt-10 ml-40">
+    <div className="flex items-center mt-16">
       <Alpha
         id="ProductBacklogItemBox1"
         name={productBacklogItem.title}
-        style={{ marginBottom: 100 }}
+        style={{ marginRight: 100 }}
         card={productBacklogItem}
       />
 
@@ -40,7 +40,7 @@ const InnerProductBacklogItem: React.FC<{ id: string }> = ({ id }) => {
           id={`ProductBacklogItemBox${index + 2}`}
           name={state.name}
           card={state}
-          style={{ marginBottom: 100, flexDirection: "row" }}
+          style={{ marginLeft: 80, flexDirection: "column" }}
         />
       ))}
 
@@ -50,7 +50,7 @@ const InnerProductBacklogItem: React.FC<{ id: string }> = ({ id }) => {
             key={`line-${index}`}
             start={line.from}
             end={line.to}
-            color="white"
+            color="#FB760D"
             strokeWidth={5}
             path="grid"
             showHead={false}

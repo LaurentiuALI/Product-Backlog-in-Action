@@ -27,19 +27,20 @@ const InnerTestCaseCluster: React.FC<{ id: string }> = ({ id }) => {
   }, [prepareAProductBacklogItem, testCase, alphaItem]);
 
   return (
-    <div
-      onLoad={useXarrow()}
-      className="w-full h-3/6 aboslute flex items-center justify-center"
-    >
+    <div onLoad={useXarrow()} className="aboslute flex items-center mt-16">
       {prepareAProductBacklogItem != null && (
-        <Activity id="testCaseBox1" card={prepareAProductBacklogItem} />
+        <Activity
+          id="testCaseBox1"
+          card={prepareAProductBacklogItem}
+          style={{ marginRight: 200 }}
+        />
       )}
       {testCase != null && (
         <TestCase
           key={testCase.title}
           id="testCaseBox2"
           name={testCase.title}
-          style={{ marginLeft: 30 }}
+          style={{ marginLeft: 0, marginRight: 80 }}
           card={testCase}
         />
       )}
@@ -51,7 +52,7 @@ const InnerTestCaseCluster: React.FC<{ id: string }> = ({ id }) => {
             id={`testCaseBox${index + 3}`}
             index={index}
             name={state.name}
-            style={{ marginLeft: 30 }}
+            style={{ marginRight: 50 }}
             card={state}
           />
         ))}
@@ -62,7 +63,7 @@ const InnerTestCaseCluster: React.FC<{ id: string }> = ({ id }) => {
             key={line.from + line.to}
             start={line.from}
             end={line.to}
-            color="white"
+            color="#FB760D"
             strokeWidth={5}
             path="smooth"
             showHead={false}

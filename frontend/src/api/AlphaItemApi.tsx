@@ -17,3 +17,7 @@ export const addAlphaItem = async (
   );
   return response.data;
 };
+
+export const deleteAlphaItem = async (id: string) => {
+  await axios.delete(`http://localhost:4000/api/v1/alphaItems/${id}`);
+}

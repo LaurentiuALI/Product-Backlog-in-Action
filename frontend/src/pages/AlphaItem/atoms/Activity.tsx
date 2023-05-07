@@ -13,8 +13,7 @@ const Activity: React.FC<IActivityProps> = (props) => {
 
   return (
     <div
-      className="flex flex-col items-center h-fit w-fit relative 2k:mr-12"
-      style={props.style}
+      className="flex flex-col pt-7 items-center h-fit w-fit relative"
       onClick={() => {
         setComponent(props.card);
       }}
@@ -23,9 +22,9 @@ const Activity: React.FC<IActivityProps> = (props) => {
         id={props.id}
         src={activityIcon}
         alt="activity"
-        className="w-max h-auto object-cover 2k:w-40 4k:w-60"
+        className="w-max h-auto object-cover 2k:w-36 4k:w-60"
       />
-      <h1 className="text-lg text-white font-semibold font-inter text-center 4k:text-3xl">
+      <h1 className="text-lg text-orange-500 max-w-[10rem] font-semibold font-inter text-center 4k:text-3xl break-words">
         {props.card.title}
       </h1>
     </div>

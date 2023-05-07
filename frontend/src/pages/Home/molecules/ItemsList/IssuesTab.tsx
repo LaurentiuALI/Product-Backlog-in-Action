@@ -1,4 +1,4 @@
-import ItemEntry from "../../atoms/ItemEntry/ItemEntryReady";
+import ItemEntry from "../../atoms/ItemEntry/ItemEntry";
 import ListHeader from "../../atoms/ListHeader";
 import {
   DragDropContext,
