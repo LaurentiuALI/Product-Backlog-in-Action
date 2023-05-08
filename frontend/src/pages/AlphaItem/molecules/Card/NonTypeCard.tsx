@@ -20,7 +20,7 @@ export const NonTypeCard: React.FC<INonTypeCardProps> = ({
         </h2>
       </div>
 
-      <div className="flex flex-col pl-4">
+      <div className="flex flex-col pl-4 pr-2">
         {stateComponent != null &&
           stateComponent.checklist.map((item) => {
             return (

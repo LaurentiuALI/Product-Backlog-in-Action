@@ -41,21 +41,29 @@ const ItemEntry: React.FC<IItemEntryProps> = (props) => {
             className={`flex bg-${
               props.index % 2 ? "primary-100 bg-opacity-10" : "transparent"
             } items-center justify-evenly  h-20 min-w-[38rem] max-w-[100%]`}
-            onDoubleClick={() => myNavigate(`/${props.item._id}`)}
           >
-            <div className="group basis-0 flex-grow flex-shrink ml-8 mr-6">
+            <div
+              className="group basis-0 flex-grow flex-shrink ml-8 mr-6"
+              onDoubleClick={() => myNavigate(`/${props.item._id}`)}
+            >
               <div className="max-h-[3rem] overflow-hidden relativ">
                 {props.item.name}
               </div>
             </div>
-            <div className="basis-0 flex-grow flex-shrink ">
+            <div
+              className="basis-0 flex-grow flex-shrink "
+              onDoubleClick={() => myNavigate(`/${props.item._id}`)}
+            >
               <h3>{props.item.storyPoints}</h3>
             </div>
-            <div className="basis-0 flex-grow flex-shrink">
+            <div
+              className="basis-0 flex-grow flex-shrink"
+              onDoubleClick={() => myNavigate(`/${props.item._id}`)}
+            >
               <h4>{props.item.state}</h4>
             </div>
             <div
-              className="mr-8 text-primary-100 font-extrabold text-xl"
+              className="relative mr-8 text-primary-100 font-extrabold text-xl"
               onClick={() => handleDelete.mutate(props.item._id)}
             >
               X
