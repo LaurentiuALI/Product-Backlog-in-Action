@@ -9,20 +9,20 @@ const InnerSidebar: React.FC<{ id: string }> = ({ id }) => {
   const { alphaItem, invest } = useItemData(id);
   const setComponent = useComponentStore((state) => state.setComponent);
   return (
-    <div className="flex flex-col items-center min-w-[25rem] h-[calc(100vh-1rem)] bg-gradient-to-b from-primary-100 to-primary-200 rounded-3xl m-6 relative">
+    <div className="flex flex-col items-center min-w-[25rem] h-[calc(100vh-1rem)] 4k:min-w-[49rem] bg-gradient-to-b from-primary-100 to-primary-200 rounded-3xl m-6 relative">
       <img
         src={pbIcon}
-        className="p-4 w-max h-auto object-cover 2k:mb-12 4k:w-52"
+        className="p-4 w-max h-auto object-cover 2k:mb-12 4k:w-60"
       />
-      <div className="flex flex-col items-center 2k:mb-12">
+      <div className="flex flex-col items-center 2k:mb-12 4k:mt-6">
         <img
           src={pattern}
-          className="p-4 w-max h-auto object-cover 2k:w-40 4k:w-52"
+          className="p-4 w-max h-auto object-cover 2k:w-40 4k:w-60"
           onClick={() => setComponent(invest)}
         />
 
         <p
-          className="text-white font-semibold text-2xl"
+          className="text-white font-semibold text-2xl 4k:text-4xl"
           onClick={() => {
             setComponent(invest);
           }}
@@ -31,7 +31,7 @@ const InnerSidebar: React.FC<{ id: string }> = ({ id }) => {
         </p>
       </div>
       <div className="flex flex-col items-center max-w-[60rem] overflow-x-auto 4k:max-w-[90rem]">
-        <p className="text-white font-semibold text-l text-center mt-10 4k:text-3xl pl-6 pr-6">
+        <p className="text-white font-semibold text-l text-center mt-10 4k:text-4xl pl-6 pr-6 2k:text-2xl 4k:mt-24">
           {alphaItem != null && alphaItem.description}
         </p>
       </div>

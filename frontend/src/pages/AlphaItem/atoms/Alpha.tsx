@@ -16,7 +16,7 @@ const Alpha: React.FC<IAlphaProps> = (props) => {
 
   return (
     <div
-      className="flex flex-col items-center h-fit w-fit mr-20"
+      className="flex flex-col items-center h-fit w-fit mr-20 2k:mr-[25rem]"
       onClick={() => setComponent(props.card)}
     >
       <img

@@ -27,7 +27,10 @@ const InnerTestCaseCluster: React.FC<{ id: string }> = ({ id }) => {
   }, [prepareAProductBacklogItem, testCase, alphaItem]);
 
   return (
-    <div onLoad={useXarrow()} className="aboslute flex items-center mt-16">
+    <div
+      onLoad={useXarrow()}
+      className="aboslute flex items-center mt-16 2k:mb-[10rem] 4k:mb-[12rem] 4k:mt-[12rem]"
+    >
       {prepareAProductBacklogItem != null && (
         <Activity
           id="testCaseBox1"

@@ -21,7 +21,9 @@ const State: React.FC<IStateProps> = (props) => {
 
   return (
     <div
-      className="flex flex-col items-center h-fit w-fit 2k:mr-12"
+      className={`flex flex-col items-center h-fit w-fit mr-[5rem] 2k:mr-[10rem] ${
+        props.name.length > 30 ? "mt-14 " : " "
+      } ${props.name.length > 25 ? "4k:mt-10" : ""}`}
       onClick={() => {
         setComponentState(props.card);
         setComponent(null);
@@ -42,7 +44,9 @@ const State: React.FC<IStateProps> = (props) => {
           props.index == 0 || props.card.status == props.card.checklist.length
             ? "orange-500"
             : "black"
-        } font-semibold font-inter text-center ml-2 4k:text-3xl 4k:ml-4 max-w-[13rem]`}
+        } font-semibold font-inter text-center ml-2 4k:text-3xl 4k:ml-4 ${
+          props.name.length > 30 ? "max-w-[10rem]" : ""
+        } 4k:max-w-[25rem]`}
       >
         {props.name}
       </h1>

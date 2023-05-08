@@ -25,7 +25,7 @@ const InnerProductBacklogItem: React.FC<{ id: string }> = ({ id }) => {
 
   if (!productBacklogItem) return <div>Loading...</div>;
   return (
-    <div className="flex items-center mt-16">
+    <div className="flex items-center mt-16 2k:mb-[10rem] 4k:mt-32">
       <Alpha
         id="ProductBacklogItemBox1"
         name={productBacklogItem.title}
