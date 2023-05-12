@@ -15,7 +15,7 @@ describe("CustomCheckbox", () => {
     const radio = [radio1, radio2, radio3, radio5, radio8];
 
     [1, 2, 3, 5, 8].forEach((number) => {
-      render(<CustomCheckbox number={number} />);
+      render(<CustomCheckbox number={number} onCustomClick={vi.fn()} />);
     });
 
     const radioElements = await screen.findAllByRole("radio");
