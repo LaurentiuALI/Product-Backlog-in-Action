@@ -1,9 +1,11 @@
 import { useQuery } from "react-query";
 import { getAlphaItems } from "../../../../api/AlphaItemApi";
+import { useUserStore } from "../../../../stores/UserStore";
 import IssuesTab from "./IssuesTab";
 
 const ItemsList = () => {
-  const { data } = useQuery(["alphaItems"], getAlphaItems);
+  const { user } = useUserStore();
+  const { data } = useQuery(["alphaItems"], () => getAlphaItems(user));
   const readyEntry =
     data != null
       ? data.filter((item) => item.state == "Ready For Development")

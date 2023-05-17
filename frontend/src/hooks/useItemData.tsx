@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useAlphaItemStore } from "../stores/AlphaItemStore";
 import { type IComponent } from "../stores/ComponentStore";
+import { type IUser, useUserStore } from "../stores/UserStore";
 
 export interface IAlphaItem {
   _id: string;
@@ -12,17 +13,26 @@ export interface IAlphaItem {
   priority: number;
   state: string;
   storyPoints: number;
+  user: IUser | null;
 }
 
-const getAlphaItem = async (_id: string) => {
+const getAlphaItem = async (_id: string, user: IUser | null) => {
+  const token = user?.token;
+  console.log("🚀 ~ file: useItemData.tsx:20 ~ getAlphaItem ~ token:", token);
+
   const response = await axios.get<IAlphaItem>(
-    `http://localhost:4000/api/v1/alphaItems/${_id}`
+    `http://localhost:4000/api/v1/alphaItems/${_id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token as string}`,
+      },
+    }
   );
   return response.data;
 };
 
-export const useItemsData = (_id: string) => {
-  return useQuery("cards", () => getAlphaItem(_id));
+export const useItemsData = (_id: string, user: IUser | null) => {
+  return useQuery("cards", () => getAlphaItem(_id, user));
 };
 
 const updateAlphaItem = async ({
@@ -33,7 +43,6 @@ const updateAlphaItem = async ({
   _id: string;
 }) => {
   //change alpha item states based on inner checklists
-
   const alphaComponent = alphaItem.cards.filter(
     (card) => card.type === "Alpha"
   )[0];
@@ -56,7 +65,12 @@ const updateAlphaItem = async ({
   // send patch request to backend with the new values to be changed
   return await axios.patch<IAlphaItem>(
     `http://localhost:4000/api/v1/alphaItems/${_id}`,
-    alphaItem
+    alphaItem,
+    {
+      headers: {
+        Authorization: `Bearer ${alphaItem.user?.token as string}`,
+      },
+    }
   );
 };
 
@@ -65,6 +79,8 @@ const useUpdateAlphaItem = () => {
 };
 
 export const useItemData = (_id: string) => {
+  const { user } = useUserStore();
+
   const prepareAProductBacklogItem = useAlphaItemStore(
     (state) => state.prepareAProductBacklogItem
   );
@@ -100,7 +116,7 @@ export const useItemData = (_id: string) => {
   const alphaItem = useAlphaItemStore((state) => state.alphaItem);
   const setAlphaItem = useAlphaItemStore((state) => state.setAlphaItem);
 
-  const { isLoading, error, data } = useItemsData(_id);
+  const { isLoading, error, data } = useItemsData(_id, user);
 
   const { mutate: patchAlphaItem } = useUpdateAlphaItem();
 

@@ -3,14 +3,20 @@ import { useEffect } from "react";
 import { useQuery, useMutation } from "react-query";
 import { useCardStore } from "../stores/CardStore";
 import { type IComponent } from "../stores/ComponentStore";
+import { type IUser, useUserStore } from "../stores/UserStore";
 
-const getCards = async () => {
-  const response = await axios.get("http://localhost:4000/api/v1/cards/");
+const getCards = async (user: IUser | null) => {
+  const token = user?.token;
+  const response = await axios.get("http://localhost:4000/api/v1/cards/", {
+    headers: {
+      Authorization: `Bearer ${token as string}`,
+    },
+  });
   return response.data as IComponent[];
 };
 
-const useCardsData = () => {
-  return useQuery("cards", getCards);
+const useCardsData = (user: IUser | null) => {
+  return useQuery("cards", () => getCards(user));
 };
 
 const updateCard = async ({ card, _id }: { card: IComponent; _id: string }) => {
@@ -21,6 +27,8 @@ const useUpdateCard = () => {
 };
 
 export const useCardData = () => {
+  const { user, setUser } = useUserStore();
+
   const productBacklog = useCardStore((state) => state.productBacklog);
 
   const setProductBacklog = useCardStore((state) => state.setProductBacklog);
@@ -37,11 +45,16 @@ export const useCardData = () => {
     (state) => state.setRelativeEstimating
   );
 
-  const { isLoading, error, data } = useCardsData();
+  const { isLoading, error, data } = useCardsData(user);
 
   const { mutate: patchCard } = useUpdateCard();
 
   useEffect(() => {
+    if (isLoading || error || data == null) {
+      // Data is still being fetched or an error occurred, so return early
+      return;
+    }
+
     if (data != null) {
       setProductBacklog(data);
       setSplittingProductBacklogItems(data);
@@ -49,9 +62,12 @@ export const useCardData = () => {
     }
   }, [
     data,
+    error,
+    isLoading,
     setProductBacklog,
     setRelativeEstimating,
     setSplittingProductBacklogItems,
+    setUser,
   ]);
 
   return {

@@ -1,8 +1,18 @@
 import express from "express";
 
-import  { getAllAlphaItems, getOneAlphaItem, createAlphaItem, deleteAlphaItem, updateAlphaItem}  from  "../controllers/alphaItemController" ;
+import {
+  getAllAlphaItems,
+  getOneAlphaItem,
+  createAlphaItem,
+  deleteAlphaItem,
+  updateAlphaItem,
+} from "../controllers/alphaItemController";
+
+import { requireAuth } from "../middleware/requireauth";
 
 const router = express.Router();
+
+router.use(requireAuth);
 
 // GET all alpha items
 router.get("/", getAllAlphaItems);

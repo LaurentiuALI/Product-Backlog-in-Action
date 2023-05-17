@@ -4,6 +4,7 @@ import { useComponentStore } from "../../../../stores/ComponentStore";
 import { type IAlphaItem } from "../../../../hooks/useItemData";
 import { useMutation, useQueryClient } from "react-query";
 import { deleteAlphaItem } from "../../../../api/AlphaItemApi";
+import { useUserStore } from "../../../../stores/UserStore";
 
 interface IItemEntryProps {
   item: IAlphaItem;
@@ -15,6 +16,8 @@ const ItemEntry: React.FC<IItemEntryProps> = (props) => {
     state.setComponent,
     state.setComponentState,
   ]);
+
+  const { user } = useUserStore();
 
   const queryClient = useQueryClient();
   const handleDelete = useMutation(deleteAlphaItem, {
@@ -64,7 +67,9 @@ const ItemEntry: React.FC<IItemEntryProps> = (props) => {
             </div>
             <div
               className="relative mr-8 text-primary-100 font-extrabold text-xl"
-              onClick={() => handleDelete.mutate(props.item._id)}
+              onClick={() =>
+                handleDelete.mutate({ id: props.item._id, user: user })
+              }
             >
               X
             </div>

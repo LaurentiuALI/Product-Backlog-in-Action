@@ -4,17 +4,19 @@ import { useItemData } from "../../../../hooks/useItemData";
 import { useParams } from "react-router-dom";
 import { TypeCard } from "./TypeCard";
 import { NonTypeCard } from "./NonTypeCard";
+import { useUserStore } from "../../../../stores/UserStore";
 
 const InnerCard: React.FC<{ id: string }> = ({ id }) => {
   const component = useComponentStore((state) => state.component);
   const stateComponent = useComponentStore((state) => state.componentState);
   const { alphaItem, patchAlphaItem, setAlphaItem } = useItemData(id);
   const [flag, setFlag] = useState(false);
+  const { user } = useUserStore();
 
   const onSwitchFlag = (flag: boolean) => {
     setFlag(flag);
     if ((component != null || stateComponent != null) && alphaItem) {
-      patchAlphaItem({ alphaItem: { ...alphaItem }, _id: id });
+      patchAlphaItem({ alphaItem: { ...alphaItem, user: user }, _id: id });
       setAlphaItem({ ...alphaItem });
     }
   };

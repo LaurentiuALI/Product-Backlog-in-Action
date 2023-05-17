@@ -3,9 +3,11 @@ import CustomCheckbox from "../../atoms/CustomCheckbox";
 import { addAlphaItem } from "../../../../api/AlphaItemApi";
 import { useMutation, useQueryClient } from "react-query";
 import { useState } from "react";
+import { useUserStore } from "../../../../stores/UserStore";
 
 const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
   const queryClient = useQueryClient();
+  const { user } = useUserStore();
   const { mutate } = useMutation(addAlphaItem, {
     onSettled: async () => {
       await queryClient.invalidateQueries({ queryKey: ["alphaItems"] });
@@ -24,7 +26,7 @@ const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
     setname("");
     setDescription("");
     setstoryPoints(1);
-    mutate({ name, description: description, storyPoints });
+    mutate({ name, description: description, storyPoints, user});
   };
 
   return (

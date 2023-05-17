@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { type IAlphaItem } from "../../../../hooks/useItemData";
+import { useUserStore } from "../../../../stores/UserStore";
 
 interface IIssuesTabProps {
   entries: IAlphaItem[] | null;
@@ -15,6 +16,8 @@ interface IIssuesTabProps {
 }
 
 const IssuesTab: React.FC<IIssuesTabProps> = ({ entries, title }) => {
+  const { user } = useUserStore();
+  const token = user?.token;
   const updateAlphaItem = async ({
     alphaItem,
     _id,
@@ -25,7 +28,12 @@ const IssuesTab: React.FC<IIssuesTabProps> = ({ entries, title }) => {
     //change alpha item states based on inner checklists
     return await axios.patch(
       `http://localhost:4000/api/v1/alphaItems/${_id}`,
-      alphaItem
+      alphaItem,
+      {
+        headers: {
+          Authorization: `Bearer ${token as string}`,
+        },
+      }
     );
   };
 
