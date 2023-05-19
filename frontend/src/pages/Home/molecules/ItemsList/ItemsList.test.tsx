@@ -11,6 +11,8 @@ vi.mock("react-router-dom", () => {
 
 vi.mock("react-query", () => {
   return {
+    useQueryClient: vi.fn(),
+    useMutation: vi.fn(),
     useQuery: vi.fn(() => ({
       isLoading: false,
       error: null,

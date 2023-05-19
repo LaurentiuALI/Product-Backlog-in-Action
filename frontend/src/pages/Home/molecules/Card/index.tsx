@@ -4,17 +4,23 @@ import { useComponentStore } from "../../../../stores/ComponentStore";
 import { PatternCard } from "./PatternCard";
 import { StateCard } from "./StateCard";
 import { WorkProductCard } from "./WorkProductCard";
+import { useUserStore } from "../../../../stores/UserStore";
 
 const Card = () => {
   const component = useComponentStore((state) => state.component);
   const stateComponent = useComponentStore((state) => state.componentState);
   const { productBacklog, patchCard, setProductBacklog } = useCardData();
   const [flag, setFlag] = useState(false);
+  const { user } = useUserStore();
 
   const onSwitchFlag = (flag: boolean) => {
     setFlag(flag);
     if ((component != null || stateComponent != null) && productBacklog) {
-      patchCard({ card: { ...productBacklog }, _id: productBacklog._id });
+      patchCard({
+        card: { ...productBacklog },
+        _id: productBacklog._id,
+        user: user,
+      });
       setProductBacklog([{ ...productBacklog }]);
     }
   };

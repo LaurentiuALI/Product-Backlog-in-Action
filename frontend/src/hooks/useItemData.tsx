@@ -18,7 +18,6 @@ export interface IAlphaItem {
 
 const getAlphaItem = async (_id: string, user: IUser | null) => {
   const token = user?.token;
-  console.log("🚀 ~ file: useItemData.tsx:20 ~ getAlphaItem ~ token:", token);
 
   const response = await axios.get<IAlphaItem>(
     `http://localhost:4000/api/v1/alphaItems/${_id}`,

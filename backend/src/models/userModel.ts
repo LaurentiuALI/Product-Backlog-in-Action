@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 const Schema = mongoose.Schema;
 
 export interface IUser {
+  _id: string;
   projectName: string;
   password: string;
 }

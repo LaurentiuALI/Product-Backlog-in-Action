@@ -1,11 +1,20 @@
 import { render, renderHook, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
+import { BrowserRouter } from "react-router-dom";
 
 import Topbar from ".";
 import { useComponentStore } from "../../../../stores/ComponentStore";
 
 import { splittingItems, relativeEstimating } from "./constants";
+
+const MockTopbar: React.FC = () => {
+  return (
+    <BrowserRouter>
+      <Topbar />
+    </BrowserRouter>
+  );
+};
 
 vi.mock("../../../../hooks/useCardsData", () => {
   return {
@@ -24,7 +33,7 @@ vi.mock("../../../../hooks/useCardsData", () => {
 
 describe("Topbar", () => {
   it("renders", () => {
-    render(<Topbar />);
+    render(<MockTopbar />);
     const titleElement = screen.getByText(/Splitting Product Backlog Items/i);
     expect(titleElement).toBeInTheDocument();
 
@@ -33,7 +42,7 @@ describe("Topbar", () => {
   });
   it("changes component", async () => {
     const { result } = renderHook(() => useComponentStore());
-    render(<Topbar />);
+    render(<MockTopbar />);
 
     const titleElement = screen.getByText(/Splitting Product Backlog Items/i);
 

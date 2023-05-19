@@ -2,8 +2,11 @@ import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import userModel, { type IUser } from "../models/userModel";
 
-interface IAuthRequest extends Request {
+export interface IAuthRequest extends Request {
   user?: IUser | null;
+  description?: string;
+  title?: string;
+  storyPoints?: number;
 }
 
 export const requireAuth = async (
@@ -12,7 +15,6 @@ export const requireAuth = async (
   next: NextFunction
 ) => {
   const { authorization } = req.headers;
-  console.log(authorization);
 
   if (!authorization) {
     return res.status(401).send({ error: "You must be logged in." });
@@ -28,7 +30,6 @@ export const requireAuth = async (
 
     next();
   } catch (error) {
-    console.log(error);
     return res.status(401).send({ error: "Request not authorized." });
   }
 };

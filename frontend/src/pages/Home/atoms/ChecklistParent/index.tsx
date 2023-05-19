@@ -11,7 +11,7 @@ const ChecklistParent: React.FC = () => {
 
   return (
     <div
-      className="flex flex-row items-center ml-4 mb-6"
+      className="flex flex-row items-center ml-4 mb-6 cursor-pointer"
       onClick={() => {
         setComponentState(null);
         setComponent(productBacklog);

@@ -1,4 +1,6 @@
+import { IAuthRequest } from "../middleware/requireauth";
 import AlphaItem from "../models/alphaItemModel";
+import { IUser } from "../models/userModel";
 
 import {
   productBacklogItem,
@@ -14,11 +16,12 @@ import { Request, Response } from "express";
 import mongoose from "mongoose";
 
 // GET all alpha items
-export const getAllAlphaItems = async (req: Request, res: Response) => {
+export const getAllAlphaItems = async (req: IAuthRequest, res: Response) => {
   try {
     // retrieve all cards from db and sort by date created (newest first)
 
-    const alphaItems = await AlphaItem.find({}).sort({ priority: -1 });
+    const user_id = req.user?._id;
+    const alphaItems = await AlphaItem.find({ user_id }).sort({ priority: -1 });
 
     // send cards as response
 
@@ -68,25 +71,27 @@ export const getOneAlphaItem = async (req: Request, res: Response) => {
 };
 
 // POST one alpha item
-export const createAlphaItem = async (req: Request, res: Response) => {
+export const createAlphaItem = async (req: IAuthRequest, res: Response) => {
   try {
     // retrieve card from db
+    const user_id = req.user?._id;
 
     const alphaItem = await AlphaItem.create({
       ...req.body,
       cards: [
-        productBacklogItem,
-        INVEST,
-        agreeDefinitionOfDone,
-        definitionOfDone,
-        prepareAProductBacklogItem,
-        testCase,
+        { ...productBacklogItem, user_id },
+        { ...INVEST, user_id },
+        { ...agreeDefinitionOfDone, user_id },
+        { ...definitionOfDone, user_id },
+        { ...prepareAProductBacklogItem, user_id },
+        { ...testCase, user_id },
       ],
+      user_id,
     });
 
     // send card as response
 
-    res.status(201).json(alphaItem);
+    return res.status(201).json(alphaItem);
   } catch (err) {
     // send error message as response if error occurs while retrieving card from db
 

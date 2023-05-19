@@ -60,13 +60,12 @@ export const cardSchema = new Schema(
       type: [stateSchema],
       default: [],
     },
+    user_id: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
 export const Card = mongoose.model("Card", cardSchema);
-export const State = mongoose.model("State", stateSchema);
-export const ChecklistItem = mongoose.model(
-  "ChecklistItem",
-  checklistItemSchema
-);

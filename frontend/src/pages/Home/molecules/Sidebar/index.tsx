@@ -14,7 +14,7 @@ const Sidebar: React.FC<{ addActive: () => void }> = (props) => {
       <div className="flex flex-col items-center" key="unique">
         <Logo />
 
-        <div className="mb-12 2k:mb-[10rem] 4k:mb-[20rem] 4k:mt-16">
+        <div className="mb-12 2k:mb-[10rem] 4k:mb-[20rem] 4k:mt-16 cursor-pointer">
           <AddAlpha addActive={props.addActive} />
         </div>
 
@@ -23,7 +23,7 @@ const Sidebar: React.FC<{ addActive: () => void }> = (props) => {
           {productBacklog &&
             productBacklog.states != null &&
             productBacklog.states.map((state) => (
-              <div key={state.name}>
+              <div key={state.name} className="cursor-pointer">
                 <ChecklistItem state={state} />
               </div>
             ))}

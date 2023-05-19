@@ -19,8 +19,20 @@ const useCardsData = (user: IUser | null) => {
   return useQuery("cards", () => getCards(user));
 };
 
-const updateCard = async ({ card, _id }: { card: IComponent; _id: string }) => {
-  return await axios.patch(`http://localhost:4000/api/v1/cards/${_id}`, card);
+const updateCard = async ({
+  card,
+  _id,
+  user,
+}: {
+  card: IComponent;
+  _id: string;
+  user: IUser | null;
+}) => {
+  return await axios.patch(`http://localhost:4000/api/v1/cards/${_id}`, card, {
+    headers: {
+      Authorization: `Bearer ${user?.token as string}`,
+    },
+  });
 };
 const useUpdateCard = () => {
   return useMutation(updateCard);

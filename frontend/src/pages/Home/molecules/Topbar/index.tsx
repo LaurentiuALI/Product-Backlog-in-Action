@@ -16,7 +16,7 @@ const Topbar = () => {
   return (
     <div className="bg-gradient-to-r from-primary-100 to-primary-200 h-32 mt-8 rounded-3xl w-[calc(100vw-500px)]">
       <div className="flex justify-around">
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center cursor-pointer">
           <img
             src={pattern}
             alt="splittingProductBacklogItems"
@@ -39,7 +39,7 @@ const Topbar = () => {
             {user && user.projectName}
           </p>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center  cursor-pointer">
           <img
             src={pattern}
             alt="relativeEstimating"
@@ -58,7 +58,7 @@ const Topbar = () => {
           </p>
         </div>
         <div
-          className="flex flex-col justify-center items-center"
+          className="flex flex-col justify-center items-center cursor-pointer"
           onClick={() => {
             logout();
             navigate("/login");

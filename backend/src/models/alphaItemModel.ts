@@ -30,6 +30,10 @@ const alphaItemSchema = new Schema({
     type: [cardSchema],
     default: [],
   },
+  user_id: {
+    type: String,
+    required: true,
+  },
 });
 
 const AlphaItem = mongoose.model("alphaItem", alphaItemSchema);

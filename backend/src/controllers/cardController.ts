@@ -3,11 +3,13 @@ import { Card } from "../models/cardsModel";
 import { Request, Response } from "express";
 
 import mongoose from "mongoose";
+import { IAuthRequest } from "../middleware/requireauth";
 
-export const getAllCards = async (req: Request, res: Response) => {
+export const getAllCards = async (req: IAuthRequest, res: Response) => {
   try {
+    const user_id = req.user?._id;
     // retrieve all cards from db and sort by date created (newest first)
-    const cards = await Card.find({}).sort({ createdAt: -1 });
+    const cards = await Card.find({ user_id }).sort({ createdAt: -1 });
 
     // send cards as response
     res.status(200).json(cards);
@@ -21,7 +23,7 @@ export const getAllCards = async (req: Request, res: Response) => {
   }
 };
 
-export const getOneCard = async (req: Request, res: Response) => {
+export const getOneCard = async (req: IAuthRequest, res: Response) => {
   try {
     // check if id is valid and send error message as response if not
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -72,9 +74,10 @@ export const getOneCardTitle = async (req: Request, res: Response) => {
 };
 
 //POST one card
-export const createCard = async (req: Request, res: Response) => {
+export const createCard = async (req: IAuthRequest, res: Response) => {
   // retrieve data from request body
   const { type, title, description, status, states } = req.body;
+  const user_id = req.user?._id;
 
   // create new card
   try {
@@ -84,6 +87,7 @@ export const createCard = async (req: Request, res: Response) => {
       description,
       status,
       states,
+      user_id,
     });
     res.status(201).json(newCard);
   } catch (err) {

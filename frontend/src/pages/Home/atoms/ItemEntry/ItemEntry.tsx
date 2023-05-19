@@ -66,7 +66,7 @@ const ItemEntry: React.FC<IItemEntryProps> = (props) => {
               <h4>{props.item.state}</h4>
             </div>
             <div
-              className="relative mr-8 text-primary-100 font-extrabold text-xl"
+              className="relative mr-8 text-primary-100 font-extrabold text-xl cursor-pointer"
               onClick={() =>
                 handleDelete.mutate({ id: props.item._id, user: user })
               }

@@ -2,17 +2,19 @@ import pbIcon from "../icons/pbIcon.svg";
 import pattern from "../icons/pattern.svg";
 import { useComponentStore } from "../../../stores/ComponentStore";
 import { useItemData } from "../../../hooks/useItemData";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from "../molecules/Card";
 
 const InnerSidebar: React.FC<{ id: string }> = ({ id }) => {
+  const navigate = useNavigate();
   const { alphaItem, invest } = useItemData(id);
   const setComponent = useComponentStore((state) => state.setComponent);
   return (
     <div className="flex flex-col items-center min-w-[25rem] h-[calc(100vh-1rem)] 4k:min-w-[49rem] bg-gradient-to-b from-primary-100 to-primary-200 rounded-3xl m-6 relative">
       <img
         src={pbIcon}
-        className="p-4 w-max h-auto object-cover 2k:mb-12 4k:w-60"
+        className="p-4 mb-4 w-max h-auto object-cover 2k:mb-12 4k:w-60 cursor-pointer"
+        onClick={() => navigate("/")}
       />
       <div className="flex flex-col items-center 2k:mb-12 4k:mt-6">
         <img

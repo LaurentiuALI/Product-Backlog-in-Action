@@ -6,6 +6,7 @@ import { createUser } from "../../api/UserApi";
 import { useMutation } from "react-query";
 import { useUserStore, type IUser } from "../../stores/UserStore";
 import { useNavigate } from "react-router-dom";
+import { registerUserCards } from "./helper";
 
 interface IDataError {
   mssg: string;
@@ -27,7 +28,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const mutation = useMutation(createUser, {
-    onSuccess: (response) => {
+    onSuccess: async (response) => {
       setName("");
       setPassword("");
       const responseUser = {
@@ -35,6 +36,7 @@ const Register = () => {
         projectName: (response.data as IUser).projectName,
       };
 
+      await registerUserCards((response.data as IDataError).mssg);
       localStorage.setItem("user", JSON.stringify(responseUser));
       setUser(responseUser as IUser);
       navigate("/");
