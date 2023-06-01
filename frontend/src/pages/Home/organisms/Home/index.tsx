@@ -51,6 +51,7 @@ const Home = () => {
       </div>
     );
   } else if (error) {
+    localStorage.removeItem("user");
     return (
       <div className="flex-col text-5xl bg-orange-300 text-white h-screen w-screen flex justify-center items-center">
         <p className="text-5xl text-white mb-10">

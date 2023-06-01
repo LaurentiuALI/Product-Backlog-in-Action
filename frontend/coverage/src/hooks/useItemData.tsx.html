@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/141</span>
+                <span class='fraction'>0/156</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/141</span>
+                <span class='fraction'>0/156</span>
             </div>
         
             
@@ -204,7 +204,37 @@
 <a name='L139'></a><a href='#L139'>139</a>
 <a name='L140'></a><a href='#L140'>140</a>
 <a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -350,6 +380,7 @@
 <span class="cstat-no" title="statement not covered" >import { useMutation, useQuery } from "react-query";</span>
 <span class="cstat-no" title="statement not covered" >import { useAlphaItemStore } from "../stores/AlphaItemStore";</span>
 <span class="cstat-no" title="statement not covered" >import { type IComponent } from "../stores/ComponentStore";</span>
+<span class="cstat-no" title="statement not covered" >import { type IUser, useUserStore } from "../stores/UserStore";</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >export interface IAlphaItem {</span>
 <span class="cstat-no" title="statement not covered" >  _id: string;</span>
@@ -359,17 +390,25 @@
 <span class="cstat-no" title="statement not covered" >  priority: number;</span>
 <span class="cstat-no" title="statement not covered" >  state: string;</span>
 <span class="cstat-no" title="statement not covered" >  storyPoints: number;</span>
+<span class="cstat-no" title="statement not covered" >  user: IUser | null;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const getAlphaItem = async (_id: string) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >const getAlphaItem = async (_id: string, user: IUser | null) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const token = user?.token;</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  const response = await axios.get&lt;IAlphaItem&gt;(</span>
-<span class="cstat-no" title="statement not covered" >    `http://localhost:4000/api/v1/alphaItems/${_id}`</span>
+<span class="cstat-no" title="statement not covered" >    `http://localhost:4000/api/v1/alphaItems/${_id}`,</span>
+<span class="cstat-no" title="statement not covered" >    {</span>
+<span class="cstat-no" title="statement not covered" >      headers: {</span>
+<span class="cstat-no" title="statement not covered" >        Authorization: `Bearer ${token as string}`,</span>
+<span class="cstat-no" title="statement not covered" >      },</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >  );</span>
 <span class="cstat-no" title="statement not covered" >  return response.data;</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export const useItemsData = (_id: string) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  return useQuery("cards", () =&gt; getAlphaItem(_id));</span>
+<span class="cstat-no" title="statement not covered" >export const useItemsData = (_id: string, user: IUser | null) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return useQuery("cards", () =&gt; getAlphaItem(_id, user));</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >const updateAlphaItem = async ({</span>
@@ -380,7 +419,6 @@
 <span class="cstat-no" title="statement not covered" >  _id: string;</span>
 <span class="cstat-no" title="statement not covered" >}) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  //change alpha item states based on inner checklists</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  const alphaComponent = alphaItem.cards.filter(</span>
 <span class="cstat-no" title="statement not covered" >    (card) =&gt; card.type === "Alpha"</span>
 <span class="cstat-no" title="statement not covered" >  )[0];</span>
@@ -403,7 +441,12 @@
 <span class="cstat-no" title="statement not covered" >  // send patch request to backend with the new values to be changed</span>
 <span class="cstat-no" title="statement not covered" >  return await axios.patch&lt;IAlphaItem&gt;(</span>
 <span class="cstat-no" title="statement not covered" >    `http://localhost:4000/api/v1/alphaItems/${_id}`,</span>
-<span class="cstat-no" title="statement not covered" >    alphaItem</span>
+<span class="cstat-no" title="statement not covered" >    alphaItem,</span>
+<span class="cstat-no" title="statement not covered" >    {</span>
+<span class="cstat-no" title="statement not covered" >      headers: {</span>
+<span class="cstat-no" title="statement not covered" >        Authorization: `Bearer ${alphaItem.user?.token as string}`,</span>
+<span class="cstat-no" title="statement not covered" >      },</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >  );</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -412,6 +455,8 @@
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >export const useItemData = (_id: string) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const { user } = useUserStore();</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  const prepareAProductBacklogItem = useAlphaItemStore(</span>
 <span class="cstat-no" title="statement not covered" >    (state) =&gt; state.prepareAProductBacklogItem</span>
 <span class="cstat-no" title="statement not covered" >  );</span>
@@ -447,7 +492,7 @@
 <span class="cstat-no" title="statement not covered" >  const alphaItem = useAlphaItemStore((state) =&gt; state.alphaItem);</span>
 <span class="cstat-no" title="statement not covered" >  const setAlphaItem = useAlphaItemStore((state) =&gt; state.setAlphaItem);</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const { isLoading, error, data } = useItemsData(_id);</span>
+<span class="cstat-no" title="statement not covered" >  const { isLoading, error, data } = useItemsData(_id, user);</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  const { mutate: patchAlphaItem } = useUpdateAlphaItem();</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -493,7 +538,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-06T21:01:05.919Z
+                at 2023-05-30T12:26:44.013Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

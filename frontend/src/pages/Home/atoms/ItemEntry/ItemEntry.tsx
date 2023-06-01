@@ -31,6 +31,7 @@ const ItemEntry: React.FC<IItemEntryProps> = (props) => {
     setComponentState(null);
     navigate(url);
   };
+  console.log("🚀 ~ file: ItemEntry.tsx:35 ~ props.item:", props.item);
 
   return (
     <Draggable draggableId={props.item._id} index={props.index}>

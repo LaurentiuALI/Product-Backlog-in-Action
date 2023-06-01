@@ -36,7 +36,6 @@ const InnerProductBacklogItem: React.FC<{ id: string }> = ({ id }) => {
       {productBacklogItem.states.map((state, index) => (
         <State
           key={`ProductBacklogItemBox${index + 2}`}
-          index={index}
           id={`ProductBacklogItemBox${index + 2}`}
           name={state.name}
           card={state}

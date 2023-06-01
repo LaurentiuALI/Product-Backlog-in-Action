@@ -13,7 +13,7 @@ export const TypeCard: React.FC<ITypeCardProps> = ({ component }) => {
       <h1 className=" font-bold mt-6 text-center text-2xl 2k:text-4xl 2k:max-w-[14rem] 4k:max-w-fit 4k:text-5xl">
         {component.title}
       </h1>
-      <p className="text-center font-semibold text-lg mb-6 pr-8 pl-8 2k:text-2xl 4k:text-4xl">
+      <h2 className="text-center font-semibold text-lg mb-6 pr-8 pl-8 2k:text-2xl 4k:text-4xl">
         {typeof text == "object"
           ? text.map((item) => {
               return (
@@ -23,7 +23,7 @@ export const TypeCard: React.FC<ITypeCardProps> = ({ component }) => {
               );
             })
           : component.description}
-      </p>
+      </h2>
       <div>
         {component.states.map((item) => (
           <div className="mb-4 mt-2 4k:mb-8" key={item.name}>

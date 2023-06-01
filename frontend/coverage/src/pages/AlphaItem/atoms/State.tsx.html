@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/48</span>
+                <span class='fraction'>0/57</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/48</span>
+                <span class='fraction'>0/57</span>
             </div>
         
             
@@ -111,7 +111,25 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -182,8 +200,9 @@
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
 <span class="cstat-no" title="statement not covered" >    &lt;div</span>
-<span class="cstat-no" title="statement not covered" >      className="flex flex-col items-center h-fit w-fit"</span>
-<span class="cstat-no" title="statement not covered" >      style={props.style}</span>
+<span class="cstat-no" title="statement not covered" >      className={`flex flex-col items-center h-fit w-fit mr-[5rem] 2k:mr-[10rem] ${</span>
+<span class="cstat-no" title="statement not covered" >        props.name.length &gt; 30 ? "mt-14 " : " "</span>
+<span class="cstat-no" title="statement not covered" >      } ${props.name.length &gt; 25 ? "4k:mt-10" : ""}`}</span>
 <span class="cstat-no" title="statement not covered" >      onClick={() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        setComponentState(props.card);</span>
 <span class="cstat-no" title="statement not covered" >        setComponent(null);</span>
@@ -197,9 +216,17 @@
 <span class="cstat-no" title="statement not covered" >            : stateUnachieved</span>
 <span class="cstat-no" title="statement not covered" >        }</span>
 <span class="cstat-no" title="statement not covered" >        alt="activity"</span>
-<span class="cstat-no" title="statement not covered" >        className="w-max h-auto object-cover"</span>
+<span class="cstat-no" title="statement not covered" >        className="w-max h-auto object-cover 2k:w-40 4k:w-60"</span>
 <span class="cstat-no" title="statement not covered" >      /&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;h1 className="text-lg text-white font-semibold font-inter text-center ml-2"&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;h1</span>
+<span class="cstat-no" title="statement not covered" >        className={`text-lg text-${</span>
+<span class="cstat-no" title="statement not covered" >          props.index == 0 || props.card.status == props.card.checklist.length</span>
+<span class="cstat-no" title="statement not covered" >            ? "orange-500"</span>
+<span class="cstat-no" title="statement not covered" >            : "black"</span>
+<span class="cstat-no" title="statement not covered" >        } font-semibold font-inter text-center ml-2 4k:text-3xl 4k:ml-4 ${</span>
+<span class="cstat-no" title="statement not covered" >          props.name.length &gt; 30 ? "max-w-[10rem]" : ""</span>
+<span class="cstat-no" title="statement not covered" >        } 4k:max-w-[25rem]`}</span>
+<span class="cstat-no" title="statement not covered" >      &gt;</span>
 <span class="cstat-no" title="statement not covered" >        {props.name}</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/h1&gt;</span>
 <span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
@@ -214,7 +241,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-06T21:01:05.919Z
+                at 2023-05-30T12:26:44.013Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

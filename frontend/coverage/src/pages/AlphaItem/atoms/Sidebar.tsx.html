@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/pages/AlphaItem/atoms/Topbar.tsx</title>
+    <title>Code coverage report for src/pages/AlphaItem/atoms/Sidebar.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/pages/AlphaItem/atoms</a> Topbar.tsx</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/pages/AlphaItem/atoms</a> Sidebar.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/47</span>
+                <span class='fraction'>0/55</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/47</span>
+                <span class='fraction'>0/55</span>
             </div>
         
             
@@ -110,7 +110,23 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -161,31 +177,29 @@
 <span class="cstat-no" title="statement not covered" >import pattern from "../icons/pattern.svg";</span>
 <span class="cstat-no" title="statement not covered" >import { useComponentStore } from "../../../stores/ComponentStore";</span>
 <span class="cstat-no" title="statement not covered" >import { useItemData } from "../../../hooks/useItemData";</span>
-<span class="cstat-no" title="statement not covered" >import { useParams } from "react-router-dom";</span>
+<span class="cstat-no" title="statement not covered" >import { useNavigate, useParams } from "react-router-dom";</span>
+<span class="cstat-no" title="statement not covered" >import Card from "../molecules/Card";</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const InnerTopbar: React.FC&lt;{ id: string }&gt; = ({ id }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >const InnerSidebar: React.FC&lt;{ id: string }&gt; = ({ id }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const navigate = useNavigate();</span>
 <span class="cstat-no" title="statement not covered" >  const { alphaItem, invest } = useItemData(id);</span>
 <span class="cstat-no" title="statement not covered" >  const setComponent = useComponentStore((state) =&gt; state.setComponent);</span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div className="border-b-2 border-b-white flex justify-around items-center"&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;img src={pbIcon} className="p-4" /&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;div className="flex flex-col items-center max-w-[60rem] overflow-x-auto"&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;p className="text-white font-semibold text-2xl mb-4 break-all text-center"&gt;</span>
-<span class="cstat-no" title="statement not covered" >          {alphaItem != null &amp;&amp; alphaItem.name}</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;p className="text-white font-semibold text-l text-center break-all"&gt;</span>
-<span class="cstat-no" title="statement not covered" >          {alphaItem != null &amp;&amp; alphaItem.description}</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;div className="flex flex-col items-center"&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;div className="flex flex-col items-center min-w-[25rem] h-[calc(100vh-1rem)] 4k:min-w-[49rem] bg-gradient-to-b from-primary-100 to-primary-200 rounded-3xl m-6 relative"&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;img</span>
+<span class="cstat-no" title="statement not covered" >        src={pbIcon}</span>
+<span class="cstat-no" title="statement not covered" >        className="p-4 mb-4 w-max h-auto object-cover 2k:mb-12 4k:w-60 cursor-pointer"</span>
+<span class="cstat-no" title="statement not covered" >        onClick={() =&gt; navigate("/")}</span>
+<span class="cstat-no" title="statement not covered" >      /&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div className="flex flex-col items-center 2k:mb-12 4k:mt-6"&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;img</span>
 <span class="cstat-no" title="statement not covered" >          src={pattern}</span>
-<span class="cstat-no" title="statement not covered" >          className="p-4"</span>
+<span class="cstat-no" title="statement not covered" >          className="p-4 w-max h-auto object-cover 2k:w-40 4k:w-60"</span>
 <span class="cstat-no" title="statement not covered" >          onClick={() =&gt; setComponent(invest)}</span>
 <span class="cstat-no" title="statement not covered" >        /&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >        &lt;p</span>
-<span class="cstat-no" title="statement not covered" >          className="text-white font-semibold text-2xl"</span>
+<span class="cstat-no" title="statement not covered" >          className="text-white font-semibold text-2xl 4k:text-4xl"</span>
 <span class="cstat-no" title="statement not covered" >          onClick={() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            setComponent(invest);</span>
 <span class="cstat-no" title="statement not covered" >          }}</span>
@@ -193,17 +207,27 @@
 <span class="cstat-no" title="statement not covered" >          {invest !== null &amp;&amp; invest.title}</span>
 <span class="cstat-no" title="statement not covered" >        &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div className="flex flex-col items-center max-w-[60rem] overflow-x-auto 4k:max-w-[90rem]"&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;p className="text-white font-semibold text-l text-center mt-10 4k:text-4xl pl-6 pr-6 2k:text-2xl 4k:mt-24"&gt;</span>
+<span class="cstat-no" title="statement not covered" >          {alphaItem != null &amp;&amp; alphaItem.description}</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div className="flex justify-center"&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;div className="absolute bottom-0"&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;Card /&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >  );</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const Topbar: React.FC = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >const Sidebar: React.FC = () =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  const { id } = useParams&lt;{ id: string }&gt;();</span>
 <span class="cstat-no" title="statement not covered" >  if (!id) return &lt;div&gt; Invalid ID &lt;/div&gt;;</span>
-<span class="cstat-no" title="statement not covered" >  return &lt;InnerTopbar id={id} /&gt;;</span>
+<span class="cstat-no" title="statement not covered" >  return &lt;InnerSidebar id={id} /&gt;;</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export default Topbar;</span>
+<span class="cstat-no" title="statement not covered" >export default Sidebar;</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -211,7 +235,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-06T21:01:05.919Z
+                at 2023-05-30T12:26:44.013Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

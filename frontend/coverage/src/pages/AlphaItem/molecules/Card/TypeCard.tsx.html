@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/37</span>
+                <span class='fraction'>0/38</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/37</span>
+                <span class='fraction'>0/38</span>
             </div>
         
             
@@ -100,7 +100,9 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -143,34 +145,35 @@
 <span class="cstat-no" title="statement not covered" >  component: IComponent;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 <span class="cstat-no" title="statement not covered" >export const TypeCard: React.FC&lt;ITypeCardProps&gt; = ({ component }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  console.log("🚀 ~ file: TypeCard.tsx:7 ~ component:", component);</span>
 <span class="cstat-no" title="statement not covered" >  const text = component.description.includes("\\n")</span>
 <span class="cstat-no" title="statement not covered" >    ? component.description.split("\\n")</span>
 <span class="cstat-no" title="statement not covered" >    : component.description;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div className="bg-white absolute bottom-0 right-0 w-[25rem] h-[30rem] rounded-t-xl mr-4 flex flex-col items-center justify-around"&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;h1 className=" font-bold mt-14 text-center text-2xl"&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;div className="bg-white w-[22rem] h-[25rem] rounded-t-xl flex flex-col items-center justify-evenly 2k:w-[23rem] 2k:h-[35rem] 4k:w-[43rem] 4k:h-[50rem]"&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;h1 className=" font-bold mt-6 text-center text-2xl 2k:text-4xl 2k:max-w-[14rem] 4k:max-w-fit 4k:text-5xl"&gt;</span>
 <span class="cstat-no" title="statement not covered" >        {component.title}</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/h1&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;p className="text-center font-semibold text-lg mb-6 mt-10 pr-8 pl-8"&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;p className="text-center font-semibold text-lg mb-6 pr-8 pl-8 2k:text-2xl 4k:text-4xl"&gt;</span>
 <span class="cstat-no" title="statement not covered" >        {typeof text == "object"</span>
 <span class="cstat-no" title="statement not covered" >          ? text.map((item) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >              return (</span>
-<span class="cstat-no" title="statement not covered" >                &lt;p className="text-[1rem]" key={item}&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;p className="text-[1rem] 2k:text-2xl 4k:text-3xl" key={item}&gt;</span>
 <span class="cstat-no" title="statement not covered" >                  {item}</span>
 <span class="cstat-no" title="statement not covered" >                &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >              );</span>
 <span class="cstat-no" title="statement not covered" >            })</span>
 <span class="cstat-no" title="statement not covered" >          : component.description}</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >      {component.states.map((item) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >        &lt;div className="mb-3 mt-3" key={item.name}&gt;</span>
-<span class="cstat-no" title="statement not covered" >          &lt;h2 className="underline decoration-primary-100 decoration-2 font-semibold text-2xl text-center"&gt;</span>
-<span class="cstat-no" title="statement not covered" >            {item.name}</span>
-<span class="cstat-no" title="statement not covered" >          &lt;/h2&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >      ))}</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div&gt;</span>
+<span class="cstat-no" title="statement not covered" >        {component.states.map((item) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >          &lt;div className="mb-4 mt-2 4k:mb-8" key={item.name}&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;h2 className="underline decoration-primary-100 decoration-2 2k:decoration-4 4k:decoration-4 font-semibold text-2xl text-center 2k:text-3xl 4k:text-5xl"&gt;</span>
+<span class="cstat-no" title="statement not covered" >              {item.name}</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/h2&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >        ))}</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >  );</span>
 <span class="cstat-no" title="statement not covered" >};</span>
@@ -181,7 +184,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-06T21:01:05.919Z
+                at 2023-05-30T12:26:44.013Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

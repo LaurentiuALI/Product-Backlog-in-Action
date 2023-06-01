@@ -41,7 +41,6 @@ const InnerDefinitionOfDoneCluster: React.FC<{ id: string }> = ({ id }) => {
         {definitionOfDone.states.map((state, index) => (
           <State
             key={index}
-            index={index}
             id={`DefOfDoneBox${index + 3}`}
             name={state.name}
             card={state}

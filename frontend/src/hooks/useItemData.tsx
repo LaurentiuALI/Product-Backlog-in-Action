@@ -41,25 +41,15 @@ const updateAlphaItem = async ({
   alphaItem: IAlphaItem;
   _id: string;
 }) => {
-  //change alpha item states based on inner checklists
-  const alphaComponent = alphaItem.cards.filter(
-    (card) => card.type === "Alpha"
-  )[0];
-  let status_alpha = 0;
-  for (const state of alphaComponent.states) {
-    if (state.status === state.checklist.length) {
-      status_alpha += 1;
-    }
-  }
+  
+  //keep cards status in sync based on inner checklists
+  syncCardsStatus(alphaItem);
 
-  alphaComponent.status = status_alpha;
-  if (alphaComponent.status === 0 || alphaComponent.status === 1) {
-    alphaItem.state = "Identified";
-  } else if (alphaComponent.status === 2) {
-    alphaItem.state = "Ready For Development";
-  } else {
-    alphaItem.state = "Done";
-  }
+  //change done state accesibility based on ready for development state, definition of done and test case work product completness
+  manageDoneStateAccesibility(alphaItem);
+
+  //change alpha item states based on inner checklists
+  manageAlphaItemStates(alphaItem);
 
   // send patch request to backend with the new values to be changed
   return await axios.patch<IAlphaItem>(
@@ -154,3 +144,64 @@ export const useItemData = (_id: string) => {
     patchAlphaItem,
   };
 };
+
+function syncCardsStatus(alphaItem: IAlphaItem) {
+  for (const card of alphaItem.cards) {
+    if (card.states.length > 0) {
+      let status = 0;
+      for (const state of card.states) {
+        if (state.status == state.checklist.length) {
+          status += 1;
+        }
+      }
+      card.status = status;
+    }
+  }
+}
+
+function manageAlphaItemStates(alphaItem: IAlphaItem) {
+  const alphaComponent = alphaItem.cards.filter(
+    (card) => card.type === "Alpha"
+  )[0];
+
+  for (const state of alphaComponent.states) {
+    if (state.name == "Identified") {
+      alphaItem.state = "Identified";
+    }
+    if (
+      state.name == "Ready for Development" &&
+      state.status === state.checklist.length
+    ) {
+      alphaItem.state = "Ready For Development";
+    }
+    if (state.name == "Done" && state.status === state.checklist.length) {
+      alphaItem.state = "Done";
+    }
+  }
+}
+
+function manageDoneStateAccesibility(alphaItem: IAlphaItem) {
+  const testCase = alphaItem.cards.filter(
+    (card) => card.title === "Test Case"
+  )[0].status;
+  const definitionOfDone = alphaItem.cards.filter(
+    (card) => card.title === "Definition of Done"
+  )[0].status;
+  const ready = alphaItem.cards
+    .filter((card) => card.type === "Alpha")[0]
+    .states.filter((state) => state.name === "Ready for Development")[0].status;
+
+  const checklist = alphaItem.cards
+    .filter((card) => card.type === "Alpha")[0]
+    .states.filter((state) => state.name === "Done")[0].checklist;
+
+  if (testCase != 3 || definitionOfDone != 2 || ready != 4) {
+    for (const checklistItem of checklist) {
+      checklistItem.checked = false;
+    }
+
+    alphaItem.cards
+      .filter((card) => card.type === "Alpha")[0]
+      .states.filter((state) => state.name === "Done")[0].status = 0;
+  }
+}

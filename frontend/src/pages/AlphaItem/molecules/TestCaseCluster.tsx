@@ -53,7 +53,6 @@ const InnerTestCaseCluster: React.FC<{ id: string }> = ({ id }) => {
           <State
             key={state.name}
             id={`testCaseBox${index + 3}`}
-            index={index}
             name={state.name}
             style={{ marginRight: 50 }}
             card={state}
