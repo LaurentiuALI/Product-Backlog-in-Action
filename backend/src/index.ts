@@ -28,6 +28,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // Require API routes
+app.get("/ping", (_req: Request, res: Response) => {
+  return res.send("pong 🏓");
+});
 app.use("/api/v1/cards", cardRoutes);
 app.use("/api/v1/alphaItems", alphaItemRoutes);
 app.use("/api/v1/user", userRoutes);
