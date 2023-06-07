@@ -15,7 +15,7 @@ import { Request, Response } from "express";
 
 import mongoose from "mongoose";
 
-// GET all alpha items
+// GET all alpha items from db
 export const getAllAlphaItems = async (req: IAuthRequest, res: Response) => {
   try {
     // retrieve all cards from db and sort by date created (newest first)
