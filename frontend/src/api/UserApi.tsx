@@ -1,4 +1,6 @@
 import axios from "axios";
+const BaseURL =
+  "https://product-backlog-in-action-ts-production.up.railway.app";
 
 export const createUser = async ({
   projectName,
@@ -8,7 +10,7 @@ export const createUser = async ({
   password: string;
 }) => {
   const response = await axios.post(
-    "http://localhost:4000/api/v1/user/register",
+    `${BaseURL}/api/v1/user/register`,
     {
       projectName,
       password,
@@ -30,7 +32,7 @@ export const loginUser = async ({
   password: string;
 }) => {
   const response = await axios.post(
-    "http://localhost:4000/api/v1/user/login",
+    `${BaseURL}/api/v1/user/login`,
     {
       projectName,
       password,

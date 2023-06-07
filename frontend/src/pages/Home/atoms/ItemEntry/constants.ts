@@ -6,6 +6,7 @@ export const alphaItem: IAlphaItem = {
   storyPoints: 1,
   state: "identified",
   _id: "testUID",
+  user: null,
   cards: [],
   priority: 1,
 };

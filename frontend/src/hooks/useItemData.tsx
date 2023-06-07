@@ -5,6 +5,9 @@ import { useAlphaItemStore } from "../stores/AlphaItemStore";
 import { type IComponent } from "../stores/ComponentStore";
 import { type IUser, useUserStore } from "../stores/UserStore";
 
+const BaseURL =
+  "https://product-backlog-in-action-ts-production.up.railway.app";
+
 export interface IAlphaItem {
   _id: string;
   cards: IComponent[];
@@ -20,7 +23,7 @@ const getAlphaItem = async (_id: string, user: IUser | null) => {
   const token = user?.token;
 
   const response = await axios.get<IAlphaItem>(
-    `http://localhost:4000/api/v1/alphaItems/${_id}`,
+    `${BaseURL}/api/v1/alphaItems/${_id}`,
     {
       headers: {
         Authorization: `Bearer ${token as string}`,
@@ -41,7 +44,6 @@ const updateAlphaItem = async ({
   alphaItem: IAlphaItem;
   _id: string;
 }) => {
-  
   //keep cards status in sync based on inner checklists
   syncCardsStatus(alphaItem);
 
@@ -53,7 +55,7 @@ const updateAlphaItem = async ({
 
   // send patch request to backend with the new values to be changed
   return await axios.patch<IAlphaItem>(
-    `http://localhost:4000/api/v1/alphaItems/${_id}`,
+    `${BaseURL}/api/v1/alphaItems/${_id}`,
     alphaItem,
     {
       headers: {

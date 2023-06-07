@@ -4,10 +4,11 @@ import { useQuery, useMutation } from "react-query";
 import { useCardStore } from "../stores/CardStore";
 import { type IComponent } from "../stores/ComponentStore";
 import { type IUser, useUserStore } from "../stores/UserStore";
-
+const BaseURL =
+  "https://product-backlog-in-action-ts-production.up.railway.app";
 const getCards = async (user: IUser | null) => {
   const token = user?.token;
-  const response = await axios.get("http://localhost:4000/api/v1/cards/", {
+  const response = await axios.get(`${BaseURL}/api/v1/cards/`, {
     headers: {
       Authorization: `Bearer ${token as string}`,
     },
@@ -28,7 +29,7 @@ const updateCard = async ({
   _id: string;
   user: IUser | null;
 }) => {
-  return await axios.patch(`http://localhost:4000/api/v1/cards/${_id}`, card, {
+  return await axios.patch(`${BaseURL}/api/v1/cards/${_id}`, card, {
     headers: {
       Authorization: `Bearer ${user?.token as string}`,
     },

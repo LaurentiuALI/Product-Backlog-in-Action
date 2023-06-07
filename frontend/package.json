@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "https://product-backlog-in-action-ts-production.up.railway.app/",
   "scripts": {
     "lint": "eslint -c .eslintrc src/**/*.tsx",
     "fix": "eslint -c .eslintrc src/**/*.tsx --fix",

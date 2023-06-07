@@ -9,7 +9,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { type IAlphaItem } from "../../../../hooks/useItemData";
 import { useUserStore } from "../../../../stores/UserStore";
-
+const BaseURL =
+  "https://product-backlog-in-action-ts-production.up.railway.app";
 interface IIssuesTabProps {
   entries: IAlphaItem[] | null;
   title: string;
@@ -26,15 +27,11 @@ const IssuesTab: React.FC<IIssuesTabProps> = ({ entries, title }) => {
     _id: string;
   }) => {
     //change alpha item states based on inner checklists
-    return await axios.patch(
-      `http://localhost:4000/api/v1/alphaItems/${_id}`,
-      alphaItem,
-      {
-        headers: {
-          Authorization: `Bearer ${token as string}`,
-        },
-      }
-    );
+    return await axios.patch(`${BaseURL}/api/v1/alphaItems/${_id}`, alphaItem, {
+      headers: {
+        Authorization: `Bearer ${token as string}`,
+      },
+    });
   };
 
   const [issues, setIssues] = useState<IAlphaItem[]>([]);
