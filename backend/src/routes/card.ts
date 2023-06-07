@@ -9,7 +9,7 @@ import {
   updateCard,
 } from "../controllers/cardController";
 
-import { requireAuth } from "../middleware/requireauth";
+import { requireAuth } from "../middleware/requireAuth";
 
 const router = express.Router();
 

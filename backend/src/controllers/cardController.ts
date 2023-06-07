@@ -3,7 +3,7 @@ import { Card } from "../models/cardsModel";
 import { Request, Response } from "express";
 
 import mongoose from "mongoose";
-import { IAuthRequest } from "../middleware/requireauth";
+import { IAuthRequest } from "../middleware/requireAuth";
 
 export const getAllCards = async (req: IAuthRequest, res: Response) => {
   try {

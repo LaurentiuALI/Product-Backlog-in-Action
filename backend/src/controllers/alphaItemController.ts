@@ -1,4 +1,4 @@
-import { IAuthRequest } from "../middleware/requireauth";
+import { IAuthRequest } from "../middleware/requireAuth";
 import AlphaItem from "../models/alphaItemModel";
 import { IUser } from "../models/userModel";
 
