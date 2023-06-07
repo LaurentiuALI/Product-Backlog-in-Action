@@ -1,6 +1,6 @@
 const express = require("express");
 
-// controller functions
+// controller functionss
 
 import { userLogin, userRegister } from "../controllers/userController";
 
