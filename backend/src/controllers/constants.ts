@@ -78,7 +78,7 @@ export const INVEST = {
   description:
     "An acronym of the quality criteria for a Product Backlog Item to be ready for development:\\nIndependent - can be independently built / tested\\nNegotiable - e.g. in its detail or even into or out of scope\\nValuable\\nEstimable - can be sized\\nSmall - enough e.g. to be implemented rapidly, e.g. in a week or less\\nTestable.",
   status: 0,
-  states: [],
+  states: [] as [],
 };
 export const splittingProductBacklogItems = {
   type: "Pattern",
@@ -86,7 +86,7 @@ export const splittingProductBacklogItems = {
   description:
     "Small things get done faster. In agile development there is a continuous and relentless drive to reduce the size of backlog items by splitting bigger items into smaller ones. The key is to ensure that each item delivers value:\\nSplits should support meaningful user interactions, no matter how small or “specialized” (think “thin end-to-end journey / slice”) not technical architecture “dice” (e.g. front-end without back-end)\\nRemember: each and every Test Case is a potential backlog item.",
   status: 0,
-  states: [],
+  states: [] as [],
 };
 
 export const agreeDefinitionOfDone = {
@@ -95,7 +95,7 @@ export const agreeDefinitionOfDone = {
   description:
     "Agree the quality criteria that will be used to determine whether any change to the product is fully and correctly implemented.",
   status: 0,
-  states: [],
+  states: [] as [],
 };
 
 export const definitionOfDone = {
@@ -148,7 +148,7 @@ export const prepareAProductBacklogItem = {
   description:
     "Ensure that the Product Backlog Item is ready for development and that it is clear how it will be tested.",
   status: 0,
-  states: [],
+  states: [] as [],
 };
 
 export const testCase = {
@@ -232,5 +232,5 @@ export const relativeEstimating = {
   description:
     "Effort to get Product Backlog Items done is estimated not in absolute units of time, but relative to each other. This allows progress to be predicted based on performance.\\nThe unit is often called a “Point”, e.g. a “Story Point” when sizing User Stories.\\nTeams track the Points they earn per time period by getting Items done. This is used to forecast progress, with confidence levels based on the number of data points and stability of conditions.",
   status: 0,
-  states: [],
+  states: [] as [],
 };
