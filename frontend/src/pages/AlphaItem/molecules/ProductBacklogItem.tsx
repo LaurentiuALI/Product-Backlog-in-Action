@@ -4,6 +4,7 @@ import Xarrow from "react-xarrows";
 import { useItemData } from "../../../hooks/useItemData";
 import Alpha from "../atoms/Alpha";
 import State from "../atoms/State";
+import type { IComponent } from "../../../stores/ComponentStore";
 
 const lines = [
   { from: "ProductBacklogItemBox1", to: "ProductBacklogItemBox2" },
@@ -33,15 +34,26 @@ const InnerProductBacklogItem: React.FC<{ id: string }> = ({ id }) => {
         card={productBacklogItem}
       />
 
-      {productBacklogItem.states.map((state, index) => (
-        <State
-          key={`ProductBacklogItemBox${index + 2}`}
-          id={`ProductBacklogItemBox${index + 2}`}
-          name={state.name}
-          card={state}
-          style={{ marginLeft: 80, flexDirection: "column" }}
-        />
-      ))}
+      {productBacklogItem.states.map((state, index) => {
+        let done = true;
+        if (index == 1) {
+          done = computePrevStat(productBacklogItem, index);
+        } else if (index == 2) {
+          done =
+            computePrevStat(productBacklogItem, index) &&
+            computePrevStat(productBacklogItem, index - 1);
+        }
+        return (
+          <State
+            key={`ProductBacklogItemBox${index + 2}`}
+            id={`ProductBacklogItemBox${index + 2}`}
+            name={state.name}
+            card={state}
+            prevState={done}
+            style={{ marginLeft: 80, flexDirection: "column" }}
+          />
+        );
+      })}
 
       {ready &&
         lines.map((line, index) => (
@@ -64,5 +76,12 @@ const ProductBacklogItem: React.FC = () => {
   if (!id) return <div>Invalid ID</div>;
   return <InnerProductBacklogItem id={id} />;
 };
+
+function computePrevStat(component: IComponent, index: number) {
+  return (
+    component.states[index - 1].status ==
+    component.states[index - 1].checklist.length
+  );
+}
 
 export default ProductBacklogItem;

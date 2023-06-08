@@ -5,6 +5,7 @@ import { useItemData } from "../../../hooks/useItemData";
 import Activity from "../atoms/Activity";
 import State from "../atoms/State";
 import TestCase from "../atoms/TestCase";
+import type { IComponent } from "../../../stores/ComponentStore";
 
 const lines = [
   { from: "DefOfDoneBox1", to: "DefOfDoneBox2" },
@@ -38,15 +39,26 @@ const InnerDefinitionOfDoneCluster: React.FC<{ id: string }> = ({ id }) => {
           card={definitionOfDone}
           style={{ marginLeft: 50, marginRight: 0 }}
         />
-        {definitionOfDone.states.map((state, index) => (
-          <State
-            key={index}
-            id={`DefOfDoneBox${index + 3}`}
-            name={state.name}
-            card={state}
-            style={{ marginRight: 50, marginTop: 30 }}
-          />
-        ))}
+        {definitionOfDone.states.map((state, index) => {
+          let done = true;
+          if (index == 1) {
+            done = computePrevStat(definitionOfDone, index);
+          } else if (index == 2) {
+            done =
+              computePrevStat(definitionOfDone, index) &&
+              computePrevStat(definitionOfDone, index - 1);
+          }
+          return (
+            <State
+              key={index}
+              prevState={done}
+              id={`DefOfDoneBox${index + 3}`}
+              name={state.name}
+              card={state}
+              style={{ marginRight: 50, marginTop: 30 }}
+            />
+          );
+        })}
         {lines.map((line) => (
           <Xarrow
             key={line.from + line.to}
@@ -70,5 +82,12 @@ const DefinitionOfDoneCluster = () => {
   if (!id) return <div> Invalid ID </div>;
   return <InnerDefinitionOfDoneCluster id={id} />;
 };
+
+function computePrevStat(component: IComponent, index: number) {
+  return (
+    component.states[index - 1].status ==
+    component.states[index - 1].checklist.length
+  );
+}
 
 export default DefinitionOfDoneCluster;

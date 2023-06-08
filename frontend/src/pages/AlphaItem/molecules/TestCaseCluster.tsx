@@ -5,6 +5,7 @@ import { useItemData } from "../../../hooks/useItemData";
 import Activity from "../atoms/Activity";
 import State from "../atoms/State";
 import TestCase from "../atoms/TestCase";
+import { type IComponent } from "../../../stores/ComponentStore";
 
 const lines = [
   { from: "testCaseBox1", to: "testCaseBox2" },
@@ -49,15 +50,26 @@ const InnerTestCaseCluster: React.FC<{ id: string }> = ({ id }) => {
       )}
 
       {testCase != null &&
-        testCase.states.map((state, index) => (
-          <State
-            key={state.name}
-            id={`testCaseBox${index + 3}`}
-            name={state.name}
-            style={{ marginRight: 50 }}
-            card={state}
-          />
-        ))}
+        testCase.states.map((state, index) => {
+          let done = true;
+          if (index == 1) {
+            done = computePrevStat(testCase, index);
+          } else if (index == 2) {
+            done =
+              computePrevStat(testCase, index) &&
+              computePrevStat(testCase, index - 1);
+          }
+          return (
+            <State
+              key={state.name}
+              id={`testCaseBox${index + 3}`}
+              name={state.name}
+              style={{ marginRight: 50 }}
+              card={state}
+              prevState={done}
+            />
+          );
+        })}
 
       {ready == true &&
         lines.map((line) => (
@@ -80,5 +92,12 @@ const TestCaseCluster = () => {
   if (!id) return <div>Invalid ID</div>;
   return <InnerTestCaseCluster id={id} />;
 };
+
+function computePrevStat(component: IComponent, index: number) {
+  return (
+    component.states[index - 1].status ==
+    component.states[index - 1].checklist.length
+  );
+}
 
 export default TestCaseCluster;

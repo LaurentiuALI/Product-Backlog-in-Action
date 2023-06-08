@@ -1,5 +1,9 @@
 import stateAchieved from "../icons/stateAchieved.svg";
 import stateUnachieved from "../icons/stateUnachieved.svg";
+import state25 from "../icons/state25.svg";
+import state50 from "../icons/state50.svg";
+import state75 from "../icons/state75.svg";
+
 import {
   type IComponentState,
   useComponentStore,
@@ -12,20 +16,31 @@ interface IInnerStateProps {
   _id: string;
   id: string;
   name: string;
+  prevState?: boolean;
   style?: React.CSSProperties;
   card: IComponentState;
 }
 interface IStateProps {
   id: string;
   name: string;
+  prevState?: boolean;
   style?: React.CSSProperties;
   card: IComponentState;
 }
 
-const InnerState: React.FC<IInnerStateProps> = ({ id, _id, name, card }) => {
+const InnerState: React.FC<IInnerStateProps> = ({
+  id,
+  _id,
+  name,
+  card,
+  prevState,
+}) => {
   const { alphaItem } = useItemData(_id);
 
   const [done, setDone] = useState(false);
+
+  const [statePercentage, setStatePercentage] = useState(stateUnachieved);
+  const percent = Math.ceil((card.status * 100) / card.checklist.length);
 
   const setComponentState = useComponentStore(
     (state) => state.setComponentState
@@ -34,6 +49,17 @@ const InnerState: React.FC<IInnerStateProps> = ({ id, _id, name, card }) => {
   const setComponent = useComponentStore((state) => state.setComponent);
 
   useEffect(() => {
+    if (percent == 0 || prevState == false) {
+      setStatePercentage(stateUnachieved);
+    } else if (percent > 0 && percent < 50) {
+      setStatePercentage(state25);
+    } else if (percent == 50) {
+      setStatePercentage(state50);
+    } else if (percent > 50 && percent <= 75) {
+      setStatePercentage(state75);
+    } else if (percent == 100) {
+      setStatePercentage(stateAchieved);
+    }
     // set timeout to wait a 100ms for alphaItem to be fetched
     setTimeout(() => {
       if (alphaItem != null && alphaItem.cards != null) {
@@ -47,14 +73,19 @@ const InnerState: React.FC<IInnerStateProps> = ({ id, _id, name, card }) => {
         const ready = alphaItem.cards
           .filter((card) => card.type === "Alpha")[0]
           .states.filter((state) => state.name === "Ready for Development")[0];
-        if (tc.status == 3 && dod.status == 2 && ready.status == 4) {
+        if (
+          tc.status == 3 &&
+          dod.status == 2 &&
+          ready.status == 4 &&
+          prevState == true
+        ) {
           setDone(true);
         } else {
           setDone(false);
         }
       }
     }, 0);
-  }, [alphaItem, name]);
+  }, [alphaItem, done, name, percent, prevState]);
 
   return (
     <div
@@ -80,9 +111,7 @@ const InnerState: React.FC<IInnerStateProps> = ({ id, _id, name, card }) => {
       </h1>
       <img
         id={id}
-        src={
-          card.status == card.checklist.length ? stateAchieved : stateUnachieved
-        }
+        src={statePercentage}
         alt="activity"
         className={`${
           name == "Done" && !done ? "opacity-20" : ""
@@ -90,7 +119,9 @@ const InnerState: React.FC<IInnerStateProps> = ({ id, _id, name, card }) => {
       />
       <h1
         className={`text-lg text-${
-          card.status == card.checklist.length ? "orange-500" : "black"
+          card.status == card.checklist.length && prevState == true
+            ? "orange-500"
+            : "black"
         } font-semibold font-inter text-center ml-2 4k:text-3xl 4k:ml-4 ${
           name.length > 30 ? "max-w-[10rem]" : ""
         } 4k:max-w-[25rem]`}
@@ -100,9 +131,17 @@ const InnerState: React.FC<IInnerStateProps> = ({ id, _id, name, card }) => {
     </div>
   );
 };
-const State: React.FC<IStateProps> = ({ id, name, card }) => {
+const State: React.FC<IStateProps> = ({ id, name, card, prevState }) => {
   const { id: _id } = useParams<{ id: string }>();
   if (!_id) return <div> Invalid ID </div>;
-  return <InnerState _id={_id} id={id} name={name} card={card} />;
+  return (
+    <InnerState
+      _id={_id}
+      id={id}
+      name={name}
+      card={card}
+      prevState={prevState}
+    />
+  );
 };
 export default State;
