@@ -7,7 +7,7 @@ interface IAlphaItemUser extends IAlphaItem {
 }
 const BaseURL =
   "https://product-backlog-in-action-ts-production.up.railway.app";
-
+// const BaseURL = "localhost:4000";
 export const getAlphaItems = async (user: IUser | null) => {
   const response = await axios.get<IAlphaItem[]>(
     `${BaseURL}/api/v1/alphaItems/`,

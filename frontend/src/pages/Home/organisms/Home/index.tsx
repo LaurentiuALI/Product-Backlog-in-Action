@@ -9,6 +9,7 @@ import { useCardData } from "../../../../hooks/useCardsData";
 import { useComponentStore } from "../../../../stores/ComponentStore";
 
 import { type IAxiosError } from "./interface";
+import Error from "../Error";
 
 const Home = () => {
   const { setComponent, setComponentState } = useComponentStore();
@@ -51,15 +52,8 @@ const Home = () => {
       </div>
     );
   } else if (error) {
-    localStorage.removeItem("user");
-    return (
-      <div className="flex-col text-5xl bg-orange-300 text-white h-screen w-screen flex justify-center items-center">
-        <p className="text-5xl text-white mb-10">
-          Something went wrong. Please try again later.
-        </p>
-        <p>{`Error: ${(error as IAxiosError).response.data.error}`}</p>
-      </div>
-    );
+    // localStorage.removeItem("user");
+    return <Error error={(error as IAxiosError).response.data.error} />;
   }
 
   return (

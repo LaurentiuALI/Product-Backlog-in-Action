@@ -18,7 +18,9 @@ const Error = ({ error }: { error: string | undefined }) => {
           <button
             className="bg-orange-400 rounded-lg w-[5rem] h-[2rem] text-white font-bold"
             onClick={() => {
-              navigate("/");
+              console.log("eyo");
+              localStorage.removeItem("user");
+              navigate(0);
             }}
           >
             Back
