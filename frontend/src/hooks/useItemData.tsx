@@ -165,18 +165,37 @@ function manageAlphaItemStates(alphaItem: IAlphaItem) {
   const alphaComponent = alphaItem.cards.filter(
     (card) => card.type === "Alpha"
   )[0];
+  const identifiedStatus = alphaComponent.states.filter(
+    (state) => state.name === "Identified"
+  )[0].status;
+  const readyForDevelopmentStatus = alphaComponent.states.filter(
+    (state) => state.name === "Ready for Development"
+  )[0].status;
+  const doneStatus = alphaComponent.states.filter(
+    (state) => state.name === "Done"
+  )[0].status;
 
   for (const state of alphaComponent.states) {
-    if (state.name == "Identified") {
+    if (
+      (state.name == "Identified" && identifiedStatus !== 3) ||
+      readyForDevelopmentStatus !== 4
+    ) {
       alphaItem.state = "Identified";
     }
     if (
       state.name == "Ready for Development" &&
-      state.status === state.checklist.length
+      state.status === state.checklist.length &&
+      identifiedStatus === 3
     ) {
       alphaItem.state = "Ready For Development";
     }
-    if (state.name == "Done" && state.status === state.checklist.length) {
+    if (
+      state.name == "Done" &&
+      state.status === state.checklist.length &&
+      readyForDevelopmentStatus === 4 &&
+      identifiedStatus === 3 &&
+      doneStatus === 4
+    ) {
       alphaItem.state = "Done";
     }
   }

@@ -49,7 +49,7 @@ const ItemEntry: React.FC<IItemEntryProps> = (props) => {
               className="group basis-0 flex-grow flex-shrink ml-8 mr-6"
               onDoubleClick={() => myNavigate(`/${props.item._id}`)}
             >
-              <div className="max-h-[3rem] overflow-hidden relativ">
+              <div className="max-h-[3rem] w-[18rem] truncate overflow-hidden relativ">
                 {props.item.name}
               </div>
             </div>

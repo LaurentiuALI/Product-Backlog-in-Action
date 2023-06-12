@@ -20,18 +20,32 @@ const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
   const [name, setname] = useState("");
   const [description, setDescription] = useState("");
   const [storyPoints, setstoryPoints] = useState(1);
+  const [error, setError] = useState("");
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
+    setError("");
+    if (description.length > 256) {
+      setError("Description is too long");
+      return;
+    }
+    if (name.length < 3) {
+      setError("Name is too short");
+      return;
+    }
+    if (name.length > 255) {
+      setError("Name is too long");
+      return;
+    }
     setname("");
     setDescription("");
     setstoryPoints(1);
-    mutate({ name, description: description, storyPoints, user});
+    mutate({ name, description: description, storyPoints, user });
   };
 
   return (
     <div className="flex justify-center items-center flex-grow">
-      <div className="bg-gradient-to-b from-primary-100 to-primary-200 w-[50rem] h-[40rem] 4k:w-[70rem] 4k:h-[60rem] rounded-3xl">
+      <div className="bg-gradient-to-b from-primary-100 to-primary-200 w-[50rem] h-[45rem] 4k:w-[70rem] 4k:h-[60rem] rounded-3xl">
         <div className="flex flex-col items-center">
           <img src={alpha} className="h-16 m-10 opacity-90" />
           <h1 className="font-medium text-3xl text-center text-white opacity-80 mb-4 ">
@@ -56,7 +70,6 @@ const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
                 className="rounded-md w-full h-12 mt-2"
               />
             </div>
-
             <div className="w-8/12 mb-6 4k:mt-12">
               <label
                 htmlFor="description"
@@ -91,6 +104,11 @@ const Add: React.FC<{ toggleAdd: () => void }> = ({ toggleAdd }) => {
               value="Add"
               className="border-2 pl-8 pr-8 pt-2 pb-2 rounded-md mt-6 text-white font-semibold text-xl 4k:mt-32 4k:text-4xl"
             ></input>
+            {error && (
+              <p className="text-white opacity-100 text-2xl font-bold mt-2">
+                {error}
+              </p>
+            )}
           </form>
         </div>
       </div>
