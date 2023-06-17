@@ -17,6 +17,11 @@ const ItemEntry: React.FC<IItemEntryProps> = (props) => {
     state.setComponentState,
   ]);
 
+  const modifiedAt = new Date(props.item.cards[0].updatedAt);
+  const now = new Date();
+  const diffTime = Math.abs(now.getTime() - modifiedAt.getTime());
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
   const { user } = useUserStore();
 
   const queryClient = useQueryClient();
@@ -60,10 +65,12 @@ const ItemEntry: React.FC<IItemEntryProps> = (props) => {
               <h3>{props.item.storyPoints}</h3>
             </div>
             <div
-              className="basis-0 flex-grow flex-shrink"
+              className="basis-0 flex-grow flex-shrink flex"
               onDoubleClick={() => myNavigate(`/${props.item._id}`)}
             >
-              <h4>{props.item.state}</h4>
+              <h4 className={`ml-8`}>
+                {diffDays > 1 ? diffDays.toString() + " days ago " : "today"}
+              </h4>
             </div>
             <div
               className="relative mr-8 text-primary-100 font-extrabold text-xl cursor-pointer"

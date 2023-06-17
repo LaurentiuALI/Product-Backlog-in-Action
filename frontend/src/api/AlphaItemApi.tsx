@@ -17,6 +17,7 @@ export const getAlphaItems = async (user: IUser | null) => {
       },
     }
   );
+
   return response.data;
 };
 

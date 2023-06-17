@@ -15,9 +15,16 @@ const BaseURL =
 interface IIssuesTabProps {
   entries: IAlphaItem[] | null;
   title: string;
+  totalIssues?: number;
+  storyPoints?: number;
 }
 
-const IssuesTab: React.FC<IIssuesTabProps> = ({ entries, title }) => {
+const IssuesTab: React.FC<IIssuesTabProps> = ({
+  entries,
+  title,
+  totalIssues,
+  storyPoints,
+}) => {
   const { user } = useUserStore();
   const token = user?.token;
   const updateAlphaItem = async ({
@@ -63,19 +70,23 @@ const IssuesTab: React.FC<IIssuesTabProps> = ({ entries, title }) => {
     entries && (
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className="max-w-[100vw] rounded-2xl">
-          <ListHeader header={title} />
+          <ListHeader
+            header={title}
+            totalIssues={totalIssues}
+            actualIssuesNumber={entries.length}
+          />
 
           <div className="border-2 border-primary-200">
             <div>
-              <div className="flex items-center justify-evenly border-b-2 text-white border-primary-100 h-10 text-xl bg-primary-100">
-                <div className="basis-0 flex-grow flex-shrink ml-6 break-all mr-6 font-bold">
+              <div className="flex items-center pl-4 justify-evenly border-b-2 text-white border-primary-100 h-10 text-xl bg-primary-100">
+                <div className="basis-0 flex-grow flex-shrink break-all font-bold">
                   <h2>Name</h2>
                 </div>
                 <div className="basis-0 flex-grow flex-shrink font-bold">
-                  <h3>Story Points</h3>
+                  <h3>Story Points: {storyPoints}</h3>
                 </div>
-                <div className="basis-0 flex-grow flex-shrink font-bold">
-                  <h4>State</h4>
+                <div className={`basis-0 flex-grow flex-shrink font-bold`}>
+                  <h4>Last Modified</h4>
                 </div>
               </div>
             </div>

@@ -4,6 +4,7 @@ import { type IAlphaItem } from "../../../../hooks/useItemData";
 const ItemEntry: React.FC<{ item: IAlphaItem }> = (props) => {
   const navigate = useNavigate();
   const myNavigate = (url: To) => navigate(url);
+  console.log("🚀 ~ file: index.tsx:28 ~ item:", props.item);
 
   return (
     <div
