@@ -76,7 +76,7 @@ const Login = () => {
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
-              placeholder="Please enter project name..."
+              placeholder="Please enter project password..."
               className="pl-2 rounded-lg w-[20rem] h-[2rem] mt-2 focus:outline-none focus:border-2 focus:border-orange-400"
             />
           </label>

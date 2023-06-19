@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.03% </span>
+                <span class="strong">86.55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>97/101</span>
+                <span class='fraction'>103/119</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">55.55% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>5/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.03% </span>
+                <span class="strong">86.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>97/101</span>
+                <span class='fraction'>103/119</span>
             </div>
         
             
@@ -164,7 +164,25 @@
 <a name='L99'></a><a href='#L99'>99</a>
 <a name='L100'></a><a href='#L100'>100</a>
 <a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,13 +206,26 @@
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
@@ -256,6 +287,11 @@
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
@@ -287,18 +323,32 @@ const Add: React.FC&lt;{ toggleAdd: () =&gt; void }&gt; = ({ toggleAdd }) =&gt; 
   const [name, setname] = useState("");
   const [description, setDescription] = useState("");
   const [storyPoints, setstoryPoints] = useState(1);
+  const [error, setError] = useState("");
 &nbsp;
   const onSubmit: React.FormEventHandler&lt;HTMLFormElement&gt; = (e) =&gt; {
     e.preventDefault();
+    setError("");
+    if (description.length &gt; 256) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      setError("Description is too long");</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+    if (name.length &lt; 3) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      setError("Name is too short");</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+    if (name.length &gt; 255) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      setError("Name is too long");</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
     setname("");
     setDescription("");
     setstoryPoints(1);
-    mutate({ name, description: description, storyPoints, user});
+    mutate({ name, description: description, storyPoints, user });
   };
 &nbsp;
   return (
     &lt;div className="flex justify-center items-center flex-grow"&gt;
-      &lt;div className="bg-gradient-to-b from-primary-100 to-primary-200 w-[50rem] h-[40rem] 4k:w-[70rem] 4k:h-[60rem] rounded-3xl"&gt;
+      &lt;div className="bg-gradient-to-b from-primary-100 to-primary-200 w-[50rem] h-[45rem] 4k:w-[70rem] 4k:h-[60rem] rounded-3xl"&gt;
         &lt;div className="flex flex-col items-center"&gt;
           &lt;img src={alpha} className="h-16 m-10 opacity-90" /&gt;
           &lt;h1 className="font-medium text-3xl text-center text-white opacity-80 mb-4 "&gt;
@@ -323,7 +373,6 @@ const Add: React.FC&lt;{ toggleAdd: () =&gt; void }&gt; = ({ toggleAdd }) =&gt; 
                 className="rounded-md w-full h-12 mt-2"
               /&gt;
             &lt;/div&gt;
-&nbsp;
             &lt;div className="w-8/12 mb-6 4k:mt-12"&gt;
               &lt;label
                 htmlFor="description"
@@ -358,6 +407,11 @@ const Add: React.FC&lt;{ toggleAdd: () =&gt; void }&gt; = ({ toggleAdd }) =&gt; 
               value="Add"
               className="border-2 pl-8 pr-8 pt-2 pb-2 rounded-md mt-6 text-white font-semibold text-xl 4k:mt-32 4k:text-4xl"
             &gt;&lt;/input&gt;
+            {<span class="branch-0 cbranch-no" title="branch not covered" >error &amp;&amp; (</span>
+<span class="cstat-no" title="statement not covered" >              &lt;p className="text-white opacity-100 text-2xl font-bold mt-2"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                {error}</span>
+<span class="cstat-no" title="statement not covered" >              &lt;/p&gt;</span>
+            )}
           &lt;/form&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -373,7 +427,7 @@ export default Add;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-30T12:26:44.013Z
+                at 2023-06-17T18:41:02.950Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/85</span>
+                <span class='fraction'>0/103</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/85</span>
+                <span class='fraction'>0/103</span>
             </div>
         
             
@@ -148,7 +148,43 @@
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -240,6 +276,7 @@
 <span class="cstat-no" title="statement not covered" >import Activity from "../atoms/Activity";</span>
 <span class="cstat-no" title="statement not covered" >import State from "../atoms/State";</span>
 <span class="cstat-no" title="statement not covered" >import TestCase from "../atoms/TestCase";</span>
+<span class="cstat-no" title="statement not covered" >import { type IComponent } from "../../../stores/ComponentStore";</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >const lines = [</span>
 <span class="cstat-no" title="statement not covered" >  { from: "testCaseBox1", to: "testCaseBox2" },</span>
@@ -284,16 +321,26 @@
 <span class="cstat-no" title="statement not covered" >      )}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >      {testCase != null &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >        testCase.states.map((state, index) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >          &lt;State</span>
-<span class="cstat-no" title="statement not covered" >            key={state.name}</span>
-<span class="cstat-no" title="statement not covered" >            id={`testCaseBox${index + 3}`}</span>
-<span class="cstat-no" title="statement not covered" >            index={index}</span>
-<span class="cstat-no" title="statement not covered" >            name={state.name}</span>
-<span class="cstat-no" title="statement not covered" >            style={{ marginRight: 50 }}</span>
-<span class="cstat-no" title="statement not covered" >            card={state}</span>
-<span class="cstat-no" title="statement not covered" >          /&gt;</span>
-<span class="cstat-no" title="statement not covered" >        ))}</span>
+<span class="cstat-no" title="statement not covered" >        testCase.states.map((state, index) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          let done = true;</span>
+<span class="cstat-no" title="statement not covered" >          if (index == 1) {</span>
+<span class="cstat-no" title="statement not covered" >            done = computePrevStat(testCase, index);</span>
+<span class="cstat-no" title="statement not covered" >          } else if (index == 2) {</span>
+<span class="cstat-no" title="statement not covered" >            done =</span>
+<span class="cstat-no" title="statement not covered" >              computePrevStat(testCase, index) &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >              computePrevStat(testCase, index - 1);</span>
+<span class="cstat-no" title="statement not covered" >          }</span>
+<span class="cstat-no" title="statement not covered" >          return (</span>
+<span class="cstat-no" title="statement not covered" >            &lt;State</span>
+<span class="cstat-no" title="statement not covered" >              key={state.name}</span>
+<span class="cstat-no" title="statement not covered" >              id={`testCaseBox${index + 3}`}</span>
+<span class="cstat-no" title="statement not covered" >              name={state.name}</span>
+<span class="cstat-no" title="statement not covered" >              style={{ marginRight: 50 }}</span>
+<span class="cstat-no" title="statement not covered" >              card={state}</span>
+<span class="cstat-no" title="statement not covered" >              prevState={done}</span>
+<span class="cstat-no" title="statement not covered" >            /&gt;</span>
+<span class="cstat-no" title="statement not covered" >          );</span>
+<span class="cstat-no" title="statement not covered" >        })}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >      {ready == true &amp;&amp;</span>
 <span class="cstat-no" title="statement not covered" >        lines.map((line) =&gt; (</span>
@@ -317,6 +364,13 @@
 <span class="cstat-no" title="statement not covered" >  return &lt;InnerTestCaseCluster id={id} /&gt;;</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >function computePrevStat(component: IComponent, index: number) {</span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >    component.states[index - 1].status ==</span>
+<span class="cstat-no" title="statement not covered" >    component.states[index - 1].checklist.length</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
+<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >export default TestCaseCluster;</span>
 &nbsp;</pre></td></tr></table></pre>
 
@@ -325,7 +379,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-30T12:26:44.013Z
+                at 2023-06-17T18:41:02.950Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
