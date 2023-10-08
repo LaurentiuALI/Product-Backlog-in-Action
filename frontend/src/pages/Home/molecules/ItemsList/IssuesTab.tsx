@@ -9,8 +9,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { type IAlphaItem } from "../../../../hooks/useItemData";
 import { useUserStore } from "../../../../stores/UserStore";
-const BaseURL =
-  "https://product-backlog-in-action-ts-production.up.railway.app";
+const BaseURL = "https://product-backlog-in-action.onrender.com";
 // const BaseURL = "localhost:4000";
 interface IIssuesTabProps {
   entries: IAlphaItem[] | null;

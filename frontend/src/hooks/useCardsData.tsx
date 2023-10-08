@@ -4,8 +4,7 @@ import { useQuery, useMutation } from "react-query";
 import { useCardStore } from "../stores/CardStore";
 import { type IComponent } from "../stores/ComponentStore";
 import { type IUser, useUserStore } from "../stores/UserStore";
-const BaseURL =
-  "https://product-backlog-in-action-ts-production.up.railway.app";
+const BaseURL = "https://product-backlog-in-action.onrender.com";
 // const BaseURL = "localhost:4000";
 const getCards = async (user: IUser | null) => {
   const token = user?.token;

@@ -4,8 +4,7 @@ import {
   relativeEstimating,
   splittingProductBacklogItems,
 } from "./constants";
-const BaseURL =
-  "https://product-backlog-in-action-ts-production.up.railway.app";
+const BaseURL = "https://product-backlog-in-action.onrender.com";
 // const BaseURL = "localhost:4000";
 
 export const registerUserCards = async (token: string | null) => {

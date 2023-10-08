@@ -5,8 +5,7 @@ import { type IUser } from "../stores/UserStore";
 interface IAlphaItemUser extends IAlphaItem {
   user: IUser | null;
 }
-const BaseURL =
-  "https://product-backlog-in-action-ts-production.up.railway.app";
+const BaseURL = "https://product-backlog-in-action.onrender.com";
 // const BaseURL = "localhost:4000";
 export const getAlphaItems = async (user: IUser | null) => {
   const response = await axios.get<IAlphaItem[]>(
