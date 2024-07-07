@@ -1,20 +1,18 @@
 # Product Backlog in Action
 
-<br />
+🚧 DUE TO BUDGET CONSTRAINTS (no budget at all...) YOU WILL HAVE TO WAIT A FEW MINUTES FOR THE PLATFORM TO WORK (the backend will spin off after certain time and takes a few moments to redeploy)
+THANK YOU FOR YOUR UNDERSTANDING
 
 ## Table of Contents
 
-- [About Product Backlog in Action](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- [About Product Backlog in Action](#about-product-backlog-in-action)
+- [Main Features](#main-features)
+- [Technical Details](#technical-details)
 - [Acknowledgements](#acknowledgements)
 
 ## About Product Backlog in Action
+
+This is a mental and software construction of the ideas proposed by Ivar Jacobson, SEMAT and OMG - The Essence Standard.
 
 ### Mission of Product Backlog in Action
 
@@ -37,44 +35,53 @@ This project aims to assist teams in developing software products according to e
 
 - Product Backlog overview - Project Board
 
-![Project Board overview](./media/Picture1.gif)
+  - Classify items according to their internal states (Identified, Ready For Development, Done)
+  - Provides an overview of all Product Backlog items and their progress
+  - Helps understand what is done and what needs to be done next
+  - Allows prioritization using drag-and-drop features
+    ![Project Board overview](./media/image20.gif)
 
-## **Application Technologies**
+- Refining Product Backlog activities - Sidebars
+  - "Add Product Backlog Item" button for adding new items
+  - The "Add Product Backlog Item" button displays a form for adding new items
+  - Teams can quickly add new items with essential information: title, description, and story points
+  - Invalid input prevents item creation; valid input updates the main page view accordingly - Allows simultaneous viewing of main page elements, including Pattern cards
+    ![Add item](./media/image21.gif)
+  - Represents the "Refine Product Backlog" activity and patterns
+  - Emphasizes elements of the Essence Language such as Pattern Cards that coach users into taking actions and Work Products that depicts states and future directions
+  - Previews current and potential states of the "Product Backlog" using checklists
+    ![Refining Product Backlog](./media/image22.gif)
+- Product Backlog Item Manager - Item Manager
+  - Accesed by double clicking any issue
+  - Crucial interface for ensuring Product Backlog quality
+  - Depicts internal state of every individual item in the Product Backlog
+  - Product Backlog Item Alpha
+    - Includes states: "Identified", "Ready for Development", and "Done" - Tables named after alpha states, inspired by Essence Standard
+    - Unfinished checklist items indicate incomplete states (black borders, white-filled elements) - Complete states highlighted with orange borders
+    - Some states are disabled until all necesarry steps are done (information available on hover)
+      ![Product Backlog Item](./media/image23.gif)
+- Assisted Progression
+  - Items automatically get classified based on the internal state
+  - Progressing the state of the alpha item will also progress the issue
+    ![Assisted Progression](./media/image24.gif)
+
+## Technical Details
+
+### Application Technologies
 
 In terms of architecture, the Product Backlog assistant will be accessible as a web application. Considering this, the application provides two different services, one modeling the front end, responsible for visual aspects and application logic, and another providing mutation to the database as a RESTful API.
 
-### **Backend Technologies**
+### Backend Technologies
 
-The backend consist of the following technologies:
-<br>
+The backend consist of the following technologies Typescript, NodeJS, ExpressJS, Mongoose for accesing MongoDB, JWT and BCrypt for project registration andDotEnv
 
-0. Typescript
-1. NodeJS
-2. ExpressJS
-3. Mongoose for accesing MongoDB
-4. JWT and BCrypt for project registration
-5. DotEnv
+### Frontend Technologies
 
-### **Frontend Technologies**
+The frontend consist of the following technologies Typescript, Vite, React, Tailwind, React Router DOM, Axios, React Query, Zustand, React Beautiful Drag And Drop, Vitest, React Icons & React Xarrow
 
-The frontend consist of the following technologies:
-<br>
+### How to Run
 
-0. Typescript
-1. Vite
-1. React
-1. Tailwind
-1. React Router DOM
-1. Axios
-1. React Query
-1. Zustand
-1. React Beautiful Drag And Drop
-1. Vitest
-1. React Icons & React Xarrow
-
-## **How to Run**
-
-## **Prerequisites**
+#### Prerequisites
 
 - node >=18.15.0
 - npm >=9.5.0
@@ -82,25 +89,17 @@ The frontend consist of the following technologies:
 The application connect a frontend component to a backend component. Both must be running simultaneously for the application to work.
 <br>
 
-## **Run the Backend**
-
-<br/>
-
-### **Dependency instalation**
-
-<br>
+### Run the Backend
 
 ```
 npm install
 ```
 
-#### **Run Service**
-
 ```
 npm run dev
 ```
 
-#### **IMPORTANT ASPECT ABOUT BACKEND PRIVACY**
+### Important aspect about backend privacy
 
 The following backend service make use of the `dotenv` to load secret strings into the code. To run this application a `.env` file have to be created containing the following information and respecting the following structure:
 <br>
@@ -113,26 +112,22 @@ SECRET_STRING=SECRET_KEY_WITHOUT_QUOTATIONS
 
 In order to generate a MONGODB_URI, that is a MongoDB string used for connecting to the cloud cluster, one have to create its own cluster in the [MongoDB Atlas](https://www.mongodb.com/atlas/database). (More information about this process can be found [here](https://www.mongodb.com/basics/clusters/mongodb-cluster-setup))
 
-## **Run the Frontend**
-
-<br/>
-
-### **Dependency instalation**
-
-<br>
+### Run the Frontend
 
 ```
 npm install
 ```
 
-#### **Run Service**
-
 ```
 npm run dev
 ```
 
-#### **Run Tests**
-
 ```
 npm run test
 ```
+
+## Acknowledgements
+
+There is a lot of effort put in this project. None of this could have been possible without the help of my coordinator Dr. Cristina Mîndruță to which I sincerly declare my profound appreciation.
+
+Moreover please find my Bachelor's Thesis document attached in this repository for a better understanding of the whole thinking project.
